@@ -34,12 +34,12 @@ const Home = () => {
             <p className="whitespace-pre-wrap">{text}</p>
             <span className="typewriter-cursor"></span>
           </div>
-          <a href="/assets/curriculo.pdf" target="_blank" rel="noopener noreferrer" className="btn-enhanced">
+          <a href="/assets/Curriculo.pdf" target="_blank" rel="noopener noreferrer" className="btn-enhanced">
             Baixar Currículo
           </a>
         </div>
         <div className="flex-1 mt-10 md:mt-0 flex justify-center items-center">
-          <img src="/assets/symbol.svg" alt="symbol" className="w-1/2 h-auto max-w-xs"/>
+          <img src="/assets/Eu.svg" alt="Eu" className="w-1/2 h-auto max-w-xs"/>
         </div>
       </div>
     </section>
