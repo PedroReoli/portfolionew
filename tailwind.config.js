@@ -62,12 +62,7 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       backgroundImage: {
-        'left-img-FULL': "url('/assets/images/background-auth3.svg')",
-        'background-home': "url('/assets/images/backgroundapp.svg')",
-        'card-background': "url('/assets/images/card2.svg')",
-        'background-users': "url('/assets/images/background-2.svg')",
-        'background-thin': "url('/assets/images/background-thin.svg')",
-        'background-post': "url('/assets/images/background-post-card.svg')",
+        'background-wallpaper': "url('/assets/wallpaper.svg')",
       },
     },
   },
