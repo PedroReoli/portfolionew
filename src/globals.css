@@ -34,6 +34,21 @@
 }
 
 @layer utilities {
+  .typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background-color: #00bfff; /* Neon Blue */
+    animation: blink 1s steps(1) infinite;
+    margin-left: 0.1em; /* Adjust the margin to align properly */
+  }
+
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
   .h1-bold {
     @apply text-[36px] font-bold leading-[140%] tracking-tighter text-blue-500;
   }
@@ -94,6 +109,10 @@
     @apply bg-blue-500 text-white px-4 py-2 rounded transition hover:bg-blue-700;
   }
 
+  .btn-enhanced {
+    @apply bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-3 rounded-full shadow-lg transition transform hover:scale-105 hover:from-blue-600 hover:to-indigo-600;
+  }
+
   .flex-center {
     @apply flex justify-center items-center;
   }
@@ -127,5 +146,33 @@
 
   .common-container {
     @apply flex flex-col flex-1 items-center gap-10 overflow-scroll py-10 px-5 md:px-8 lg:p-14 custom-scrollbar;
+  }
+
+  .background-svg {
+    /* Lembrar de mover as pastras */
+    background-image: url('/assets/image/symbol.svg'); 
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+  }
+
+  .experience-item {
+    @apply cursor-pointer p-3 border-l-4 border-gray-700 hover:border-blue-500 hover:text-blue-500 transition-colors duration-200;
+  }
+
+  .experience-item-active {
+    @apply border-blue-500 text-blue-500;
+  }
+
+  .experience-details {
+    @apply p-5 bg-gray-800 rounded-lg;
+  }
+
+  .experience-title {
+    @apply text-2xl font-semibold mb-3;
+  }
+
+  .experience-period {
+    @apply text-gray-400 mb-3;
   }
 }

@@ -1,25 +1,18 @@
 // src/_root/pages/About.tsx
-
 const About = () => {
   return (
     <section id="about" className="bg-[#111111] text-white py-20 px-5">
       <div className="container mx-auto">
-        <h4 className="text-xl font-semibold mb-2">Quem sou</h4>
-        <h2 className="text-3xl font-bold mb-5">Pedro Lucas Reis</h2>
-        <h3 className="text-2xl font-semibold mb-5">Frontend Developer & UI Designer</h3>
-        <p className="text-lg mb-5">
-          Meu nome é Pedro Lucas Reis, sou o criador do eFront, um material de ensino de frontend pela internet. Atualmente sou freelancer como Frontend Developer e UI Designer. Desenvolvo interfaces modernas e de alta qualidade, concentrado em performance, animações, responsividade e SEO.
+        <h2 className="text-4xl font-bold mb-5">Quem eu sou</h2>
+        <p className="text-xl mb-5">
+          Meu nome é <span className="text-blue-500">Pedro Lucas Reis</span>. Sou um <span className="text-blue-500">FullStack Developer</span> focado em criar soluções criativas e eficientes. Com uma paixão por <span className="text-blue-500">tecnologia</span> e <span className="text-blue-500">inovação</span>, tenho ampla experiência em desenvolvimento web e design de interfaces.
         </p>
-        <nav>
-          <ul className="flex space-x-4">
-            <li><a href="https://www.instagram.com/iuricode/" target="_blank" rel="noopener noreferrer"><img src="/assets/icons/instagram.svg" alt="Ícone do Instagram" /></a></li>
-            <li><a href="https://www.linkedin.com/in/iuricode/" target="_blank" rel="noopener noreferrer"><img src="/assets/icons/linkedin.svg" alt="Ícone do LinkedIn" /></a></li>
-            <li><a href="https://iuricode-blog.vercel.app/" target="_blank" rel="noopener noreferrer"><img src="/assets/icons/laptop.svg" alt="Ícone de um laptop" /></a></li>
-            <li><a href="https://discord.gg/uHWE7QbXnp" target="_blank" rel="noopener noreferrer"><img src="/assets/icons/discord.svg" alt="Ícone do Discord" /></a></li>
-            <li><a href="https://github.com/iuricode" target="_blank" rel="noopener noreferrer"><img src="/assets/icons/github.svg" alt="Ícone do GitHub" /></a></li>
-            <li><a href="https://www.behance.net/iuricode" target="_blank" rel="noopener noreferrer"><img src="/assets/icons/behance.svg" alt="Ícone do Behance" /></a></li>
-          </ul>
-        </nav>
+        <p className="text-xl mb-5">
+          Atualmente, trabalho como freelancer, atuando como <span className="text-blue-500">Frontend Developer</span> e <span className="text-blue-500">Produtor de Conteúdo para Devs</span>. Crio cursos e materiais educativos para compartilhar meu conhecimento com outros desenvolvedores.
+        </p>
+        <p className="text-xl">
+          Além de programador, sou <span className="text-blue-500">músico</span>, <span className="text-blue-500">compositor</span> e um <span className="text-blue-500">leitor ávido</span>. Trago minha sensibilidade artística para o mundo da programação, criando soluções de software que são tanto funcionais quanto esteticamente agradáveis. Acredito que a arte e a programação compartilham um núcleo comum de criatividade e expressão, e tento incorporar isso em tudo o que faço.
+        </p>
       </div>
     </section>
   );
