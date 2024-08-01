@@ -1,7 +1,7 @@
 // src/_root/RootLayout/RootLayout.tsx
 import { Outlet } from 'react-router-dom';
-import Topbar from '../../components/Topbar';
-import Bottombar from '../../components/Bottombar';
+import Topbar from '@/components/Topbar';
+import Bottombar from '@/components/Bottombar';
 
 const RootLayout = () => {
   return (

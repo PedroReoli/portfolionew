@@ -1,13 +1,8 @@
 // src/App.tsx
-import React from 'react';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import RootLayout from './_root/RootLayout/RootLayout';
-import Home from './_root/pages/Home';
-import About from './_root/pages/About';
-import Experience from './_root/pages/Experience';
-import Projects from './_root/pages/Projects';
-import Services from './_root/pages/Services';
-import Skills from './_root/pages/Skills';
+import RootLayout from '@/_root/RootLayout';
+import { Home, About, Experience, Projects, Services, Skills } from '@/_root/pages';
 
 const App = () => {
   return (
