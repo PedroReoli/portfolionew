@@ -149,8 +149,7 @@
   }
 
   .background-svg {
-    /* Lembrar de mover as pastras */
-    background-image: url('/assets/image/symbol.svg'); 
+    background-image: url('/assets/image/symbol.svg'); /* Adjusted to the actual path */
     background-repeat: no-repeat;
     background-position: right;
     background-size: contain;
@@ -174,5 +173,24 @@
 
   .experience-period {
     @apply text-gray-400 mb-3;
+  }
+
+
+
+  .neon-hover {
+    position: relative;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .neon-hover:hover {
+    box-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff, 0 0 45px #00bfff;
+  }
+
+  .neon-hover img {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .neon-hover:hover img {
+    transform: scale(1.1);
   }
 }

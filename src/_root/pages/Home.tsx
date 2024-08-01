@@ -16,7 +16,7 @@ const Home = () => {
       } else {
         clearInterval(interval);
       }
-    }, 50); // Adjust the speed of typing here
+    }, 50); // o tempo ta aq
     return () => clearInterval(interval);
   }, []);
 
@@ -34,8 +34,8 @@ const Home = () => {
             <p className="whitespace-pre-wrap">{text}</p>
             <span className="typewriter-cursor"></span>
           </div>
-          <a href="https://linkdomeumaterial.com" target="_blank" rel="noopener noreferrer" className="btn-enhanced">
-            Ver Material
+          <a href="/assets/curriculo.pdf" target="_blank" rel="noopener noreferrer" className="btn-enhanced">
+            Baixar Currículo
           </a>
         </div>
         <div className="flex-1 mt-10 md:mt-0 flex justify-center items-center">
