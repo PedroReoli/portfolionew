@@ -1,19 +1,19 @@
 import { useState } from 'react';
 
 const skillsData = [
-  { title: 'HTML', icon: '/assets/icons/html.svg', description: 'Linguagem de marcação usada para criar páginas web.' },
-  { title: 'CSS', icon: '/assets/icons/css.svg', description: 'Estilos para páginas web, responsáveis pela aparência.' },
-  { title: 'JavaScript', icon: '/assets/icons/javascript.svg', description: 'Linguagem de programação usada para adicionar interatividade.' },
-  { title: 'TypeScript', icon: '/assets/icons/typescript.svg', description: 'Superset do JavaScript que adiciona tipagem estática.' },
-  { title: 'React', icon: '/assets/icons/react.svg', description: 'Biblioteca JavaScript para construir interfaces de usuário.' },
-  { title: 'Tailwind CSS', icon: '/assets/icons/tailwindcss.svg', description: 'Framework CSS utilitário para criação de layouts.' },
-  { title: 'Sass', icon: '/assets/icons/sass.svg', description: 'Pré-processador CSS que adiciona recursos como variáveis.' },
-  { title: 'Next.js', icon: '/assets/icons/next.svg', description: 'Framework React para aplicações web renderizadas no servidor.' },
-  { title: 'Styled Components', icon: '/assets/icons/styled-components.svg', description: 'Biblioteca para estilização de componentes no React.' },
-  { title: 'Radix UI', icon: '/assets/icons/radix.svg', description: 'Biblioteca de componentes acessíveis para React.' },
-  { title: 'Shadcn', icon: '/assets/icons/shadcn.svg', description: 'É uma ferramenta poderosa para estilizar suas interfaces web' },
-  { title: 'AppwriteDB', icon: '/assets/icons/appwrite.svg', description: 'o AppWrite é um provedor de Backend as a Service.' },
-
+  { title: 'HTML', icon: './public/assets/html-icon.svg', description: 'Linguagem de marcação usada para criar páginas web.' },
+  { title: 'CSS', icon: './public/assets/css-icon.svg', description: 'Estilos para páginas web, responsáveis pela aparência.' },
+  { title: 'JavaScript', icon: './public/assets/js-icon.svg', description: 'Linguagem de programação usada para adicionar interatividade.' },
+  { title: 'TypeScript', icon: './public/assets/ts-icon.svg', description: 'Superset do JavaScript que adiciona tipagem estática.' },
+  { title: 'React', icon: './public/assets/react-icon.svg', description: 'Biblioteca JavaScript para construir interfaces de usuário.' },
+  { title: 'Tailwind CSS', icon: './public/assets/tailwind-icon.svg', description: 'Framework CSS utilitário para criação de layouts.' },
+  { title: 'AppwriteDB', icon: './public/assets/appwrite-icon.svg', description: 'o AppWrite é um provedor de Backend as a Service.' },
+  { title: 'Python', icon: './public/assets/python-icon.svg', description: 'o AppWrite é um provedor de Backend as a Service.' },
+  { title: 'C#', icon: './public/assets/csharp-icon.svg', description: 'o AppWrite é um provedor de Backend as a Service.' },
+  { title: 'Docker', icon: './public/assets/docker-icon.svg', description: 'o AppWrite é um provedor de Backend as a Service.' },
+  { title: 'SQL', icon: './public/assets/sql-icon.svg', description: 'o AppWrite é um provedor de Backend as a Service.' },
+  { title: 'Git', icon: './public/assets/git-icon.svg', description: 'o AppWrite é um provedor de Backend as a Service.' },
+  
 ];
 
 const Skills = () => {
