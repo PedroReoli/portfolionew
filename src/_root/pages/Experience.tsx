@@ -1,5 +1,5 @@
-// src/_root/pages/Experiences.tsx
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const experiences = [
   {
@@ -26,7 +26,6 @@ const experiences = [
     role: 'Coordenador da Criação de Site. Desenvolvimento de site responsivo para a sala ecológica da Unifoa. Responsável pela coordenação da equipe de desenvolvimento e atendimento às demandas do projeto.',
     link: 'https://www.unifoa.edu.br/unifoaverde-e-selecionado-pelo-mma/',
   },
-  
 ];
 
 const Experiences = () => {
@@ -48,24 +47,37 @@ const Experiences = () => {
                   onClick={() => setSelectedExperience(experience)}
                 >
                   {experience.company}
+                  {selectedExperience.company === experience.company && (
+                    <motion.div className="underline" layoutId="underline" />
+                  )}
                 </li>
               ))}
             </ul>
           </div>
           <div className="w-full md:w-2/3 p-5 bg-gray-800 rounded-lg">
-            <h3 className="experience-title">{selectedExperience.company}</h3>
-            <p className="experience-period">{selectedExperience.period}</p>
-            <p>{selectedExperience.role}</p>
-            {selectedExperience.link && (
-              <a
-                href={selectedExperience.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 underline mt-4 inline-block"
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedExperience.company}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -10, opacity: 0 }}
+                transition={{ duration: 0.2 }}
               >
-                Ver mais
-              </a>
-            )}
+                <h3 className="experience-title">{selectedExperience.company}</h3>
+                <p className="experience-period">{selectedExperience.period}</p>
+                <p>{selectedExperience.role}</p>
+                {selectedExperience.link && (
+                  <a
+                    href={selectedExperience.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline mt-4 inline-block"
+                  >
+                    Ver mais
+                  </a>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>

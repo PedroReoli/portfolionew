@@ -14,7 +14,7 @@ interface Skill {
 const skillsData: Skill[] = [
   { 
     title: 'HTML', 
-    icon: './public/assets/html-icon.svg', 
+    icon: 'assets/html-icon.svg', 
     description: 'Linguagem de marcação usada para criar páginas web.', 
     level: 2.5, 
     project: 'Criação de um site pessoal.',
@@ -23,7 +23,7 @@ const skillsData: Skill[] = [
   },
   { 
     title: 'CSS', 
-    icon: './public/assets/css-icon.svg', 
+    icon: 'assets/css-icon.svg', 
     description: 'Estilos para páginas web, responsáveis pela aparência.', 
     level: 2, 
     project: 'Estilização de um blog pessoal.',
@@ -32,25 +32,25 @@ const skillsData: Skill[] = [
   },
   { 
     title: 'JavaScript', 
-    icon: './public/assets/js-icon.svg', 
+    icon: 'assets/js-icon.svg', 
     description: 'Linguagem de programação usada para adicionar interatividade.', 
-    level: 2.8, 
+    level: 2.0, 
     project: 'Desenvolvimento de uma aplicação web interativa.',
     advantages: 'Versátil e amplamente suportado. Permite criar experiências de usuário dinâmicas.',
     usage: 'Usado para adicionar interatividade a páginas web, como validação de formulários, animações, e comunicação assíncrona.' 
   },
   { 
     title: 'TypeScript', 
-    icon: './public/assets/ts-icon.svg', 
+    icon: 'assets/ts-icon.svg', 
     description: 'Superset do JavaScript que adiciona tipagem estática.', 
-    level: 2.2, 
+    level: 2.0, 
     project: 'Implementação de um sistema de tipagem em um projeto JS existente.',
     advantages: 'Ajuda a detectar erros em tempo de desenvolvimento. Melhora a manutenção do código.',
     usage: 'Usado em projetos JavaScript para melhorar a robustez e a escalabilidade do código.' 
   },
   { 
     title: 'React', 
-    icon: './public/assets/react-icon.svg', 
+    icon: 'assets/react-icon.svg', 
     description: 'Biblioteca JavaScript para construir interfaces de usuário.', 
     level: 2.7, 
     project: 'Criação de uma aplicação SPA com React.',
@@ -59,16 +59,16 @@ const skillsData: Skill[] = [
   },
   { 
     title: 'Tailwind CSS', 
-    icon: './public/assets/tailwind-icon.svg', 
+    icon: 'assets/tailwind-icon.svg', 
     description: 'Framework CSS utilitário para criação de layouts.', 
-    level: 2, 
+    level: 1.5, 
     project: 'Estilização de uma aplicação web com Tailwind.',
     advantages: 'Estilização rápida com classes utilitárias. Alta customização sem sair do HTML.',
     usage: 'Usado para criar layouts rapidamente com uma abordagem de classes utilitárias.' 
   },
   { 
     title: 'AppwriteDB', 
-    icon: './public/assets/appwrite-icon.svg', 
+    icon: 'assets/appwrite-icon.svg', 
     description: 'AppWrite é um provedor de Backend as a Service.', 
     level: 1.5, 
     project: 'Implementação de backend com Appwrite.',
@@ -77,43 +77,43 @@ const skillsData: Skill[] = [
   },
   { 
     title: 'Python', 
-    icon: './public/assets/python-icon.svg', 
+    icon: 'assets/python-icon.svg', 
     description: 'Linguagem de programação versátil usada para diversas aplicações.', 
-    level: 2.9, 
+    level: 0.8, 
     project: 'Desenvolvimento de scripts para automação de tarefas.',
     advantages: 'Sintaxe clara e concisa. Grande quantidade de bibliotecas e frameworks.',
     usage: 'Usado em desenvolvimento web, automação, ciência de dados, inteligência artificial e muito mais.' 
   },
   { 
     title: 'C#', 
-    icon: './public/assets/csharp-icon.svg', 
+    icon: 'assets/csharp-icon.svg', 
     description: 'Linguagem de programação usada para desenvolvimento de aplicações desktop e web.', 
-    level: 1.8, 
+    level: 1.5, 
     project: 'Criação de uma aplicação Windows Forms.',
     advantages: 'Integrado com o ecossistema Microsoft. Forte tipagem e orientação a objetos.',
     usage: 'Usado para desenvolvimento de aplicações desktop, web, e jogos com Unity.' 
   },
   { 
     title: 'Docker', 
-    icon: './public/assets/docker-icon.svg', 
+    icon: 'assets/docker-icon.svg', 
     description: 'Plataforma de virtualização de contêineres.', 
-    level: 2.1, 
+    level: 0.8, 
     project: 'Conteinerização de uma aplicação web.',
     advantages: 'Facilita a portabilidade e escalabilidade de aplicações. Reduz inconsistências de ambiente.',
     usage: 'Usado para criar, gerenciar e executar contêineres, permitindo a portabilidade de aplicações entre diferentes ambientes.' 
   },
   { 
     title: 'SQL', 
-    icon: './public/assets/sql-icon.svg', 
+    icon: 'assets/sql-icon.svg', 
     description: 'Linguagem de consulta usada para gerenciar bancos de dados relacionais.', 
-    level: 2.7, 
+    level: 0.8, 
     project: 'Design de um banco de dados relacional.',
     advantages: 'Permite consultas complexas e manipulação de grandes volumes de dados. Suporte amplo.',
     usage: 'Usado para gerenciar e manipular bancos de dados relacionais, como MySQL, PostgreSQL e SQL Server.' 
   },
   { 
     title: 'Git', 
-    icon: './public/assets/git-icon.svg', 
+    icon: 'assets/git-icon.svg', 
     description: 'Sistema de controle de versão distribuído.', 
     level: 3, 
     project: 'Gerenciamento de versões de um projeto colaborativo.',
