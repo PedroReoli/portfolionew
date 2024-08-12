@@ -20,29 +20,32 @@ export interface Project {
       link: 'https://peoplelly.netlify.app/',
       borderColor: 'border-blue-500',
     },
-    {
-      title: 'Projeto 3',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '#',
-      borderColor: 'border-green-500',
-    },
-    {
-      title: 'Projeto 4',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '#',
-      borderColor: 'border-purple-500',
-    },
-    {
-      title: 'Projeto 5',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '#',
-      borderColor: 'border-yellow-500',
-    },
-    {
-      title: 'Projeto 6',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '#',
-      borderColor: 'border-pink-500',
-    },
+    // PROJETOS FUTUROS ABAIXO
+
+    
+    // {
+    //   title: 'Projeto 3',
+    //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    //   link: '#',
+    //   borderColor: 'border-green-500',
+    // },
+    // {
+    //   title: 'Projeto 4',
+    //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    //   link: '#',
+    //   borderColor: 'border-purple-500',
+    // },
+    // {
+    //   title: 'Projeto 5',
+    //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    //   link: '#',
+    //   borderColor: 'border-yellow-500',
+    // },
+    // {
+    //   title: 'Projeto 6',
+    //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    //   link: '#',
+    //   borderColor: 'border-pink-500',
+    // },
   ];
   
