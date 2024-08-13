@@ -12,7 +12,7 @@ const Topbar = () => {
 
         {/* Menu */}
         <nav className="hidden md:flex space-x-6">
-          <a href="#blog" className="text-white hover:text-blue-500 transition">Blog</a>
+          <a href="https://devemdesenvolvimento.netlify.app" className="text-white hover:text-blue-500 transition">Blog</a>
           <a href="https://www.youtube.com/@DevDesenvolvimento" className="text-white hover:text-blue-500 transition">Youtube</a>
           <a href="https://www.instagram.com/01_dev_em_desenvolvimento" className="text-white hover:text-blue-500 transition">Instagram</a>
           <a href="https://x.com/opedroreoli" className="text-white hover:text-blue-500 transition">Twitter</a>
