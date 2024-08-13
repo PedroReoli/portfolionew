@@ -31,4 +31,4 @@ Gostaria de trabalhar comigo ou tem alguma sugestão? Sinta-se à vontade para e
 
 ---
 
-> "A jornada para se tornar um grande desenvolvedor nunca termina, e este portfólio é um reflexo dessa caminhada. **<span style="color:blue">um código de cada vez</span>**."
+> " **<span style="color:blue">um código de cada vez</span>**."
