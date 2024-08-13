@@ -1,4 +1,3 @@
-// src/_root/pages/Home.tsx
 import { useEffect, useState } from 'react';
 
 const Home = () => {
@@ -24,7 +23,7 @@ const Home = () => {
     <section id="home" className="bg-[#111111] text-white py-20 px-5">
       <div className="container mx-auto flex flex-col md:flex-row items-start">
         <div className="flex-1 max-w-2xl">
-        <h1 className="text-5xl font-extrabold mb-5 text-left leading-tight">
+          <h1 className="text-5xl font-extrabold mb-5 text-left leading-tight">
             Prazer,
           </h1>
           <h1 className="text-5xl font-extrabold mb-5 text-left leading-tight">
@@ -39,7 +38,7 @@ const Home = () => {
           </a>
         </div>
         <div className="flex-1 mt-10 md:mt-0 flex justify-center items-center">
-          <img src="/assets/Eu.svg" alt="Eu" className="w-1/2 h-auto max-w-xs"/>
+          <img src="/assets/Eu.svg" alt="Eu" className="w-1/2 h-auto max-w-xs sm:hidden md:block"/>
         </div>
       </div>
     </section>
