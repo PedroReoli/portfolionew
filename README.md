@@ -26,7 +26,7 @@ O portfólio foi desenvolvido utilizando tecnologias modernas para garantir um d
 
 Gostaria de trabalhar comigo ou tem alguma sugestão? Sinta-se à vontade para entrar em contato!
 
-- **[LinkedIn](linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/)**
+- **[LinkedIn](https://www.linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/)**
 - **[Email](mailto:pedrosousa2160@gmail.com)**
 
 ---
