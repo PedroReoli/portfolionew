@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import '@/Responsive.css'; 
+
 const Home = () => {
   const [text, setText] = useState('');
   // Não consegui arrumar e entender o fato do 2* caracter sempre ser cortado da animação

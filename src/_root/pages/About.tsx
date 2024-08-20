@@ -1,4 +1,7 @@
 // src/_root/pages/About.tsx
+
+import "@/Responsive.css";
+
 const About = () => {
   return (
     <section id="about" className="bg-[#111111] text-white py-20 px-5">
@@ -19,3 +22,4 @@ const About = () => {
 };
 
 export default About;
+
