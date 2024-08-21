@@ -70,63 +70,63 @@ const Skills = () => {
                   <span className="text-blue-500">Detalhes:</span> {currentSkill.details}
                 </motion.p>
 
-                <div className="course-cert-container">
-                  <p className="text-blue-500 mb-2">Cursos:</p>
-                  <div className="course-cert-grid">
-                    {currentSkill.courses.map((course, i) => (
-                      <div
-                        key={i}
-                        onMouseEnter={() => {
-                          setHoveredItemIndex(i);
-                          setIsCourse(true);
-                        }}
-                        onMouseLeave={() => setHoveredItemIndex(null)}
-                        className="relative"
-                      >
-                        <a
-                          href={currentSkill.coursesLinks[i]}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="course-cert-item"
-                        >
-                          <span className="course-cert-title">{course}</span>
-                        </a>
-                        {hoveredItemIndex === i && isCourse && (
-                          <Tooltip skill={currentSkill} itemIndex={i} isCourse={true} />
-                        )}
+                   <div className="course-cert-container">
+                      <p className="text-blue-500 mb-2">Cursos:</p>
+                      <div className="course-cert-grid">
+                        {currentSkill.courses.map((course, i) => (
+                          <div
+                            key={i}
+                            onMouseEnter={() => {
+                              setHoveredItemIndex(i);
+                              setIsCourse(true);
+                            }}
+                            onMouseLeave={() => setHoveredItemIndex(null)}
+                            className="relative"
+                          >
+                            <a
+                              href={currentSkill.coursesLinks[i]}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="course-cert-item bg-gradient-to-r from-blue-500 to-blue-400 text-white py-3 px-6 rounded-full hover:scale-105 transform transition-transform shadow-lg"
+                            >
+                              <span className="course-cert-title">{course}</span>
+                            </a>
+                            {hoveredItemIndex === i && isCourse && (
+                              <Tooltip skill={currentSkill} itemIndex={i} isCourse={true} />
+                            )}
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
+                    </div>
 
-                <div className="course-cert-container">
-                  <p className="text-blue-500 mb-2">Certificados:</p>
-                  <div className="course-cert-grid">
-                    {currentSkill.certificates.map((certificate, i) => (
-                      <div
-                        key={i}
-                        onMouseEnter={() => {
-                          setHoveredItemIndex(i);
-                          setIsCourse(false);
-                        }}
-                        onMouseLeave={() => setHoveredItemIndex(null)}
-                        className="relative"
-                      >
-                        <a
-                          href={currentSkill.certificatesLinks[i]}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="course-cert-item"
-                        >
-                          <span className="course-cert-title">{certificate}</span>
-                        </a>
-                        {hoveredItemIndex === i && !isCourse && (
-                          <Tooltip skill={currentSkill} itemIndex={i} isCourse={false} />
-                        )}
+                    <div className="course-cert-container">
+                      <p className="text-blue-500 mb-2">Certificados:</p>
+                      <div className="course-cert-grid">
+                        {currentSkill.certificates.map((certificate, i) => (
+                          <div
+                            key={i}
+                            onMouseEnter={() => {
+                              setHoveredItemIndex(i);
+                              setIsCourse(false);
+                            }}
+                            onMouseLeave={() => setHoveredItemIndex(null)}
+                            className="relative"
+                          >
+                            <a
+                              href={currentSkill.certificatesLinks[i]}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="course-cert-item bg-gradient-to-r from-blue-500 to-blue-400 text-white py-3 px-6 rounded-full hover:scale-105 transform transition-transform shadow-lg"
+                            >
+                              <span className="course-cert-title">{certificate}</span>
+                            </a>
+                            {hoveredItemIndex === i && !isCourse && (
+                              <Tooltip skill={currentSkill} itemIndex={i} isCourse={false} />
+                            )}
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
+                    </div>
               </motion.div>
             ) : (
               <p className="text-lg text-gray-300">Clique em uma habilidade para ver os detalhes.</p>

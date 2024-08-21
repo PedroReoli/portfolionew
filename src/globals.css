@@ -282,7 +282,7 @@
   align-items: center;
   justify-content: center;
   padding: 10px 15px;
-  background-color: #1e3a8a; /* Azul mais vibrante */
+  background-color: #1c3ff0d3; /* Azul mais vibrante */
   border-radius: 8px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   white-space: nowrap;
@@ -297,7 +297,7 @@
 
 .course-cert-title {
   color: #ffffff;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   max-width: 100%;
   white-space: nowrap;
