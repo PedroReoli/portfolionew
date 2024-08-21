@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { skillsData, Skill } from '@/constants';
@@ -11,6 +11,14 @@ const Skills = () => {
   const [hoveredItemIndex, setHoveredItemIndex] = useState<number | null>(null);
   const [isCourse, setIsCourse] = useState<boolean>(true);
   const itemsPerPage = 6;
+
+  useEffect(() => {
+    if (activeSkill !== null) {
+      setCurrentSkill(skillsData[currentIndex + activeSkill]);
+    } else {
+      setCurrentSkill(null);
+    }
+  }, [currentIndex, activeSkill]);
 
   const getLevelDescription = (level: number): string => {
     if (level >= 0 && level < 1) {
@@ -25,16 +33,21 @@ const Skills = () => {
   };
 
   const handlePrevSkill = () => {
-    setCurrentIndex((prevIndex) => Math.max(prevIndex - itemsPerPage, 0));
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - itemsPerPage);
+      setActiveSkill(null); // Garantir que a habilidade ativa seja redefinida ao navegar
+    }
   };
 
   const handleNextSkill = () => {
-    setCurrentIndex((prevIndex) => Math.min(prevIndex + itemsPerPage, skillsData.length - itemsPerPage));
+    if (currentIndex + itemsPerPage < skillsData.length) {
+      setCurrentIndex(currentIndex + itemsPerPage);
+      setActiveSkill(null); // Garantir que a habilidade ativa seja redefinida ao navegar
+    }
   };
 
   const handleSkillClick = (index: number) => {
     setActiveSkill(activeSkill === index ? null : index);
-    setCurrentSkill(activeSkill === index ? null : skillsData[index]);
   };
 
   return (
