@@ -8,8 +8,12 @@ export interface Skill {
   coursesLinks: string[]; 
   certificates: string[]; 
   certificatesLinks: string[]; 
+  courseDurations: string[];  
+  institutions: string[];     
+  professors: string[][];      
+  courseLevels: string[];     
+  completionDates: string[];  
 }
-
 
 export const skillsData: Skill[] = [
   { 
@@ -21,7 +25,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de HTML Básico', 'Curso de HTML Avançado'], 
     coursesLinks: ['https://example.com/curso-html-basico', 'https://example.com/curso-html-avancado'], 
     certificates: ['Certificado de Criação de Sites', 'Certificado Avançado de HTML'], 
-    certificatesLinks: ['https://example.com/certificado-html', 'https://example.com/certificado-html-avancado']
+    certificatesLinks: ['https://example.com/certificado-html', 'https://example.com/certificado-html-avancado'],
+    courseDurations: ['10 horas', '20 horas'],
+    institutions: ['Udemy', 'Coursera'],
+    professors: [['Prof. João Silva'], ['Prof. Maria Fernandes']],
+    courseLevels: ['Básico', 'Avançado'],
+    completionDates: ['10/05/2023', '15/06/2023']
   },
   { 
     title: 'CSS', 
@@ -32,7 +41,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de CSS Avançado', 'Curso de CSS Flexbox'], 
     coursesLinks: ['https://example.com/curso-css-avancado', 'https://example.com/curso-css-flexbox'], 
     certificates: ['Certificado de Design Web', 'Certificado de CSS Flexbox'], 
-    certificatesLinks: ['https://example.com/certificado-css', 'https://example.com/certificado-css-flexbox']
+    certificatesLinks: ['https://example.com/certificado-css', 'https://example.com/certificado-css-flexbox'],
+    courseDurations: ['15 horas', '25 horas'],
+    institutions: ['Udemy', 'edX'],
+    professors: [['Prof. Pedro Almeida'], ['Prof. Carolina Souza']],
+    courseLevels: ['Intermediário', 'Avançado'],
+    completionDates: ['12/07/2023', '20/08/2023']
   },
   { 
     title: 'JavaScript', 
@@ -43,7 +57,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de JavaScript Completo', 'Curso de JavaScript Avançado'], 
     coursesLinks: ['https://example.com/curso-js-completo', 'https://example.com/curso-js-avancado'], 
     certificates: ['Certificado de Programação JavaScript', 'Certificado de JavaScript Avançado'], 
-    certificatesLinks: ['https://example.com/certificado-js', 'https://example.com/certificado-js-avancado']
+    certificatesLinks: ['https://example.com/certificado-js', 'https://example.com/certificado-js-avancado'],
+    courseDurations: ['30 horas', '40 horas'],
+    institutions: ['Udemy', 'Alura'],
+    professors: [['Prof. Lucas Carvalho'], ['Prof. Ana Paula Martins']],
+    courseLevels: ['Intermediário', 'Avançado'],
+    completionDates: ['01/03/2023', '15/04/2023']
   },
   { 
     title: 'TypeScript', 
@@ -54,7 +73,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de TypeScript Avançado', 'Curso de TypeScript Básico'], 
     coursesLinks: ['https://example.com/curso-ts-avancado', 'https://example.com/curso-ts-basico'], 
     certificates: ['Certificado de TypeScript Avançado', 'Certificado de TypeScript Básico'], 
-    certificatesLinks: ['https://example.com/certificado-ts-avancado', 'https://example.com/certificado-ts-basico']
+    certificatesLinks: ['https://example.com/certificado-ts-avancado', 'https://example.com/certificado-ts-basico'],
+    courseDurations: ['35 horas', '20 horas'],
+    institutions: ['Udemy', 'Pluralsight'],
+    professors: [['Prof. Mariana Lima'], ['Prof. Roberto Souza']],
+    courseLevels: ['Avançado', 'Básico'],
+    completionDates: ['20/04/2023', '30/05/2023']
   },
   { 
     title: 'React', 
@@ -65,7 +89,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de Desenvolvimento com React', 'Curso de React Hooks'], 
     coursesLinks: ['https://example.com/curso-react', 'https://example.com/curso-react-hooks'], 
     certificates: ['Certificado de Desenvolvimento com React', 'Certificado de React Hooks'], 
-    certificatesLinks: ['https://example.com/certificado-react', 'https://example.com/certificado-react-hooks']
+    certificatesLinks: ['https://example.com/certificado-react', 'https://example.com/certificado-react-hooks'],
+    courseDurations: ['40 horas', '25 horas'],
+    institutions: ['Alura', 'Rocketseat'],
+    professors: [['Prof. Felipe Lima'], ['Prof. Gabriel Ribeiro']],
+    courseLevels: ['Avançado', 'Intermediário'],
+    completionDates: ['05/05/2023', '25/06/2023']
   },
   { 
     title: 'Tailwind CSS', 
@@ -76,7 +105,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de Layout com Tailwind CSS', 'Curso de Tailwind Avançado'], 
     coursesLinks: ['https://example.com/curso-tailwind', 'https://example.com/curso-tailwind-avancado'], 
     certificates: ['Certificado de Layout com Tailwind CSS', 'Certificado de Tailwind Avançado'], 
-    certificatesLinks: ['https://example.com/certificado-tailwind', 'https://example.com/certificado-tailwind-avancado']
+    certificatesLinks: ['https://example.com/certificado-tailwind', 'https://example.com/certificado-tailwind-avancado'],
+    courseDurations: ['20 horas', '15 horas'],
+    institutions: ['Udemy', 'Coursera'],
+    professors: [['Prof. Amanda Nunes'], ['Prof. Bruno Santana']],
+    courseLevels: ['Intermediário', 'Avançado'],
+    completionDates: ['10/06/2023', '15/07/2023']
   },
   { 
     title: 'AppwriteDB', 
@@ -87,7 +121,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de Backend com Appwrite', 'Curso de Appwrite Avançado'], 
     coursesLinks: ['https://example.com/curso-appwrite', 'https://example.com/curso-appwrite-avancado'], 
     certificates: ['Certificado de Backend com Appwrite', 'Certificado de Appwrite Avançado'], 
-    certificatesLinks: ['https://example.com/certificado-appwrite', 'https://example.com/certificado-appwrite-avancado']
+    certificatesLinks: ['https://example.com/certificado-appwrite', 'https://example.com/certificado-appwrite-avancado'],
+    courseDurations: ['25 horas', '30 horas'],
+    institutions: ['Pluralsight', 'Alura'],
+    professors: [['Prof. Marcos Tavares'], ['Prof. Letícia Duarte']],
+    courseLevels: ['Intermediário', 'Avançado'],
+    completionDates: ['05/08/2023', '25/09/2023']
   },
   { 
     title: 'Python', 
@@ -98,7 +137,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de Programação em Python', 'Curso de Python para Data Science'], 
     coursesLinks: ['https://example.com/curso-python', 'https://example.com/curso-python-ds'], 
     certificates: ['Certificado de Programação em Python', 'Certificado de Python para Data Science'], 
-    certificatesLinks: ['https://example.com/certificado-python', 'https://example.com/certificado-python-ds']
+    certificatesLinks: ['https://example.com/certificado-python', 'https://example.com/certificado-python-ds'],
+    courseDurations: ['50 horas', '60 horas'],
+    institutions: ['Coursera', 'DataCamp'],
+    professors: [['Prof. Daniel Rezende'], ['Prof. Larissa Torres']],
+    courseLevels: ['Intermediário', 'Avançado'],
+    completionDates: ['15/02/2023', '05/03/2023']
   },
   { 
     title: 'C#', 
@@ -109,7 +153,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de Desenvolvimento em C#', 'Curso de C# para Unity'], 
     coursesLinks: ['https://example.com/curso-csharp', 'https://example.com/curso-csharp-unity'], 
     certificates: ['Certificado de Desenvolvimento em C#', 'Certificado de C# para Unity'], 
-    certificatesLinks: ['https://example.com/certificado-csharp', 'https://example.com/certificado-csharp-unity']
+    certificatesLinks: ['https://example.com/certificado-csharp', 'https://example.com/certificado-csharp-unity'],
+    courseDurations: ['45 horas', '50 horas'],
+    institutions: ['Microsoft Learn', 'Udemy'],
+    professors: [['Prof. Henrique Mendes'], ['Prof. Carla Silva']],
+    courseLevels: ['Avançado', 'Intermediário'],
+    completionDates: ['20/06/2023', '10/07/2023']
   },
   { 
     title: 'Docker', 
@@ -120,7 +169,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de Conteinerização com Docker', 'Curso de Docker Avançado'], 
     coursesLinks: ['https://example.com/curso-docker', 'https://example.com/curso-docker-avancado'], 
     certificates: ['Certificado de Conteinerização com Docker', 'Certificado de Docker Avançado'], 
-    certificatesLinks: ['https://example.com/certificado-docker', 'https://example.com/certificado-docker-avancado']
+    certificatesLinks: ['https://example.com/certificado-docker', 'https://example.com/certificado-docker-avancado'],
+    courseDurations: ['30 horas', '35 horas'],
+    institutions: ['Linux Academy', 'Udemy'],
+    professors: [['Prof. Rafael Mendes'], ['Prof. Priscila Oliveira']],
+    courseLevels: ['Intermediário', 'Avançado'],
+    completionDates: ['12/08/2023', '02/09/2023']
   },
   { 
     title: 'SQL', 
@@ -131,7 +185,12 @@ export const skillsData: Skill[] = [
     courses: ['Curso de Gestão de Bancos de Dados com SQL', 'Curso de SQL Avançado'], 
     coursesLinks: ['https://example.com/curso-sql', 'https://example.com/curso-sql-avancado'], 
     certificates: ['Certificado de Gestão de Bancos de Dados com SQL', 'Certificado de SQL Avançado'], 
-    certificatesLinks: ['https://example.com/certificado-sql', 'https://example.com/certificado-sql-avancado']
+    certificatesLinks: ['https://example.com/certificado-sql', 'https://example.com/certificado-sql-avancado'],
+    courseDurations: ['40 horas', '50 horas'],
+    institutions: ['Coursera', 'DataCamp'],
+    professors: [['Prof. Lucas Martins'], ['Prof. Fernanda Silva']],
+    courseLevels: ['Intermediário', 'Avançado'],
+    completionDates: ['10/09/2023', '15/10/2023']
   },
   { 
     title: 'Git', 
@@ -142,7 +201,11 @@ export const skillsData: Skill[] = [
     courses: ['Curso de Controle de Versão com Git', 'Curso de Git Flow'], 
     coursesLinks: ['https://example.com/curso-git', 'https://example.com/curso-git-flow'], 
     certificates: ['Certificado de Controle de Versão com Git', 'Certificado de Git Flow'], 
-    certificatesLinks: ['https://example.com/certificado-git', 'https://example.com/certificado-git-flow']
+    certificatesLinks: ['https://example.com/certificado-git', 'https://example.com/certificado-git-flow'],
+    courseDurations: ['20 horas', '25 horas'],
+    institutions: ['Udemy', 'Alura'],
+    professors: [['Prof. Tiago Lemos'], ['Prof. Mariana Duarte']],
+    courseLevels: ['Básico', 'Intermediário'],
+    completionDates: ['01/11/2023', '10/12/2023']
   }
 ];
-

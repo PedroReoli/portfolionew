@@ -272,46 +272,117 @@
   .course-link {
     @apply text-blue-400 hover:text-blue-500 transition-colors duration-300 ease-in-out;
   }
-  .course-cert-container {
-    @apply mt-4;
-  }
+/* a */
+.course-cert-container {
+  @apply mt-4;
+}
 
-  .course-cert-item {
-    @apply p-3 bg-gray-800 rounded-lg shadow-md text-center transition-transform duration-300 ease-in-out;
-    border-left: 4px solid #1e90ff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 10px; /* Espaçamento entre os botões */
-  }
+.course-cert-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  background-color: #1e3a8a; /* Azul mais vibrante */
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  .course-cert-item:hover {
-    @apply transform scale-105;
-  }
+.course-cert-item:hover {
+  background-color: #2563eb; /* Azul mais claro ao hover */
+  transform: translateY(-3px); /* Efeito de elevação ao hover */
+}
 
-  .course-cert-title {
-    @apply text-blue-400 text-base font-semibold;
-  }
+.course-cert-title {
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  .course-cert-grid {
-    @apply grid gap-4; /* Aumenta o espaçamento entre os botões */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsividade para enfileirar os botões se necessário */
-  }
+.relative {
+  position: relative;
+}
 
-  .card-icon {
-    @apply w-28 h-28 mb-4;
-  }
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
 
-  .navigation-button {
-    @apply absolute top-1/2 transform -translate-y-1/2 p-3 rounded-full shadow-lg hover:bg-blue-400 transition-colors;
-    z-index: 10;
-  }
+.relative:hover .tooltip {
+  opacity: 1;
+}
 
-  .navigation-button-left {
-    @apply left-2;
-  }
+.course-cert-grid {
+  @apply grid gap-4; /* Aumenta o espaçamento entre os botões */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsividade para enfileirar os botões se necessário */
+}
 
-  .navigation-button-right {
-    @apply right-2;
-  }
+.card-icon {
+  @apply w-28 h-28 mb-4;
+}
+
+.navigation-button {
+  @apply absolute top-1/2 transform -translate-y-1/2 p-3 rounded-full shadow-lg hover:bg-blue-400 transition-colors;
+  z-index: 10;
+}
+
+.navigation-button-left {
+  @apply left-2;
+}
+
+.navigation-button-right {
+  @apply right-2;
+}
+/* Tooltip styling */
+.tooltip-box {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px); /* Ajuste de posição e suave elevação */
+  background-color: #1e293b; /* Azul escuro moderno */
+  color: #ffffff;
+  padding: 12px 16px; /* Mais espaço interno */
+  border-radius: 8px; /* Bordas mais arredondadas */
+  white-space: nowrap;
+  font-size: 14px; /* Texto um pouco maior */
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidade */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Transições suaves */
+}
+
+.relative:hover .tooltip-box {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0); /* Suave elevação */
+}
+
+.tooltip-box::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #1e293b transparent transparent transparent;
+}
+
 }
