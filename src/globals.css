@@ -193,4 +193,125 @@
   .neon-hover:hover img {
     transform: scale(1.1);
   }
+  .skill-card {
+    @apply bg-gray-900 p-5 rounded-lg shadow-lg cursor-pointer transition-all duration-300 ease-in-out;
+    border: 2px solid transparent;
+  }
+
+  .skill-card-active {
+    @apply border-blue-500;
+  }
+
+  .btn-skill {
+    @apply bg-transparent border border-blue-500 text-blue-500 px-4 py-2 rounded-md mt-2 transition-colors duration-300 ease-in-out inline-block;
+  }
+
+  .btn-skill-active {
+    @apply bg-blue-500 text-white shadow-lg;
+  }
+
+  .btn-skill:hover {
+    @apply bg-blue-600 text-white;
+  }
+
+  .course-section {
+    @apply flex flex-col space-y-2 mt-4;
+  }
+
+  .course-section p {
+    @apply text-lg text-gray-300;
+  }
+
+  .course-section a {
+    @apply block text-center;
+  }
+  .course-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6;
+  }
+
+  .course-card {
+    @apply bg-transparent border border-gray-700 rounded-lg p-5 shadow-md transition-transform duration-300 ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .course-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+  }
+
+  .course-card:hover::before {
+    opacity: 1;
+  }
+
+  .course-card:hover {
+    @apply transform scale-105;
+  }
+
+  .course-card-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .course-icon {
+    @apply w-12 h-12 mb-4 text-blue-400;
+  }
+
+  .course-title {
+    @apply font-semibold text-lg text-gray-200 mb-2;
+  }
+
+  .course-link {
+    @apply text-blue-400 hover:text-blue-500 transition-colors duration-300 ease-in-out;
+  }
+  .course-cert-container {
+    @apply mt-4;
+  }
+
+  .course-cert-item {
+    @apply p-3 bg-gray-800 rounded-lg shadow-md text-center transition-transform duration-300 ease-in-out;
+    border-left: 4px solid #1e90ff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px; /* Espaçamento entre os botões */
+  }
+
+  .course-cert-item:hover {
+    @apply transform scale-105;
+  }
+
+  .course-cert-title {
+    @apply text-blue-400 text-base font-semibold;
+  }
+
+  .course-cert-grid {
+    @apply grid gap-4; /* Aumenta o espaçamento entre os botões */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsividade para enfileirar os botões se necessário */
+  }
+
+  .card-icon {
+    @apply w-28 h-28 mb-4;
+  }
+
+  .navigation-button {
+    @apply absolute top-1/2 transform -translate-y-1/2 p-3 rounded-full shadow-lg hover:bg-blue-400 transition-colors;
+    z-index: 10;
+  }
+
+  .navigation-button-left {
+    @apply left-2;
+  }
+
+  .navigation-button-right {
+    @apply right-2;
+  }
 }
