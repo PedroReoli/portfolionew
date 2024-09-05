@@ -36,6 +36,12 @@ module.exports = {
         'light-3': '#7878A3',
         'light-4': '#5C5C7B',
         'purple-1': '#8C429D',
+         // Bordas
+         'red-500': '#ef4444',
+         'green-500': '#22c55e',
+         'purple-500': '#a855f7',
+         'yellow-500': '#eab308',
+         'pink-500': '#ec4899',
       },
       screens: {
         xs: '480px',

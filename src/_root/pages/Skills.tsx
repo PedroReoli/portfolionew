@@ -98,8 +98,13 @@ const Skills = () => {
                         ))}
                       </div>
                     </div>
-
-                    <div className="course-cert-container">
+{/* ///////////////////////////////////////////////////////////// */}
+{/* ///////////////////////////////////////////////////////////// */}
+{/*                          CERTIFICADOS  */}
+{/* ///////////////////////////////////////////////////////////// */}
+{/* como eu ainda nao tenho nenhum certificado importante,essa seção sera para o futuro */}
+{/* ///////////////////////////////////////////////////////////// */}
+                    {/* <div className="course-cert-container">
                       <p className="text-blue-500 mb-2">Certificados:</p>
                       <div className="course-cert-grid">
                         {currentSkill.certificates.map((certificate, i) => (
@@ -126,7 +131,10 @@ const Skills = () => {
                           </div>
                         ))}
                       </div>
-                    </div>
+                    </div> */}
+{/* FIM - CERTIFICADO */}
+{/* ///////////////////////////////////////////////////////////// */}
+{/* ///////////////////////////////////////////////////////////// */}  
               </motion.div>
             ) : (
               <p className="text-lg text-gray-300">Clique em uma habilidade para ver os detalhes.</p>

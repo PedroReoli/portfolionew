@@ -384,5 +384,8 @@
   border-style: solid;
   border-color: #1e293b transparent transparent transparent;
 }
-
+/* BORDERS */
+.border-red-500 {
+  color: #ef4444;
+}
 }

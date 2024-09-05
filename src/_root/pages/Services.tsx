@@ -24,7 +24,7 @@ const Services = () => {
         {/* Botão "Saiba mais" Centralizado */}
         <div className="flex justify-center mt-10">
           <a href="mailto:pedrosousa2160@gmail.com" className="btn-enhanced bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-full hover:scale-105 transform transition-transform">
-            Saiba mais
+            Contate-me
           </a>
         </div>
       </div>

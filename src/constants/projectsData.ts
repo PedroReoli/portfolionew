@@ -20,17 +20,18 @@ export interface Project {
       link: 'https://peoplelly.netlify.app/',
       borderColor: 'border-blue-500',
     },
-    // PROJETOS FUTUROS ABAIXO
-
     
+    
+    {
+      title: 'Blog DevEmDesenvolvimento ',
+      description: 'Espaço criado para compartilhar aprendizados e insights sobre o mundo da programação. ',
+      link: 'https://github.com/PedroReoli/BlogDevInDevelopment',
+      borderColor: 'border-green-500',
+    },
+
+    // PROJETOS FUTUROS ABAIXO
     // {
-    //   title: 'Projeto 3',
-    //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    //   link: '#',
-    //   borderColor: 'border-green-500',
-    // },
-    // {
-    //   title: 'Projeto 4',
+      //   title: 'Projeto 4',
     //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     //   link: '#',
     //   borderColor: 'border-purple-500',
