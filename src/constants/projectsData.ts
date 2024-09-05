@@ -15,7 +15,7 @@ export interface Project {
       borderColor: 'border-red-500',
     },
     {
-      title: 'Peoplelly (fase de testes)',
+      title: 'Peoplelly ( Beta )',
       description: 'Meu projeto individual, feito em React, Tailwind, AppwriteDB.',
       link: 'https://peoplelly.netlify.app/',
       borderColor: 'border-blue-500',
@@ -23,7 +23,7 @@ export interface Project {
     
     
     {
-      title: 'Blog DevEmDesenvolvimento ( Finalizando ) ',
+      title: 'Blog DevEmDesenvolvimento ( Alpha ) ',
       description: 'Espaço criado para compartilhar aprendizados e insights sobre o mundo da programação. ',
       link: 'https://devemdesenvolvimento.netlify.app',
       borderColor: 'border-green-500',
