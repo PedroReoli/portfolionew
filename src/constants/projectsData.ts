@@ -23,9 +23,9 @@ export interface Project {
     
     
     {
-      title: 'Blog DevEmDesenvolvimento ',
+      title: 'Blog DevEmDesenvolvimento ( Finalizando ) ',
       description: 'Espaço criado para compartilhar aprendizados e insights sobre o mundo da programação. ',
-      link: 'https://github.com/PedroReoli/BlogDevInDevelopment',
+      link: 'https://devemdesenvolvimento.netlify.app',
       borderColor: 'border-green-500',
     },
 
