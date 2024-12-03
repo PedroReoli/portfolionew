@@ -6,7 +6,7 @@ import Experience from './Experience';
 import Projects from './Projects';
 import Services from './Services';
 import Skills from './Skills';
-
+// import Contact from './Contact';
 const MainPage = () => {
   return (
     <div>
@@ -16,6 +16,7 @@ const MainPage = () => {
       <Projects />
       <Services />
       <Skills />
+      {/* <Contact/> */}
     </div>
   );
 };

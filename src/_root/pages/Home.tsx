@@ -1,47 +1,76 @@
-import { useEffect, useState } from 'react';
-
-import '@/Responsive.css'; 
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaYoutube, FaInstagram, FaNewspaper } from "react-icons/fa";
 
 const Home = () => {
-  const [text, setText] = useState('');
-  // Não consegui arrumar e entender o fato do 2* caracter sempre ser cortado da animação
-  // Então esse espaço é fundamental para isso(gambiarra danada)
-  const fullText = "  Full Stack Developer";
-
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index < fullText.length) {
-        setText((prev) => prev + fullText.charAt(index));
-        index++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 50); // o tempo ta aq
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section id="home" className="bg-[#111111] text-white py-20 px-5">
-      <div className="container mx-auto flex flex-col md:flex-row items-start">
-        <div className="flex-1 max-w-2xl">
-          <h1 className="text-5xl font-extrabold mb-5 text-left leading-tight">
-            Prazer,
-          </h1>
-          <h1 className="text-5xl font-extrabold mb-5 text-left leading-tight">
-            Sou o <span className="text-blue-500">Pedro Lucas</span>
-          </h1>
-          <div className="text-2xl mb-5 text-gray-300 flex items-center">
-            <p className="whitespace-pre-wrap">{text}</p>
-            <span className="typewriter-cursor"></span>
-          </div>
-          <a href="/assets/Curriculo.pdf" target="_blank" rel="noopener noreferrer" className="btn-enhanced">
-            Baixar Currículo
-          </a>
-        </div>
-        <div className="flex-1 mt-10 md:mt-0 flex justify-center items-center">
-          <img src="/assets/Eu.svg" alt="Eu" className="w-1/2 h-auto max-w-xs sm:hidden md:block"/>
-        </div>
+    <section className="bg-[#111111] text-white min-h-screen flex flex-col justify-center items-center">
+      {/* Ícones Sociais */}
+      <div className="flex space-x-8 mb-10">
+        <a
+          href="mailto:pedrosousa2160@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#00aaff] text-4xl hover:scale-110 transition-transform"
+        >
+          <FaEnvelope />
+        </a>
+        <a
+          href="https://github.com/PedroReoli"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#00aaff] text-4xl hover:scale-110 transition-transform"
+        >
+          <FaGithub />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#00aaff] text-4xl hover:scale-110 transition-transform"
+        >
+          <FaLinkedin />
+        </a>
+        <a
+          href="https://devemdesenvolvimento.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#00aaff] text-4xl hover:scale-110 transition-transform"
+        >
+          <FaNewspaper />
+        </a>
+        <a
+          href="https://www.youtube.com/@DevDesenvolvimento"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#00aaff] text-4xl hover:scale-110 transition-transform"
+        >
+          <FaYoutube />
+        </a>
+        <a
+          href="https://www.instagram.com/01_dev_em_desenvolvimento"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#00aaff] text-4xl hover:scale-110 transition-transform"
+        >
+          <FaInstagram />
+        </a>
+        <a
+          href="https://x.com/opedroreoli"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#00aaff] text-4xl hover:scale-110 transition-transform"
+        >
+          <FaTwitter />
+        </a>
+      </div>
+
+      {/* Texto Principal */}
+      <div className="text-center">
+        <h1 className="text-6xl font-extrabold mb-6">
+          Olá <span role="img" aria-label="wave">👋🏻</span>, eu sou <span className="text-[#00aaff]">Pedro Lucas</span>
+        </h1>
+        <p className="text-2xl text-gray-300">
+          Desenvolvedor Fullstack Júnior
+        </p>
       </div>
     </section>
   );
