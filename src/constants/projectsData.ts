@@ -23,8 +23,8 @@ export interface Project {
     
     
     {
-      title: 'Blog DevEmDesenvolvimento ( Alpha ) ',
-      description: 'Espaço criado para compartilhar aprendizados e insights sobre o mundo da programação. ',
+      title: 'DevEmDesenvolvimento ( Beta ) ',
+      description: 'Espaço criado para compartilhar aprendizados,projetos e aulas. ',
       link: 'https://devemdesenvolvimento.netlify.app',
       borderColor: 'border-green-500',
     },
