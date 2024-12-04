@@ -1,85 +1,85 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import "@/Responsive.css";
+import { motion } from "framer-motion";
 
 const experiences = [
   {
-    company: 'EvaTech',
-    period: 'Iniciado em 07/2024 - em andamento',
-    role: 'Auxílio a mães negras solteiras no desenvolvimento de habilidades tecnológicas essenciais, como Excel, Word, e plataformas de comunicação como Teams e Meet. Desenvolvimento de workshops e materiais educativos para empoderamento tecnológico.',
-    link: 'https://evatech2024.netlify.app',
+    company: "EvaTech",
+    period: "07/2024 - 11/2024",
+    role: "Professor, Palestrante e Mentor",
+    description:
+      "Auxílio a mães negras solteiras no desenvolvimento de habilidades tecnológicas essenciais, como Excel, Word, e plataformas de comunicação como Teams e Meet. Desenvolvimento de workshops e materiais educativos para empoderamento tecnológico.",
+    link: "https://evatech2024.netlify.app",
+    image: "/assets/evatech.jpg",
   },
   {
-    company: 'Peoplelly',
-    period: 'Iniciado em 01/2024 - em andamento',
-    role: 'Desenvolvedor FullStack. Trabalhando no desenvolvimento de uma plataforma de gestão de pessoas, focada em melhorar a comunicação e eficiência dentro das empresas. Responsável pela criação de APIs, interface do usuário e integração de sistemas.',
-    link: 'https://peoplelly.netlify.app/',
+    company: "DevEmDesenvolvimento",
+    period: "Em andamento",
+    role: "Professor, Redator e Dono",
+    description:
+      "Plataforma educacional para profissionais de TI, contendo cursos, blogs e projetos práticos. Atuo como criador de conteúdo, desenvolvedor e mentor. A missão é compartilhar conhecimento e impulsionar carreiras na área de tecnologia.",
+    image: "/assets/devemdesenvolvimento.jpg",
+    link: "https://devemdesenvolvimento.netlify.app",
   },
   {
-    company: 'Projeto Integrador "Game Jam UNIFOA"',
-    period: '08/2022 - 11/2022',
-    role: 'Líder Estudantil. Condução de palestras e orientação em desenvolvimento de jogos na FAETEC, incluindo criação de personagens e dinâmicas inclusivas para fortalecer as relações entre os participantes.',
-    link: 'https://www.unifoa.edu.br/game-jam-unifoa/',
-  },
-  {
-    company: 'Sala +Verde Unifoa',
-    period: '08/2023 - 11/2023',
-    role: 'Coordenador da Criação de Site. Desenvolvimento de site responsivo para a sala ecológica da Unifoa. Responsável pela coordenação da equipe de desenvolvimento e atendimento às demandas do projeto.',
-    link: 'https://www.unifoa.edu.br/unifoaverde-e-selecionado-pelo-mma/',
+    company: "AutoCom3",
+    period: "Em andamento",
+    role: "Estagiário de Desenvolvimento",
+    description:
+      "Na Autocom3, em um ambiente profissional e humano, aprofundei meus conhecimentos em Banco de Dados, ASP.NET e C#, além de atuar como Tester de aplicações. Essa experiência foi fundamental para meu crescimento tanto profissional quanto pessoal, solidificando minha base como desenvolvedor.",
+    image: "/assets/autocom3.jpg", // Substitua pelo caminho da imagem correta
+    link: "https://autocom3.com.br", // Substitua pelo link correto
   },
 ];
 
 const Experiences = () => {
-  const [selectedExperience, setSelectedExperience] = useState(experiences[0]);
-
   return (
     <section id="experiences" className="bg-[#111111] text-white py-20 px-5">
       <div className="container mx-auto">
-        <h2 className="text-4xl font-bold mb-10">Experiências</h2>
-        <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/3 mb-5 md:mb-0">
-            <ul className="space-y-4">
-              {experiences.map((experience, index) => (
-                <li
-                  key={index}
-                  className={`experience-item ${
-                    selectedExperience.company === experience.company ? 'experience-item-active' : ''
-                  }`}
-                  onClick={() => setSelectedExperience(experience)}
-                >
+        <h2 className="text-4xl font-bold text-center mb-16">Experiências</h2>
+
+        <div className="space-y-20">
+          {experiences.map((experience, index) => (
+            <motion.div
+              key={index}
+              className="flex flex-col md:flex-row items-center gap-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.3 }}
+            >
+              {/* Texto */}
+              <div className="flex-1 space-y-4 text-left">
+                <h3 className="text-3xl font-bold text-blue-400">
                   {experience.company}
-                  {selectedExperience.company === experience.company && (
-                    <motion.div className="underline" layoutId="underline" />
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="w-full md:w-2/3 p-5 bg-gray-800 rounded-lg">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedExperience.company}
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -10, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <h3 className="experience-title">{selectedExperience.company}</h3>
-                <p className="experience-period">{selectedExperience.period}</p>
-                <p>{selectedExperience.role}</p>
-                {selectedExperience.link && (
+                </h3>
+                <p className="text-sm text-gray-400">{experience.period}</p>
+                <p className="text-sm font-semibold text-gray-300">
+                  {experience.role}
+                </p>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  {experience.description}
+                </p>
+                {experience.link && (
                   <a
-                    href={selectedExperience.link}
+                    href={experience.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-500 underline mt-4 inline-block"
+                    className="text-blue-500 underline hover:text-blue-400 transition"
                   >
                     Ver mais
                   </a>
                 )}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              </div>
+
+              {/* Imagem */}
+              <div className="flex-1 flex justify-center">
+                <motion.img
+                  src={experience.image}
+                  alt={experience.company}
+                  className="w-[300px] h-[200px] rounded-full object-cover shadow-lg hover:scale-105 transition-transform duration-300"
+                  whileHover={{ scale: 1.05 }}
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
