@@ -19,22 +19,22 @@ const Skills: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Exibindo as habilidades organizadas por áreas */}
-        <div className="space-y-6 md:w-full flex flex-col gap-4">
+        <div className="space-y-4 md:w-full">
           {areas.map((area, idx) => (
             <div key={idx}>
-              <h2 className="text-2xl font-semibold text-white mb-3">{area.title}</h2>
-              <div className="flex flex-wrap gap-3">
+              <h2 className="text-xl font-semibold text-white mb-2">{area.title}</h2>
+              <div className="flex flex-wrap gap-2">
                 {area.skills.map((skill, index) => (
                   <div
                     key={index}
-                    className="flex items-center bg-gray-800 text-white py-1.5 px-2.5 rounded-lg shadow-md hover:bg-gray-700 transition duration-300 ease-in-out cursor-pointer"
+                    className="flex items-center bg-gray-800 text-white py-1 px-2 rounded-md shadow-sm hover:bg-gray-700 transition duration-300 ease-in-out cursor-pointer"
                     onClick={() => handleClick(skill)}
-                    style={{ width: 'auto', minWidth: '130px', height: '40px' }}
+                    style={{ minWidth: '80px', height: '36px' }}
                   >
-                    <img src={skill.icon} alt={skill.title} className="w-7 h-7 mr-3" />
-                    <div className="text-xs">{skill.title}</div>
+                    <img src={skill.icon} alt={skill.title} className="w-5 h-5 mr-2" />
+                    <div className="text-xs font-medium">{skill.title}</div>
                   </div>
                 ))}
               </div>
@@ -43,11 +43,13 @@ const Skills: React.FC = () => {
         </div>
 
         {/* Exibindo a descrição da skill selecionada */}
-        <div className="bg-transparent p-4 rounded-lg shadow-md text-white space-y-3">
+        <div className="bg-gray-900 p-4 rounded-lg shadow-md text-white">
           {selectedSkill ? (
             <SkillsDescription skill={selectedSkill} />
           ) : (
-            <div className="text-gray-400">Selecione uma habilidade para ver os detalhes.</div>
+            <div className="text-gray-400 text-center">
+              Selecione uma habilidade para ver os detalhes.
+            </div>
           )}
         </div>
       </div>
