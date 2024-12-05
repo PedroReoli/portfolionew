@@ -1,16 +1,15 @@
-// src/constants/projectsData.ts
-
 export interface Project {
-  title: string; // Nome do projeto
-  description: string; // Descrição breve
-  link: string; // Link para o projeto
-  borderColor: string; // Cor da borda do cartão
-  techStack: string[]; // Tecnologias usadas
-  status: string; // Status do projeto
-  thumbnail: string; // URL da imagem do projeto
-  type: string; // Tipo de projeto (ex.: pessoal, freelance)
-  duration: string; // Duração do desenvolvimento (ex.: "2 meses")
+  title: string;
+  description: string;
+  link: string;
+  borderColor: string;
+  techStack: string[];
+  status: string;
+  thumbnails: string[]; // Alterado para múltiplas imagens
+  type: string;
+  duration: string;
 }
+
 export const projectsData: Project[] = [
   {
     title: 'Evatech',
@@ -19,20 +18,29 @@ export const projectsData: Project[] = [
     borderColor: 'border-red-500',
     techStack: ['React', 'Tailwind', 'AppwriteDB', 'JavaScript'],
     status: 'Finalizado',
-    thumbnail: '/assets/evatech-thumbnail.jpg',
+    thumbnails: [
+      '/projects/eva1.jpg',
+      '/projects/eva2.jpg',
+      '/projects/eva3.jpg',
+      '/projects/eva4.jpg',
+    ],
     type: 'Colaborativo',
-    duration: '3 meses',
+    duration: '6 meses',
   },
   {
-    title: 'Peoplelly ',
+    title: 'Peoplelly',
     description: 'Meu projeto individual, feito em React, Tailwind, AppwriteDB.',
     link: 'https://peoplelly.netlify.app/',
     borderColor: 'border-blue-500',
     techStack: ['React', 'Tailwind', 'AppwriteDB'],
     status: 'Beta',
-    thumbnail: '/assets/peoplelly-thumbnail.jpg',
+    thumbnails: [
+      '/projects/peop1.jpg',
+      '/projects/peop2.jpg',
+      '/projects/peop3.jpg',
+    ],
     type: 'Pessoal',
-    duration: '2 meses',
+    duration: '3 meses',
   },
   {
     title: 'DevEmDesenvolvimento',
@@ -41,8 +49,12 @@ export const projectsData: Project[] = [
     borderColor: 'border-green-500',
     techStack: ['React', 'Tailwind', 'AppwriteDB'],
     status: 'Beta',
-    thumbnail: '/assets/devemdesenvolvimento-thumbnail.jpg',
+    thumbnails: [
+      '/projects/blog1.png',
+      '/projects/blog2.png',
+      '/projects/blog3.png',
+    ],
     type: 'Pessoal',
-    duration: '2 meses',
+    duration: 'Atual',
   },
 ];

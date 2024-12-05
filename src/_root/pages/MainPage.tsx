@@ -6,7 +6,11 @@ import Experience from './Experience';
 import Projects from './Projects';
 import Services from './Services';
 import Skills from './Skills';
-// import Contact from './Contact';
+import FAQ from './FAQ';
+import BlogSection from './BlogSection ';
+import End from './End';
+// import Testimonials from './Testimonials';
+
 const MainPage = () => {
   return (
     <div>
@@ -16,7 +20,10 @@ const MainPage = () => {
       <Projects />
       <Services />
       <Skills />
-      {/* <Contact/> */}
+      <BlogSection/>
+      <FAQ/>
+      <End/>
+      {/* <Testimonials /> */}
     </div>
   );
 };

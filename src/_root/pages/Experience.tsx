@@ -29,30 +29,29 @@ const experiences = [
 
 const Experiences = () => {
   return (
-    <section id="experiences" className="bg-[#111111] text-white min-h-screen py-20 px-5">
-      <div className="container mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-16">
-          Experiências  <span className="text-blue-500">;</span>
+    <section id="experiences" className="bg-[#111111] text-white min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8">
+      <div className="container mx-auto max-w-6xl">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 md:mb-16">
+          Experiências <span className="text-blue-500">;</span>
         </h2>
 
-        {/* Grid para duas colunas */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
           {experiences.map((experience, index) => (
             <motion.div
               key={index}
-              className="flex flex-col space-y-4 bg-transparent"
+              className="flex flex-col space-y-3 sm:space-y-4 bg-transparent p-4 sm:p-6 rounded-lg border border-gray-800"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.3 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
             >
-              <h3 className="text-3xl font-bold text-blue-400">
+              <h3 className="text-2xl sm:text-3xl font-bold text-blue-400">
                 {experience.company}
               </h3>
-              <p className="text-sm text-gray-400">{experience.period}</p>
-              <p className="text-sm font-semibold text-gray-300">
+              <p className="text-xs sm:text-sm text-gray-400">{experience.period}</p>
+              <p className="text-sm sm:text-base font-semibold text-gray-300">
                 {experience.role}
               </p>
-              <p className="text-sm text-gray-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                 {experience.description}
               </p>
               {experience.link && (
@@ -60,7 +59,7 @@ const Experiences = () => {
                   href={experience.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-500 underline hover:text-blue-400 transition"
+                  className="text-blue-500 underline hover:text-blue-400 transition text-sm sm:text-base mt-2"
                 >
                   Ver mais
                 </a>
@@ -74,3 +73,4 @@ const Experiences = () => {
 };
 
 export default Experiences;
+

@@ -28,38 +28,40 @@ const SkillsDescription: React.FC<Props> = ({ skill }) => {
   };
 
   return (
-    <div className="space-y-4 bg-gray-900/20 p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg">
-      {/* Título da Skill */}
-      <h2 className="text-2xl font-bold text-white">{skill.title}</h2>
-      <div className="flex items-center space-x-3 mb-4">
+    <div className="space-y-6 bg-gray-900/20 p-8 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg">
+      {/* Título e Ícone */}
+      <div className="flex items-center space-x-4 mb-6">
         <img
           src={skill.icon}
           alt={skill.title}
-          className="h-12 w-12 rounded-full border-2 border-gray-500 shadow-sm"
+          className="h-16 w-16 rounded-full border-2 border-gray-500 shadow-md"
         />
-        <div className="text-sm text-gray-300">{skill.description}</div>
+        <h2 className="text-3xl font-bold text-white">{skill.title}</h2>
       </div>
+
+      {/* Descrição */}
+      <div className="text-base text-gray-300">{skill.description}</div>
 
       {/* Nível da Skill */}
       <div>
         <h3 className="text-lg font-semibold text-white mb-2">Nível</h3>
-        <div className="relative w-full bg-gray-700/50 h-2 rounded-full shadow-inner">
+        <div className="relative w-full bg-gray-700/50 h-3 rounded-full shadow-inner">
           <div
-            className="absolute top-0 left-0 h-2 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"
+            className="absolute top-0 left-0 h-3 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"
             style={{ width: `${levelPosition}%` }}
           ></div>
-          <div className="absolute top-0 h-2 w-0.5 bg-yellow-500" style={{ left: "50%" }}></div>
+          <div className="absolute top-0 h-3 w-0.5 bg-yellow-500" style={{ left: "50%" }}></div>
           <div
-            className="absolute top-0 h-2 w-0.5 bg-white"
+            className="absolute top-0 h-3 w-0.5 bg-white"
             style={{ left: `calc(${levelPosition}% - 0.25rem)` }}
           ></div>
         </div>
       </div>
 
-      {/* Detalhes da Skill */}
+      {/* Detalhes */}
       <div className="border-t border-gray-600 pt-4">
         <h3 className="text-lg font-semibold text-white mb-2">Detalhes</h3>
-        <p className="text-sm text-gray-200">{skill.details}</p>
+        <p className="text-base text-gray-200">{skill.details}</p>
       </div>
 
       {/* Carrossel de Cursos */}
@@ -72,12 +74,12 @@ const SkillsDescription: React.FC<Props> = ({ skill }) => {
             disabled={currentIndex === 0}
             className={`${
               currentIndex === 0 ? "text-gray-500" : "text-blue-400 hover:text-blue-600"
-            } px-2`}
+            } px-4 text-lg`}
           >
             &lt;
           </button>
 
-          <div className="flex-1 grid grid-cols-1 gap-3 text-center">
+          <div className="flex-1 grid grid-cols-1 gap-4 text-center">
             {skill.courses
               .slice(currentIndex, currentIndex + itemsPerPage)
               .map((course, idx) => (
@@ -86,7 +88,7 @@ const SkillsDescription: React.FC<Props> = ({ skill }) => {
                   href={skill.coursesLinks[idx]}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-600 py-2 px-4 border border-blue-500 rounded-lg transition duration-300 transform"
+                  className="text-blue-400 hover:text-blue-600 py-3 px-6 border border-blue-500 rounded-lg text-base font-medium transition duration-300 transform"
                 >
                   {course}
                 </a>
@@ -101,7 +103,7 @@ const SkillsDescription: React.FC<Props> = ({ skill }) => {
               currentIndex + itemsPerPage >= totalCourses
                 ? "text-gray-500"
                 : "text-blue-400 hover:text-blue-600"
-            } px-2`}
+            } px-4 text-lg`}
           >
             &gt;
           </button>

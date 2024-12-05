@@ -1,18 +1,16 @@
-// src/_root/RootLayout/RootLayout.tsx
 import { Outlet } from 'react-router-dom';
 import Topbar from '@/components/Topbar';
-import Bottombar from '@/components/Bottombar';
 
 const RootLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#111111]">
       <Topbar />
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
         <Outlet />
       </main>
-      <Bottombar />
     </div>
   );
 };
 
 export default RootLayout;
+
