@@ -2,17 +2,17 @@ const blogs = [
   {
     title: "Boas Práticas em SQL",
     description: "Descubra como boas práticas como BIGINT, IDENTITY e colunas de log podem transformar o design de bancos de dados SQL, garantindo eficiência e escalabilidade.",
-    link: "#",
+    link: "https://devemdesenvolvimento.netlify.app/post/boas-praticas-em-sql",
   },
   {
     title: "Comandos Iniciais SQL",
     description: "Aprenda e pratique os comandos SQL básicos para começar a manipular dados em bancos de dados relacionais com facilidade",
-    link: "#",
+    link: "https://devemdesenvolvimento.netlify.app/post/comandos-iniciais-sql",
   },
   {
     title: "Programação Orientada a Objetos: Estruturando Sistemas Reais",
     description: "Aprenda como a Programação Orientada a Objetos (POO) revoluciona o desenvolvimento de software.Com exemplos práticos do mundo real.",
-    link: "#",
+    link: "https://devemdesenvolvimento.netlify.app/post/programao-orientada-a-objetos-estruturando-sistemas-reais",
   },
 ];
 
