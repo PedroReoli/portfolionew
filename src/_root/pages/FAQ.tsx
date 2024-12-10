@@ -1,9 +1,7 @@
-import { useState } from "react";
-import Button from "@/components/Button";
-import PriceSimulator from "@/components/PriceSimulator"; // Importando o componente do simulador
+
+
 
 const FAQ = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false); // Controle do modal
 
   const faqs = [
     {
@@ -13,10 +11,10 @@ const FAQ = () => {
   
     },
     {
-      question: "Qual o prazo médio e o preço para um projeto?",
-      answer: `O prazo varia entre 1 a 3 meses, dependendo da complexidade. Use o simulador para ter uma ideia do custo aproximado.`,
+      question: "Qual é o prazo médio e o custo de um projeto?",
+      answer: `O prazo e o custo de um projeto dependem da sua complexidade e do escopo. Projetos mais simples geralmente são concluídos em até 1 mês, enquanto os mais complexos podem levar até 3 meses ou mais. Para ter uma estimativa mais precisa do custo, você pode utilizar nosso simulador, que considera os principais fatores de precificação.`,
       simulator: true, // Indicador de que esta pergunta terá o simulador
-    },
+  },  
     {
       question: "Como posso entrar em contato?",
       answer: `Você pode me enviar um e-mail diretamente para: `,
@@ -53,24 +51,11 @@ const FAQ = () => {
                   </a>
                 )}
               </p>
-              {faq.simulator && (
-                <div className="mt-4">
-                  <Button onClick={() => setIsModalOpen(true)}>
-                    Usar Simulador
-                  </Button>
-                </div>
-              )}
-            </div>
+              </div>
           ))}
         </div>
 
-        {/* Modal do Simulador */}
-        {isModalOpen && (
-          <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
-            <PriceSimulator onClose={() => setIsModalOpen(false)} />
-          </div>
-        )}
-      </div>
+      
     </section>
   );
 };
