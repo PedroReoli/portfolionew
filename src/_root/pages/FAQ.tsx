@@ -1,23 +1,18 @@
-
-
-
 const FAQ = () => {
-
   const faqs = [
     {
       question: "Quem é o seu público-alvo?",
       answer:
-  "Meu público-alvo são desenvolvedores iniciantes, pessoas que desejam se aventurar no mundo da programação e clientes que buscam projetos personalizados. Também ofereço dicas e orientações para melhorar currículos e se destacar no mercado.",
-  
+        "Meu público-alvo são desenvolvedores iniciantes, pessoas que desejam se aventurar no mundo da programação e clientes que buscam projetos personalizados. Também ofereço dicas e orientações para melhorar currículos e se destacar no mercado.",
     },
     {
       question: "Qual é o prazo médio e o custo de um projeto?",
-      answer: `O prazo e o custo de um projeto dependem da sua complexidade e do escopo. Projetos mais simples geralmente são concluídos em até 1 mês, enquanto os mais complexos podem levar até 3 meses ou mais. Para ter uma estimativa mais precisa do custo, você pode utilizar nosso simulador, que considera os principais fatores de precificação.`,
-      simulator: true, // Indicador de que esta pergunta terá o simulador
-  },  
+      answer:
+        "O prazo e o custo de um projeto dependem da sua complexidade e do escopo. Projetos mais simples geralmente são concluídos em até 1 mês, enquanto os mais complexos podem levar até 3 meses ou mais. Para ter uma estimativa mais precisa do custo, você pode utilizar nosso simulador, que considera os principais fatores de precificação.",
+    },
     {
       question: "Como posso entrar em contato?",
-      answer: `Você pode me enviar um e-mail diretamente para: `,
+      answer: "Você pode me enviar um e-mail diretamente para: ",
       email: "pedrosousa2160@gmail.com",
     },
   ];
@@ -41,21 +36,23 @@ const FAQ = () => {
                 {faq.question}
               </h3>
               <p className="text-gray-300">
-                {faq.answer}{" "}
+                {faq.answer}
                 {faq.email && (
-                  <a
-                    href={`mailto:${faq.email}`}
-                    className="text-[#00aaff] underline hover:text-blue-400"
-                  >
-                    {faq.email}
-                  </a>
+                  <>
+                    <br />
+                    <a
+                      href={`mailto:${faq.email}`}
+                      className="text-[#00aaff] underline hover:text-blue-400"
+                    >
+                      {faq.email}
+                    </a>
+                  </>
                 )}
               </p>
-              </div>
+            </div>
           ))}
         </div>
-
-      
+      </div>
     </section>
   );
 };

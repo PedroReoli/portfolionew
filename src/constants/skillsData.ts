@@ -48,7 +48,7 @@ export const skillsData: Skill[] = [
     description: 'Linguagem de programação usada para desenvolvimento de aplicações desktop e web.', 
     level: 1.5, 
     details: 'Integrado com o ecossistema Microsoft. Forte tipagem e orientação a objetos. Usado para desenvolvimento de aplicações desktop, web, e jogos com Unity.', 
-    courses: ['Curso C# Completo e Profissional', 'Curso Introdução a Orientação a Objetos com C#', 'C# COMPLETO Programação Orientada a Objetos + Projetos'], 
+    courses: ['Curso C# Completo e Profissional', 'Curso Introdução a Orientação a Objetos com C#', 'C# COMPLETO Programação Orientada a Objetos '], 
     coursesLinks: ['https://www.udemy.com/course/csharp-completo-e-profissional/?couponCode=ABCART0923', 'https://www.udemy.com/course/introducaoaorientacaoaobjetoscomcsharp/', 'https://www.udemy.com/course/programacao-orientada-a-objetos-csharp/?couponCode=ABCART0923'],
     area: 'Backend'
   },
@@ -56,7 +56,7 @@ export const skillsData: Skill[] = [
     title: 'SQL', 
     icon: 'assets/sql-icon.svg', 
     description: 'Linguagem de consulta usada para gerenciar bancos de dados relacionais.', 
-    level: 0.8, 
+    level: 1.2, 
     details: 'Permite consultas complexas e manipulação de grandes volumes de dados. Suporte amplo. Usado para gerenciar e manipular bancos de dados relacionais, como MySQL, PostgreSQL e SQL Server.', 
     courses: ['SQL Tutorial - Full Database Course for Beginners', 'SQL Tutorial for Beginners'], 
     coursesLinks: ['https://www.youtube.com/watch?v=HXV3zeQKqGY', 'https://www.youtube.com/watch?v=7S_tz1z_5bA&pp=ygUSc3FsIGNvbXBsZXRlIGd1aWRl'],
