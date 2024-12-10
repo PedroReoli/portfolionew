@@ -21,8 +21,12 @@ import ResponsiveEnd from '@/Responsive/ResponsiveEnd';
 // import Testimonials from './Testimonials';
 
 const MainPage = () => {
+  // Gerencia o estado que verifica se a tela é pequena
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+// Definido como false , será atualizado com base no tamanho da tela
 
+// Essa funcao abaixo é chamada SEMPRE que o tamanho da tela é redimensionado 
+// Para menos de 720px de largura
   const handleResize = () => {
     const width = window.innerWidth;
     setIsSmallScreen(width <= 720);
@@ -46,7 +50,7 @@ const MainPage = () => {
       {isSmallScreen ? <ResponsiveSkillsSection/> : <Skills/>}
       {isSmallScreen ? <ResponsiveBlogSection/>   : <BlogSection/>}
       {isSmallScreen ? <ResponsiveFAQ/>           : <FAQ/>}
-      {isSmallScreen ? <ResponsiveEnd/>           :<End/>}
+      {isSmallScreen ? <ResponsiveEnd/>           : <End/>}
       {/* Guias pro Futuro */}
       {/* <Testimonials /> */} 
     </div>
