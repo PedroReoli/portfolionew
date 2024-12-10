@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
-import Button from "@/components/Button";
 
 const ResponsiveAbout = () => {
   const [currentImage, setCurrentImage] = useState("/assets/perfilpb.jpg");
+  const [isFading, setIsFading] = useState(false);
 
-  // Alterna entre as imagens perfilpb e perfilcol a cada 5 segundos
   useEffect(() => {
     const imageToggle = setInterval(() => {
-      setCurrentImage((prevImage) =>
-        prevImage === "/assets/perfilpb.jpg"
-          ? "/assets/perfilcol.jpg"
-          : "/assets/perfilpb.jpg"
-      );
-    }, 5000);
+      setIsFading(true); // Inicia a transição de fade-out
+      setTimeout(() => {
+        setCurrentImage((prevImage) =>
+          prevImage === "/assets/perfilpb.jpg"
+            ? "/assets/perfilcol.jpg"
+            : "/assets/perfilpb.jpg"
+        );
+        setIsFading(false); // Reverte para fade-in após a troca
+      }, 300); // Tempo para o fade-out
+    }, 3000); // Troca a cada 3 segundos
 
-    return () => clearInterval(imageToggle); // Limpa o intervalo na desmontagem do componente
+    return () => clearInterval(imageToggle); // Limpa o intervalo ao desmontar o componente
   }, []);
 
   return (
@@ -25,11 +28,13 @@ const ResponsiveAbout = () => {
       </h2>
 
       {/* Imagem */}
-      <div className="relative mb-8">
+      <div className="relative mb-8 w-28 h-28">
         <img
           src={currentImage}
           alt="Pedro Lucas"
-          className="rounded-full w-28 h-28 object-cover border-2 border-blue-500 shadow-md"
+          className={`rounded-full w-full h-full object-cover border-2 border-blue-500 shadow-md transition-opacity duration-500 ${
+            isFading ? "opacity-0" : "opacity-100"
+          }`}
         />
       </div>
 
@@ -49,15 +54,7 @@ const ResponsiveAbout = () => {
         </p>
       </div>
 
-      {/* Botão ou Call-to-Action */}
-      <div className="mt-12">
-        <Button
-          href="#"
-          className="text-blue-500 border border-blue-500 bg-transparent hover:bg-blue-500 hover:text-white py-2 px-6 rounded-md transition-all"
-        >
-          Saiba mais
-        </Button>
-      </div>
+    
     </section>
   );
 };
