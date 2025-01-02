@@ -1,10 +1,18 @@
+'use client'
+
+import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaYoutube, FaInstagram, FaNewspaper } from "react-icons/fa";
 
 const Home = () => {
   return (
     <section className="bg-[#111111] text-white min-h-screen flex flex-col justify-center items-center p-4">
       {/* Ícones Sociais */}
-      <div className="flex flex-wrap justify-center gap-4 mb-8 md:mb-10">
+      <motion.div 
+        className="flex flex-wrap justify-center gap-4 mb-8 md:mb-10"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
         <SocialIcon href="mailto:pedrosousa2160@gmail.com" icon={<FaEnvelope />} />
         <SocialIcon href="https://github.com/PedroReoli" icon={<FaGithub />} />
         <SocialIcon href="https://www.linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/" icon={<FaLinkedin />} />
@@ -12,17 +20,32 @@ const Home = () => {
         <SocialIcon href="https://www.youtube.com/@DevDesenvolvimento" icon={<FaYoutube />} />
         <SocialIcon href="https://www.instagram.com/01_dev_em_desenvolvimento" icon={<FaInstagram />} />
         <SocialIcon href="https://x.com/opedroreoli" icon={<FaTwitter />} />
-      </div>
+      </motion.div>
 
       {/* Texto Principal */}
-      <div className="text-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-4 md:mb-6">
+      <motion.div 
+        className="text-center"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        <motion.h1 
+          className="text-4xl md:text-6xl font-extrabold mb-4 md:mb-6"
+          initial={{ scale: 0.5 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
           Olá <span role="img" aria-label="wave">👋🏻</span>, eu sou o <span className="text-[#00aaff]">Pedro</span>
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-300">
+        </motion.h1>
+        <motion.p 
+          className="text-xl md:text-2xl text-gray-300"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.1 }}
+        >
           Desenvolvedor Fullstack Júnior
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </section>
   );
 };
@@ -33,14 +56,17 @@ interface SocialIconProps {
 }
 
 const SocialIcon: React.FC<SocialIconProps> = ({ href, icon }) => (
-  <a
+  <motion.a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
     className="text-[#00aaff] text-3xl md:text-4xl hover:scale-110 transition-transform"
+    whileHover={{ scale: 1.2 }}
+    whileTap={{ scale: 0.9 }}
   >
     {icon}
-  </a>
+  </motion.a>
 );
 
 export default Home;
+

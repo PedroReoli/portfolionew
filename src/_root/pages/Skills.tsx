@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { skillsData, Skill } from "@/constants/skillsData";
@@ -23,74 +25,84 @@ const Skills: React.FC = () => {
   }));
 
   return (
-    <div className="container mx-auto py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 min-h-screen bg-[#111111]">
-      <motion.h1 
-        className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Habilidades <span className="text-blue-500">;</span>
-      </motion.h1>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-        {/* Coluna de Categorias e Skills */}
-        <div className="space-y-8 col-span-1">
-          {categorizedSkills.map((category, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-4"
-            >
-              <h2 className="text-xl font-semibold text-blue-400 mb-4">{category.title}</h2>
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, index) => (
-                  <motion.button
-                    key={index}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`flex items-center text-white py-2 px-3 rounded-lg transition duration-300 ease-in-out ${
-                      selectedSkill?.title === skill.title
-                        ? "bg-blue-500 text-white shadow-md"
-                        : "bg-transparent border border-gray-600 hover:bg-gray-800"
-                    }`}
-                    onClick={() => handleClick(skill)}
-                  >
-                    <span className="text-sm font-medium">{skill.title}</span>
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Coluna de Descrição */}
-        <div className="col-span-1 md:col-span-2 flex items-center justify-center">
-          <AnimatePresence>
-            {selectedSkill ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className="w-full max-w-4xl"
-              >
-                <SkillsDescription skill={selectedSkill} />
-              </motion.div>
-            ) : (
-              <motion.div
+    <motion.div 
+      className="min-h-screen bg-[#111111] text-white py-12 px-4 sm:px-6 lg:px-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <motion.h1 
+          className="text-4xl font-bold text-center mb-8 text-[#00aaff]"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Habilidades
+        </motion.h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Categorias */}
+          <div className="space-y-4 col-span-1">
+            {categorizedSkills.map((category, idx) => (
+              <motion.div 
+                key={idx}
+                className="p-4 bg-[#1a1a1a] rounded-lg shadow-md"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-gray-400 text-lg text-center"
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                Clique em uma habilidade para ver os detalhes.
+                <h2 className="text-lg font-semibold text-[#00aaff] mb-2">{category.title}</h2>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, index) => (
+                    <motion.button
+                      key={index}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`py-1 px-2 rounded-md text-xs font-medium ${
+                        selectedSkill?.title === skill.title
+                          ? "bg-[#00aaff] text-white shadow"
+                          : "bg-gray-800 hover:bg-gray-700"
+                      }`}
+                      onClick={() => handleClick(skill)}
+                    >
+                      {skill.title}
+                    </motion.button>
+                  ))}
+                </div>
               </motion.div>
-            )}
-          </AnimatePresence>
+            ))}
+          </div>
+
+          {/* Descrição */}
+          <div className="col-span-1 md:col-span-2">
+            <AnimatePresence>
+              {selectedSkill ? (
+                <motion.div
+                  key={selectedSkill.title}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <SkillsDescription skill={selectedSkill} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="placeholder"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-gray-400 text-base text-center p-6 bg-gray-800 rounded-lg"
+                >
+                  Clique em uma habilidade para ver os detalhes.
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
