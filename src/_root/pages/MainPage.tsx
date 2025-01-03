@@ -18,15 +18,11 @@ import ResponsiveSkillsSection from '@/Responsive/ResponsiveSkillsSection';
 import ResponsiveBlogSection from '@/Responsive/ResponsiveBlogSection';
 import ResponsiveFAQ from '@/Responsive/ResponsiveFAQ';
 import ResponsiveEnd from '@/Responsive/ResponsiveEnd';
-// import Testimonials from './Testimonials';
+import LazySection from '@/components/LazySection';
 
 const MainPage = () => {
-  // Gerencia o estado que verifica se a tela é pequena
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-// Definido como false , será atualizado com base no tamanho da tela
 
-// Essa funcao abaixo é chamada SEMPRE que o tamanho da tela é redimensionado 
-// Para menos de 720px de largura
   const handleResize = () => {
     const width = window.innerWidth;
     setIsSmallScreen(width <= 720);
@@ -39,20 +35,36 @@ const MainPage = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
   return (
-    <div>
-      <Home />
-      {/*               Guias Responsivas           Guias Normais       */}
-      {isSmallScreen ? <ResponsiveAbout/>         : <About/>}
-      {isSmallScreen ? <ResponsiveExperience/>    : <Experience/>}
-      {isSmallScreen ? <ResponsiveProjects/>      : <Projects/>}
-      {isSmallScreen ? <ResponsiveServices/>      : <Services/>}
-      {isSmallScreen ? <ResponsiveSkillsSection/> : <Skills/>}
-      {isSmallScreen ? <ResponsiveBlogSection/>   : <BlogSection/>}
-      {isSmallScreen ? <ResponsiveFAQ/>           : <FAQ/>}
-      {isSmallScreen ? <ResponsiveEnd/>           : <End/>}
-      {/* Guias pro Futuro */}
-      {/* <Testimonials /> */} 
+    <div className="space-y-12"> {/* Espaçamento entre as seções */}
+      <LazySection>
+        <Home />
+      </LazySection>
+      <LazySection>
+        {isSmallScreen ? <ResponsiveAbout /> : <About />}
+      </LazySection>
+      <LazySection>
+        {isSmallScreen ? <ResponsiveExperience /> : <Experience />}
+      </LazySection>
+      <LazySection>
+        {isSmallScreen ? <ResponsiveProjects /> : <Projects />}
+      </LazySection>
+      <LazySection>
+        {isSmallScreen ? <ResponsiveServices /> : <Services />}
+      </LazySection>
+      <LazySection>
+        {isSmallScreen ? <ResponsiveSkillsSection /> : <Skills />}
+      </LazySection>
+      <LazySection>
+        {isSmallScreen ? <ResponsiveBlogSection /> : <BlogSection />}
+      </LazySection>
+      <LazySection>
+        {isSmallScreen ? <ResponsiveFAQ /> : <FAQ />}
+      </LazySection>
+      <LazySection>
+        {isSmallScreen ? <ResponsiveEnd /> : <End />}
+      </LazySection>
     </div>
   );
 };
