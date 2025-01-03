@@ -20,7 +20,7 @@ const Services = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Serviços <span className="text-blue-500">;</span>
+          Serviços <span className="text-blue-400">;</span>
         </motion.h2>
 
         {/* Serviços */}
@@ -98,12 +98,12 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) => (
   <motion.article 
-    className="relative p-8 rounded-xl flex flex-col items-center transition-all duration-300 bg-gray-900/40 backdrop-blur-md shadow-md"
+    className="relative p-8 rounded-xl flex flex-col items-center transition-all duration-300 bg-gray-800 hover:bg-gray-700 shadow-lg"
     variants={cardVariants}
-    whileHover={{ scale: 1.05, boxShadow: "0 10px 30px -15px rgba(0, 0, 0, 0.3)" }}
+    whileHover={{ scale: 1.05, border: '2px solid #3B82F6', boxShadow: "0 10px 30px -15px rgba(59, 130, 246, 0.4)" }}
   >
     <motion.div 
-      className="absolute -top-10 w-20 h-20 rounded-full flex items-center justify-center shadow-md bg-transparent"
+      className="absolute -top-10 w-20 h-20 rounded-full flex items-center justify-center shadow-md bg-[#1e293b] border-2 border-[#3B82F6]"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.4, delay: 0.2 }}
@@ -111,7 +111,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) =
       <img src={icon} alt={`ícone ${title}`} className="w-12 h-12" />
     </motion.div>
     <motion.h3 
-      className="text-2xl font-bold mb-4 mt-12 text-center"
+      className="text-2xl font-bold mb-4 mt-12 text-center text-blue-400"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.4 }}
@@ -130,4 +130,3 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) =
 );
 
 export default Services;
-

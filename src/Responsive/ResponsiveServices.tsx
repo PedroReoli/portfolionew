@@ -1,51 +1,55 @@
+'use client'
+
+import { motion } from "framer-motion";
 import Button from "@/components/Button";
 
 const ResponsiveServices = () => {
   return (
-    <section className="bg-[#111111] text-white py-12 px-6 flex flex-col items-center">
-      {/* Título */}
-      <h2 className="text-3xl font-bold text-center mb-10 tracking-wide">
+    <motion.section 
+      id="services" 
+      className="bg-[#111111] text-white py-12 px-6 flex flex-col items-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.h2 
+        className="text-2xl md:text-3xl font-bold text-center mb-12"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         Serviços <span className="text-blue-500">;</span>
-      </h2>
+      </motion.h2>
 
-      {/* Lista de Serviços */}
-      <div className="grid grid-cols-1 gap-12 w-full max-w-sm">
-        {/* Serviço 1 */}
-        <article className="bg-[#1a1a1a] rounded-2xl shadow-lg p-8 flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
-          <div className="bg-gradient-to-br from-blue-500 to-purple-500 rounded-full p-4 shadow-md">
-            <img src="/assets/uxui.svg" alt="Ícone UX/UI" className="w-12 h-12" />
-          </div>
-          <h3 className="text-xl font-bold mt-6 mb-4 text-blue-400">UX / UI Design</h3>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            Criação de interfaces visuais elegantes e intuitivas, priorizando a experiência do usuário.
-          </p>
-        </article>
+      <motion.div 
+        className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 w-full max-w-4xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, staggerChildren: 0.2 }}
+      >
+        <ServiceCard
+          icon="/assets/uxui.svg"
+          title="UX / UI Design"
+          description="Desenho interfaces claras, objetivas e intuitivas, priorizando a experiência do usuário."
+        />
+        <ServiceCard
+          icon="/assets/prog.svg"
+          title="Desenvolvimento FullStack"
+          description="Construo soluções completas, desde interfaces até back-ends robustos e escaláveis."
+        />
+        <ServiceCard
+          icon="/assets/hands.svg"
+          title="Mentoria e Aulas"
+          description="Orientação personalizada para estudos, carreiras e projetos na área de programação."
+        />
+      </motion.div>
 
-        {/* Serviço 2 */}
-        <article className="bg-[#1a1a1a] rounded-2xl shadow-lg p-8 flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
-          <div className="bg-gradient-to-br from-green-500 to-teal-500 rounded-full p-4 shadow-md">
-            <img src="/assets/prog.svg" alt="Ícone FullStack" className="w-12 h-12" />
-          </div>
-          <h3 className="text-xl font-bold mt-6 mb-4 text-green-400">Desenvolvimento FullStack</h3>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            Desenvolvimento de sistemas completos, abrangendo frontend e backend com alta performance.
-          </p>
-        </article>
-
-        {/* Serviço 3 */}
-        <article className="bg-[#1a1a1a] rounded-2xl shadow-lg p-8 flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
-          <div className="bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full p-4 shadow-md">
-            <img src="/assets/hands.svg" alt="Ícone Mentoria" className="w-12 h-12" />
-          </div>
-          <h3 className="text-xl font-bold mt-6 mb-4 text-yellow-400">Mentoria e Aulas</h3>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            Aulas e mentorias personalizadas para ajudar você a atingir seus objetivos na programação.
-          </p>
-        </article>
-      </div>
-
-      {/* Botão "Entre em Contato" */}
-      <div className="mt-16">
+      <motion.div 
+        className="mt-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
         <Button
           href="mailto:pedrosousa2160@gmail.com"
           variant="primary"
@@ -53,9 +57,28 @@ const ResponsiveServices = () => {
         >
           Entre em Contato
         </Button>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
+
+interface ServiceCardProps {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) => (
+  <motion.article 
+    className="bg-[#1a1a1a] p-6 rounded-2xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300"
+    whileHover={{ scale: 1.05 }}
+  >
+    <div className="bg-[#1e293b] rounded-full p-4 shadow-md border-2 border-blue-500">
+      <img src={icon} alt={`Ícone ${title}`} className="w-12 h-12" />
+    </div>
+    <h3 className="text-xl font-bold mt-6 mb-4 text-blue-400">{title}</h3>
+    <p className="text-sm text-gray-300 leading-relaxed">{description}</p>
+  </motion.article>
+);
 
 export default ResponsiveServices;

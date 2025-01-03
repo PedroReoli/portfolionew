@@ -10,7 +10,7 @@ const blogs = [
     link: "https://devemdesenvolvimento.netlify.app/post/comandos-iniciais-sql",
   },
   {
-    title: "Programação Orientada a Objetos: Estruturando Sistemas Reais",
+    title: "POO: Estruturando Sistemas Reais",
     description: "Aprenda como a Programação Orientada a Objetos (POO) revoluciona o desenvolvimento de software.Com exemplos práticos do mundo real.",
     link: "https://devemdesenvolvimento.netlify.app/post/programao-orientada-a-objetos-estruturando-sistemas-reais",
   },
@@ -22,7 +22,7 @@ const BlogSection = () => {
       <div className="container mx-auto">
         {/* Título */}
         <h2 className="text-4xl font-bold text-center mb-12">
-          Últimos Posts no Blog <span className="text-[#00aaff]">;</span>
+          Últimos Posts no Blog <span className="text-blue-400">;</span>
         </h2>
 
         {/* Posts */}
@@ -30,18 +30,24 @@ const BlogSection = () => {
           {blogs.map((blog, index) => (
             <article
               key={index}
-              className="bg-gray-900/20 rounded-lg shadow-md hover:scale-105 transition-transform p-6"
+              className="bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:border-2 hover:border-blue-400 p-6 flex flex-col justify-between h-[300px]"
             >
-              <h3 className="text-2xl font-semibold mb-3 text-[#00aaff]">
-                {blog.title}
-              </h3>
-              <p className="text-gray-300 mb-5">{blog.description}</p>
-              <a
-                href={blog.link}
-                className="text-[#00aaff] underline hover:text-blue-400"
-              >
-                Ler mais →
-              </a>
+              <div>
+                <h3 className="text-2xl font-bold mb-3 text-blue-400">
+                  {blog.title}
+                </h3>
+                <p className="text-gray-300 mb-5 leading-relaxed">
+                  {blog.description}
+                </p>
+              </div>
+              <div className="flex justify-center mt-4">
+                <a
+                  href={blog.link}
+                  className="inline-flex items-center py-2 px-4 rounded-full text-base font-semibold border-2 text-white border-blue-400 hover:bg-blue-400 transition-all duration-300"
+                >
+                  Ler mais →
+                </a>
+              </div>
             </article>
           ))}
         </div>

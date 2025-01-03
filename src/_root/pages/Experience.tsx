@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const experiences = [
   {
@@ -8,7 +9,7 @@ const experiences = [
     period: "07/2024 - 11/2024",
     role: "Professor, Palestrante e Mentor",
     description:
-      "Auxílio a mães negras solteiras no desenvolvimento de habilidades tecnológicas essenciais, como Excel, Word, e plataformas de comunicação como Teams e Meet. Desenvolvimento de workshops e materiais educativos para empoderamento tecnológico.",
+      "Ministrei <span class='text-blue-400'>aulas</span>, <span class='text-blue-400'>workshops</span> e <span class='text-blue-400'>palestras</span> sobre habilidades tecnológicas essenciais, como <span class='text-blue-400'>Excel</span>, <span class='text-blue-400'>Word</span>, e plataformas como <span class='text-blue-400'>Teams</span> e <span class='text-blue-400'>Meet</span>. Além disso, trabalhei com conceitos básicos de <span class='text-blue-400'>IA</span>, empoderando mães negras solteiras a ingressar no mundo da tecnologia.",
     link: "https://evatech2024.netlify.app",
   },
   {
@@ -16,7 +17,7 @@ const experiences = [
     period: "Em andamento",
     role: "Professor, Redator e Dono",
     description:
-      "Plataforma educacional para profissionais de TI, contendo cursos, blogs e projetos práticos. Atuo como criador de conteúdo, desenvolvedor e mentor. A missão é compartilhar conhecimento e impulsionar carreiras na área de tecnologia.",
+      "Plataforma educacional focada em novos entusiastas e <span class='text-blue-400'>programadores iniciantes</span> de TI. Oferece <span class='text-blue-400'>cursos</span>, <span class='text-blue-400'>blogs</span> e projetos práticos para compartilhar conhecimento e impulsionar carreiras na área de tecnologia.",
     link: "https://devemdesenvolvimento.com.br",
   },
   {
@@ -24,29 +25,66 @@ const experiences = [
     period: "Em andamento",
     role: "Estagiário de Desenvolvimento",
     description:
-      "Na Autocom3, em um ambiente profissional e humano, aprofundei meus conhecimentos em Banco de Dados, ASP.NET e C#, além de atuar como Tester de aplicações. Essa experiência foi fundamental para meu crescimento tanto profissional quanto pessoal, solidificando minha base como desenvolvedor.",
+      "Na Autocom3, aprofundei meus conhecimentos em <span class='text-blue-400'>Banco de Dados</span>, <span class='text-blue-400'>ASP.NET</span>, e <span class='text-blue-400'>C#</span>, além de atuar como <span class='text-blue-400'>Tester</span> de aplicações, em um ambiente profissional e humano.",
     link: "https://autocom3.com.br",
   },
 ];
 
 const Experiences = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 3;
+  const totalPages = Math.ceil(experiences.length / itemsPerPage);
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  const paginatedExperiences = experiences.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
+
   return (
-    <section id="experiences" className="bg-[#111111] text-white min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8">
+    <section
+      id="experiences"
+      className="bg-[#111111] text-white min-h-screen py-16 px-5 flex items-center"
+    >
       <div className="container mx-auto max-w-6xl">
-        <motion.h2 
-          className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 md:mb-16"
+        <motion.h2
+          className="text-4xl font-bold text-center mb-12 text-white"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Experiências <span className="text-blue-500">;</span>
+          Experiências <span className="text-blue-400">;</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
-          {experiences.map((experience, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {paginatedExperiences.map((experience, index) => (
             <ExperienceCard key={index} experience={experience} index={index} />
           ))}
         </div>
+
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-8 space-x-4">
+            <button
+              onClick={prevPage}
+              className="bg-blue-400 text-white py-2 px-6 rounded-full hover:bg-blue-500 transition-all"
+            >
+              Anterior
+            </button>
+            <button
+              onClick={nextPage}
+              className="bg-blue-400 text-white py-2 px-6 rounded-full hover:bg-blue-500 transition-all"
+            >
+              Próximo
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -66,62 +104,32 @@ interface ExperienceCardProps {
 const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience, index }) => {
   return (
     <motion.div
-      className="flex flex-col space-y-3 sm:space-y-4 bg-gray-900/40 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition-colors duration-300 backdrop-blur-sm"
+      className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:border-2 hover:border-blue-400 flex flex-col justify-between h-full"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      whileHover={{ scale: 1.02 }}
     >
-      <motion.h3 
-        className="text-2xl sm:text-3xl font-bold text-blue-400"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.3 + index * 0.2 }}
-      >
-        {experience.company}
-      </motion.h3>
-      <motion.p 
-        className="text-xs sm:text-sm text-gray-400"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.4 + index * 0.2 }}
-      >
-        {experience.period}
-      </motion.p>
-      <motion.p 
-        className="text-sm sm:text-base font-semibold text-gray-300"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.5 + index * 0.2 }}
-      >
-        {experience.role}
-      </motion.p>
-      <motion.p 
-        className="text-sm sm:text-base text-gray-300 leading-relaxed"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.6 + index * 0.2 }}
-      >
-        {experience.description}
-      </motion.p>
+      <h3 className="text-lg font-bold text-blue-400 mb-2">{experience.company}</h3>
+      <p className="text-xs text-gray-400 mb-2">{experience.period}</p>
+      <p className="text-sm text-gray-300 font-semibold mb-4">{experience.role}</p>
+      <p
+        className="text-sm text-gray-300 leading-relaxed flex-grow"
+        dangerouslySetInnerHTML={{ __html: experience.description }}
+      />
       {experience.link && (
-        <motion.a
-          href={experience.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 underline hover:text-blue-400 transition text-sm sm:text-base mt-2 inline-block"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.7 + index * 0.2 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Ver mais
-        </motion.a>
+        <div className="flex justify-center mt-4">
+          <a
+            href={experience.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center py-2 px-4 rounded-full text-sm font-semibold border-2 text-white border-blue-400 hover:bg-blue-400 transition-all"
+          >
+            Ver mais →
+          </a>
+        </div>
       )}
     </motion.div>
   );
 };
 
 export default Experiences;
-
