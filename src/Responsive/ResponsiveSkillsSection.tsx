@@ -1,10 +1,13 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { skillsData, Skill } from "@/constants/skillsData";
+import { ChevronLeft, ChevronRight } from "lucide-react"; // Ícones de seta
 
 const ResponsiveSkillsSection: React.FC = () => {
-  const [currentSkill, setCurrentSkill] = useState<Skill>(skillsData[0]); // Estado para o filtro
+  const [currentSkill, setCurrentSkill] = useState<Skill>(skillsData[0]);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const coursesPerPage = 2;
 
   const getLevelPosition = (level: number): number => (level / 3) * 100;
 
@@ -12,30 +15,36 @@ const ResponsiveSkillsSection: React.FC = () => {
     window.open(link, "_blank", "noopener,noreferrer");
   };
 
+  const handleScroll = (direction: "left" | "right") => {
+    if (!carouselRef.current) return;
+    const courseWidth = carouselRef.current.offsetWidth / coursesPerPage; // Largura de 1 curso visível
+    const scrollAmount = courseWidth * coursesPerPage; // Scroll de 2 cursos
+    if (direction === "left") {
+      carouselRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    } else {
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="py-8 px-4 bg-gradient-to-b from-[#111111] to-[#1a1a1a] min-h-screen text-white flex flex-col items-center">
+    <section className="py-6 px-4 bg-gradient-to-b from-[#111111] to-[#1a1a1a] min-h-screen text-white flex flex-col items-center">
       {/* Título */}
       <h1 className="text-3xl font-bold text-center mb-6 tracking-wide">
-        Habilidades <span className="text-blue-500">;</span>
+        Habilidades <span className="text-blue-400">;</span>
       </h1>
 
-      {/* Filtro Melhorado */}
-      <div className="flex flex-wrap justify-center gap-4 mb-8">
+      {/* Filtro */}
+      <div className="flex flex-wrap justify-center gap-3 mb-6">
         {skillsData.map((skill, index) => (
           <button
             key={index}
             onClick={() => setCurrentSkill(skill)}
-            className={`flex items-center py-2 px-4 rounded-full text-sm font-medium transition-all duration-300 ${
+            className={`py-2 px-4 text-sm font-semibold rounded-full transition-all duration-300 border-2 focus:outline-none ${
               currentSkill.title === skill.title
-                ? "bg-blue-500 text-white shadow-lg"
-                : "bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white"
+                ? "text-white bg-blue-500 border-blue-500 shadow-lg"
+                : "text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white hover:shadow-lg"
             }`}
           >
-            <img
-              src={skill.icon}
-              alt={skill.title}
-              className="w-5 h-5 mr-2 object-contain"
-            />
             {skill.title}
           </button>
         ))}
@@ -70,16 +79,6 @@ const ResponsiveSkillsSection: React.FC = () => {
               className="absolute top-0 left-0 h-3 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"
               style={{ width: `${getLevelPosition(currentSkill.level)}%` }}
             ></div>
-            <div
-              className="absolute top-0 h-3 w-0.5 bg-yellow-500"
-              style={{ left: "50%" }}
-            ></div>
-            <div
-              className="absolute top-0 h-3 w-0.5 bg-white"
-              style={{
-                left: `calc(${getLevelPosition(currentSkill.level)}% - 0.25rem)`,
-              }}
-            ></div>
           </div>
         </div>
 
@@ -89,16 +88,41 @@ const ResponsiveSkillsSection: React.FC = () => {
             <h4 className="text-sm font-semibold text-white mb-3">
               Cursos Relacionados
             </h4>
-            <div className="flex flex-col gap-2">
-              {currentSkill.courses.map((course, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleOpenCourse(currentSkill.coursesLinks[idx])}
-                  className="py-2 px-4 text-sm font-medium text-blue-400 border border-blue-400 rounded-md hover:bg-blue-400 hover:text-white transition-all duration-300 w-full text-left truncate"
-                >
-                  {course}
-                </button>
-              ))}
+
+            <div className="relative">
+              {/* Carrossel */}
+              <div
+                ref={carouselRef}
+                className="flex overflow-x-scroll scrollbar-hide gap-3"
+              >
+                {currentSkill.courses.map((course, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleOpenCourse(currentSkill.coursesLinks[idx])}
+                    className="min-w-[45%] py-2 px-4 text-sm font-medium text-blue-400 border border-blue-400 rounded-md hover:bg-blue-400 hover:text-white transition-all duration-300 truncate"
+                  >
+                    {course}
+                  </button>
+                ))}
+              </div>
+
+              {/* Botões de navegação */}
+              {currentSkill.courses.length > coursesPerPage && (
+                <>
+                  <button
+                    onClick={() => handleScroll("left")}
+                    className="absolute left-[-15px] top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition-all"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={() => handleScroll("right")}
+                    className="absolute right-[-15px] top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition-all"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </>
+              )}
             </div>
           </div>
         )}
