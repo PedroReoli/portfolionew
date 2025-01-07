@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
       <div className="container mx-auto flex-grow flex flex-col p-4 sm:p-6 lg:p-8">
         {/* Título */}
         <motion.h1 
-          className="text-4xl font-bold text-center mb-6 text-white"
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 text-white"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -43,7 +43,7 @@ const Skills: React.FC = () => {
         </motion.h1>
 
         {/* Conteúdo */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-grow max-h-[70vh]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 flex-grow max-h-[calc(100vh-150px)]">
           {/* Categorias */}
           <div className="space-y-3 col-span-1 overflow-auto max-h-full">
             {categorizedSkills.map((category, idx) => (
@@ -54,7 +54,7 @@ const Skills: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                <h2 className="text-lg font-bold text-blue-400 mb-2 border-b border-blue-400 pb-1">
+                <h2 className="text-base sm:text-lg font-bold text-blue-400 mb-2 border-b border-blue-400 pb-1">
                   {category.title}
                 </h2>
                 <div className="flex flex-wrap gap-2">
@@ -63,7 +63,7 @@ const Skills: React.FC = () => {
                       key={index}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`py-1.5 px-3 rounded-md text-sm font-medium transition-all duration-300 border ${
+                      className={`py-1 px-2 sm:py-1.5 sm:px-3 rounded-md text-xs sm:text-sm font-medium transition-all duration-300 border ${
                         selectedSkill?.title === skill.title
                           ? "bg-blue-400 text-white shadow-md"
                           : "bg-transparent border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
@@ -79,7 +79,7 @@ const Skills: React.FC = () => {
           </div>
 
           {/* Descrição */}
-          <div className="col-span-1 lg:col-span-2 overflow-auto flex">
+          <div className="col-span-1 md:col-span-1 lg:col-span-2 overflow-auto flex">
             <AnimatePresence mode="wait">
               {selectedSkill ? (
                 <motion.div
@@ -88,7 +88,7 @@ const Skills: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full h-full flex flex-col bg-gray-800 rounded-lg shadow-md p-5 max-h-[70vh]"
+                  className="w-full h-full flex flex-col bg-gray-800 rounded-lg shadow-md p-4 sm:p-5 max-h-[calc(100vh-150px)]"
                 >
                   <SkillsDescription skill={selectedSkill} />
                 </motion.div>
@@ -99,7 +99,7 @@ const Skills: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="text-gray-400 text-base text-center p-6 bg-gray-800 rounded-lg shadow-md h-full flex items-center justify-center max-h-[70vh]"
+                  className="text-gray-400 text-sm sm:text-base text-center p-4 sm:p-6 bg-gray-800 rounded-lg shadow-md h-full flex items-center justify-center max-h-[calc(100vh-150px)]"
                 >
                   Clique em uma habilidade para ver os detalhes.
                 </motion.div>
@@ -113,3 +113,4 @@ const Skills: React.FC = () => {
 };
 
 export default Skills;
+

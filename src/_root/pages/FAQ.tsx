@@ -30,11 +30,10 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="bg-[#111111] text-white min-h-screen py-16 px-5 flex items-center">
-      <div className="container mx-auto">
-        {/* Título */}
+    <section className="bg-[#111111] text-white min-h-screen py-12 md:py-16 px-4 md:px-5 flex items-center">
+      <div className="container mx-auto max-w-6xl">
         <motion.h2
-          className="text-4xl font-bold text-center mb-12"
+          className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -42,43 +41,46 @@ const FAQ = () => {
           Perguntas Frequentes <span className="text-blue-400">;</span>
         </motion.h2>
 
-        {/* FAQ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              className="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg hover:border-2 hover:border-blue-400 transition-transform duration-300 transform hover:scale-105 flex flex-col justify-between"
+              className="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg hover:border-2 hover:border-blue-400 transition-transform duration-300 transform hover:scale-105 flex flex-col h-full"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
             >
-              <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
+              <h3 className="text-lg md:text-xl font-semibold text-white mb-3 md:mb-4">
                 {faq.question}
               </h3>
-              <p className="text-sm md:text-base text-gray-300">
-                {faq.answer}
+              <div className="flex-grow flex flex-col">
+                <p className="text-sm md:text-base text-gray-300 mb-4">
+                  {faq.answer}
+                </p>
                 {faq.contacts && (
-                  <div className="flex flex-col space-y-2 mt-4">
-                    {faq.contacts.map((contact, idx) => (
-                      <a
-                        key={idx}
-                        href={contact.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-2 text-blue-400 hover:text-blue-500 transition-transform duration-300 hover:scale-105"
-                      >
-                        {contact.icon}
-                        <span>
-                          {contact.type === "email"
-                            ? "pedrosousa2160@gmail.com"
-                            : contact.type === "twitter"
-                            ? "@pedro_reoli"
-                            : "@01_dev_em_desenvolvimento"}
-                        </span>
-                      </a>
-                    ))}
+                  <div className="mt-auto">
+                    <div className="flex flex-col space-y-2">
+                      {faq.contacts.map((contact, idx) => (
+                        <a
+                          key={idx}
+                          href={contact.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 text-blue-400 hover:text-blue-500 transition-transform duration-300 hover:scale-105"
+                        >
+                          {contact.icon}
+                          <span className="text-sm md:text-base">
+                            {contact.type === "email"
+                              ? "pedrosousa2160@gmail.com"
+                              : contact.type === "twitter"
+                              ? "@pedro_reoli"
+                              : "@01_dev_em_desenvolvimento"}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 )}
-              </p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -88,3 +90,4 @@ const FAQ = () => {
 };
 
 export default FAQ;
+

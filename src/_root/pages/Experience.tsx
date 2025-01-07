@@ -9,7 +9,7 @@ const experiences = [
     period: "07/2024 - 11/2024",
     role: "Professor, Palestrante e Mentor",
     description:
-      "Ministrei <span class='text-blue-400'>aulas</span>, <span class='text-blue-400'>workshops</span> e <span class='text-blue-400'>palestras</span> sobre habilidades tecnológicas essenciais, como <span class='text-blue-400'>Excel</span>, <span class='text-blue-400'>Word</span>, e plataformas como <span class='text-blue-400'>Teams</span> e <span class='text-blue-400'>Meet</span>. Além disso, trabalhei com conceitos básicos de <span class='text-blue-400'>IA</span>, empoderando mães negras solteiras a ingressar no mundo da tecnologia.",
+      "Ministrei <span class='text-blue-400'>aulas</span>, <span class='text-blue-400'>workshops</span> e <span class='text-blue-400'>palestras</span> sobre habilidades tecnológicas essenciais para o mercado de trabalho. Além disso, trabalhei com conceitos básicos de <span class='text-blue-400'>IA</span>, empoderando mães negras solteiras a ingressar no mundo da tecnologia.",
     link: "https://evatech2024.netlify.app",
   },
   {
@@ -17,7 +17,7 @@ const experiences = [
     period: "Em andamento",
     role: "Professor, Redator e Dono",
     description:
-      "Plataforma educacional focada em novos entusiastas e <span class='text-blue-400'>programadores iniciantes</span> de TI. Oferece <span class='text-blue-400'>cursos</span>, <span class='text-blue-400'>blogs</span> e projetos práticos para compartilhar conhecimento e impulsionar carreiras na área de tecnologia.",
+      "Plataforma educacional focada em novos entusiastas e <span class='text-blue-400'>programadores iniciantes</span>. Oferece <span class='text-blue-400'>cursos</span>, <span class='text-blue-400'>blogs</span> e projetos práticos para compartilhar conhecimento e impulsionar carreiras na área de tecnologia.",
     link: "https://devemdesenvolvimento.com.br",
   },
   {
@@ -51,11 +51,11 @@ const Experiences = () => {
   return (
     <section
       id="experiences"
-      className="bg-[#111111] text-white min-h-screen py-16 px-5 flex items-center"
+      className="bg-[#111111] text-white py-16 px-4 sm:px-6 lg:px-8"
     >
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-7xl">
         <motion.h2
-          className="text-4xl font-bold text-center mb-12 text-white"
+          className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-white"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -63,7 +63,7 @@ const Experiences = () => {
           Experiências <span className="text-blue-400">;</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {paginatedExperiences.map((experience, index) => (
             <ExperienceCard key={index} experience={experience} index={index} />
           ))}
@@ -73,13 +73,13 @@ const Experiences = () => {
           <div className="flex justify-center mt-8 space-x-4">
             <button
               onClick={prevPage}
-              className="bg-blue-400 text-white py-2 px-6 rounded-full hover:bg-blue-500 transition-all"
+              className="bg-blue-400 text-white py-2 px-4 sm:px-6 rounded-full hover:bg-blue-500 transition-all text-sm sm:text-base"
             >
               Anterior
             </button>
             <button
               onClick={nextPage}
-              className="bg-blue-400 text-white py-2 px-6 rounded-full hover:bg-blue-500 transition-all"
+              className="bg-blue-400 text-white py-2 px-4 sm:px-6 rounded-full hover:bg-blue-500 transition-all text-sm sm:text-base"
             >
               Próximo
             </button>
@@ -109,20 +109,22 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience, index }) =>
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
     >
-      <h3 className="text-lg font-bold text-blue-400 mb-2">{experience.company}</h3>
-      <p className="text-xs text-gray-400 mb-2">{experience.period}</p>
-      <p className="text-sm text-gray-300 font-semibold mb-4">{experience.role}</p>
-      <p
-        className="text-sm text-gray-300 leading-relaxed flex-grow"
-        dangerouslySetInnerHTML={{ __html: experience.description }}
-      />
+      <div>
+        <h3 className="text-lg font-bold text-blue-400 mb-1">{experience.company}</h3>
+        <p className="text-xs text-gray-400 mb-2">{experience.period}</p>
+        <p className="text-sm text-gray-300 font-semibold mb-3">{experience.role}</p>
+        <p
+          className="text-sm text-gray-300 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: experience.description }}
+        />
+      </div>
       {experience.link && (
-        <div className="flex justify-center mt-4">
+        <div className="mt-4 pt-2 border-t border-gray-700">
           <a
             href={experience.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center py-2 px-4 rounded-full text-sm font-semibold border-2 text-white border-blue-400 hover:bg-blue-400 transition-all"
+            className="inline-flex items-center py-2 px-4 rounded-full text-sm font-semibold text-white bg-blue-500 hover:bg-blue-600 transition-all"
           >
             Ver mais →
           </a>
@@ -133,3 +135,4 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience, index }) =>
 };
 
 export default Experiences;
+
