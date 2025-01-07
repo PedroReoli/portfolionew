@@ -9,7 +9,7 @@ const experiences = [
     period: "07/2024 - 11/2024",
     role: "Professor, Palestrante e Mentor",
     description:
-      "Ministrei <span class='text-blue-400'>aulas</span>, <span class='text-blue-400'>workshops</span> e <span class='text-blue-400'>palestras</span> sobre habilidades tecnológicas essenciais, como <span class='text-blue-400'>Excel</span>, <span class='text-blue-400'>Word</span>, e plataformas como <span class='text-blue-400'>Teams</span> e <span class='text-blue-400'>Meet</span>. Além disso, trabalhei com conceitos básicos de <span class='text-blue-400'>IA</span>, empoderando mães negras solteiras a ingressar no mundo da tecnologia.",
+      "Ministrei <span class='text-blue-400'>aulas</span>, <span class='text-blue-400'>workshops</span> e <span class='text-blue-400'>palestras</span> sobre habilidades tecnológicas essenciais, promovendo o empoderamento digital de mulheres negras.",
     link: "https://evatech2024.netlify.app",
   },
   {
@@ -50,7 +50,7 @@ const ResponsiveExperience = () => {
 
   return (
     <motion.section
-      className="bg-[#111111] text-white py-8 px-4 flex flex-col items-center min-h-screen"
+      className="bg-[#111111] text-white py-8 px-4 flex flex-col items-center min-h-screen relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -70,20 +70,20 @@ const ResponsiveExperience = () => {
         {paginatedExperiences.map((experience, index) => (
           <motion.div
             key={index}
-            className="bg-gray-800 p-4 rounded-lg shadow-lg border border-gray-700 transition-transform duration-300 hover:scale-105 hover:border-blue-400"
+            className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 transition-transform duration-300 hover:scale-105 hover:border-blue-400"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
-            <h3 className="text-xl font-bold text-blue-400 mb-2">
+            <h3 className="text-xl font-bold text-blue-400 mb-4 truncate">
               {experience.company}
             </h3>
-            <p className="text-sm text-gray-400 mb-1">{experience.period}</p>
-            <p className="text-sm font-semibold text-gray-300 mb-3">
+            <p className="text-sm text-gray-400 mb-2">{experience.period}</p>
+            <p className="text-sm font-semibold text-gray-300 mb-4">
               {experience.role}
             </p>
             <p
-              className="text-sm text-gray-300 leading-relaxed"
+              className="text-sm text-gray-300 leading-relaxed mb-4"
               dangerouslySetInnerHTML={{ __html: experience.description }}
             ></p>
             {experience.link && (
@@ -91,7 +91,7 @@ const ResponsiveExperience = () => {
                 href={experience.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block mt-3 text-blue-400 underline text-sm hover:text-blue-500 transition-all"
+                className="block mx-auto text-center w-fit px-4 py-2 border border-blue-500 text-blue-500 rounded-lg transition-all hover:bg-blue-500 hover:text-white"
               >
                 Ver mais
               </a>
@@ -102,18 +102,46 @@ const ResponsiveExperience = () => {
 
       {/* Navegação */}
       {totalPages > 1 && (
-        <div className="flex justify-center mt-6 space-x-4">
+        <div className="fixed bottom-6 left-0 right-0 flex justify-center space-x-6">
           <button
             onClick={prevPage}
-            className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-all"
+            className="flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-700 text-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-transform transform hover:scale-110"
+            aria-label="Previous"
           >
-            ❮
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
           </button>
           <button
             onClick={nextPage}
-            className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-all"
+            className="flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-700 text-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-transform transform hover:scale-110"
+            aria-label="Next"
           >
-            ❯
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
           </button>
         </div>
       )}

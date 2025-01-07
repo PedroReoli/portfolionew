@@ -8,7 +8,7 @@ import Button from "@/components/Button";
 
 const ResponsiveProjects = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const projectsPerPage = 2;
+  const projectsPerPage = 1;
   const totalPages = Math.ceil(projectsData.length / projectsPerPage);
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
