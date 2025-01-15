@@ -43,13 +43,13 @@ const Skills: React.FC = () => {
         </motion.h1>
 
         {/* Conteúdo */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 flex-grow max-h-[calc(100vh-150px)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-[500px]">
           {/* Categorias */}
-          <div className="space-y-3 col-span-1 overflow-auto max-h-full">
+          <div className="space-y-3 col-span-1 overflow-auto bg-gray-800 p-4 rounded-lg shadow-md h-full">
             {categorizedSkills.map((category, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
-                className="p-3 bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                className="p-3 bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
@@ -79,7 +79,7 @@ const Skills: React.FC = () => {
           </div>
 
           {/* Descrição */}
-          <div className="col-span-1 md:col-span-1 lg:col-span-2 overflow-auto flex">
+          <div className="col-span-2 flex flex-col bg-gray-800 p-4 rounded-lg shadow-md h-full">
             <AnimatePresence mode="wait">
               {selectedSkill ? (
                 <motion.div
@@ -88,7 +88,7 @@ const Skills: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full h-full flex flex-col bg-gray-800 rounded-lg shadow-md p-4 sm:p-5 max-h-[calc(100vh-150px)]"
+                  className="flex-grow flex flex-col"
                 >
                   <SkillsDescription skill={selectedSkill} />
                 </motion.div>
@@ -99,7 +99,7 @@ const Skills: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="text-gray-400 text-sm sm:text-base text-center p-4 sm:p-6 bg-gray-800 rounded-lg shadow-md h-full flex items-center justify-center max-h-[calc(100vh-150px)]"
+                  className="flex-grow flex items-center justify-center text-gray-400 text-sm sm:text-base text-center"
                 >
                   Clique em uma habilidade para ver os detalhes.
                 </motion.div>
@@ -113,4 +113,3 @@ const Skills: React.FC = () => {
 };
 
 export default Skills;
-
