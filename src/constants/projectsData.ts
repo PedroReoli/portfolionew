@@ -16,7 +16,7 @@ export const projectsData: Project[] = [
     description: 'Site do projeto, feito com React, Tailwind, AppwriteDB e Javascript.',
     link: 'https://evatech2024.netlify.app',
     borderColor: 'border-red-500',
-    techStack: ['React', 'Tailwind', 'AppwriteDB', 'JavaScript'],
+    techStack: ['React', 'Tailwind', 'AppwriteDB', 'JS'],
     status: 'Finalizado',
     thumbnails: [
       '/projects/eva1.jpg',
@@ -32,7 +32,7 @@ export const projectsData: Project[] = [
     description: 'Meu projeto individual, feito em React, Tailwind, AppwriteDB.',
     link: 'https://peoplelly.netlify.app/',
     borderColor: 'border-blue-500',
-    techStack: ['React', 'Tailwind', 'AppwriteDB'],
+    techStack: ['React', 'Tailwind', 'AppwriteDB' , 'JS'],
     status: 'Beta',
     thumbnails: [
       '/projects/peop1.jpg',
@@ -47,7 +47,7 @@ export const projectsData: Project[] = [
     description: 'Espaço criado para compartilhar aprendizados, projetos e aulas.',
     link: 'https://devemdesenvolvimento.netlify.app',
     borderColor: 'border-green-500',
-    techStack: ['React', 'Tailwind', 'AppwriteDB'],
+    techStack: ['React', 'Tailwind', 'AppwriteDB', 'JS'],
     status: 'Beta',
     thumbnails: [
       '/projects/blog1.png',
