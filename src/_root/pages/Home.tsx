@@ -35,7 +35,21 @@ const Home = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 0.5, delay: 0.8 }}
         >
-          Olá <span role="img" aria-label="wave">👋🏻</span>, eu sou o <span className="text-[#00aaff]">Pedro</span>
+          Olá{' '}
+          <motion.span
+            role="img"
+            aria-label="wave"
+            className="inline-block"
+            initial={{ rotate: 0, y: 0 }}
+            animate={{ rotate: [0, 15, -10, 0] }}
+            transition={{
+              duration: 1.2, // Duração da animação
+              ease: "easeInOut", // Suavidade
+              delay: 1.0, // Sincronizado com o texto
+            }}
+          >
+            👋🏻
+          </motion.span>, eu sou o <span className="text-[#00aaff]">Pedro</span>
         </motion.h1>
         <motion.p 
           className="text-xl md:text-2xl text-gray-300"
@@ -69,4 +83,3 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, icon }) => (
 );
 
 export default Home;
-
