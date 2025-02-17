@@ -1,89 +1,109 @@
+"use client"
+
+import type React from "react"
+
 import { motion } from "framer-motion"
-import { FaEnvelope, FaTwitter, FaInstagram } from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaYoutube, FaInstagram, FaNewspaper } from "react-icons/fa"
+import { TypeAnimation } from "react-type-animation"
+import { Button } from "@/components/ui/Button"
 
-const FAQ = () => {
-  const faqs = [
-    {
-      question: "Quem é o seu público-alvo?",
-      answer:
-        "Meu público-alvo são desenvolvedores iniciantes, pessoas que desejam se aventurar no mundo da programação e clientes que buscam projetos personalizados. Também ofereço dicas e orientações para melhorar currículos e se destacar no mercado.",
-    },
-    {
-      question: "Qual é o prazo médio e o custo de um projeto?",
-      answer:
-        "Projetos simples geralmente são concluídos entre 1 a 2 semanas, enquanto projetos complexos podem levar de 1 a 3 meses. Para obter informações detalhadas sobre custos, entre em contato diretamente.",
-    },
-    {
-      question: "Como posso entrar em contato?",
-      answer: "Você pode me encontrar pelos canais abaixo:",
-      contacts: [
-        { type: "email", link: "mailto:pedrosousa2160@gmail.com", icon: <FaEnvelope /> },
-        { type: "twitter", link: "https://x.com/opedroreoli", icon: <FaTwitter /> },
-        { type: "instagram", link: "https://www.instagram.com/01_dev_em_desenvolvimento", icon: <FaInstagram /> },
-      ],
-    },
-    {
-      question: "Quais tecnologias você domina?",
-      answer:
-        "Trabalho com uma ampla variedade de tecnologias, incluindo React, Node.js, TypeScript, C#, ASP.NET e bancos de dados como SQL e MongoDB. Sempre busco usar a melhor solução para cada projeto.",
-    },
-  ]
-
+const Home = () => {
   return (
-    <section className="bg-[#111111] text-white min-h-screen py-12 md:py-16 px-4 md:px-5 flex items-center">
-      <div className="container mx-auto max-w-6xl">
-        <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Perguntas Frequentes <span className="text-blue-400">;</span>
-        </motion.h2>
+    <section className="bg-background text-foreground min-h-screen flex flex-col justify-center items-center p-4">
+      <motion.div
+        className="flex flex-wrap justify-center gap-4 mb-8 md:mb-10"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <SocialIcon href="mailto:pedrosousa2160@gmail.com" icon={<FaEnvelope />} />
+        <SocialIcon href="https://github.com/PedroReoli" icon={<FaGithub />} />
+        <SocialIcon
+          href="https://www.linkedin.com/in/pedro-lucas-reis-de-oliveira-sousa-a93945171/"
+          icon={<FaLinkedin />}
+        />
+        <SocialIcon href="https://devemdesenvolvimento.netlify.app/" icon={<FaNewspaper />} />
+        <SocialIcon href="https://www.youtube.com/@DevDesenvolvimento" icon={<FaYoutube />} />
+        <SocialIcon href="https://www.instagram.com/01_dev_em_desenvolvimento" icon={<FaInstagram />} />
+        <SocialIcon href="https://x.com/opedroreoli" icon={<FaTwitter />} />
+      </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              className="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg hover:border-2 hover:border-blue-400 transition-transform duration-300 transform hover:scale-105 flex flex-col h-full"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-            >
-              <h3 className="text-lg md:text-xl font-semibold text-white mb-3 md:mb-4">{faq.question}</h3>
-              <div className="flex-grow flex flex-col">
-                <p className="text-sm md:text-base text-gray-300 mb-4">{faq.answer}</p>
-                {faq.contacts && (
-                  <div className="mt-auto">
-                    <div className="flex flex-col space-y-2">
-                      {faq.contacts.map((contact, idx) => (
-                        <a
-                          key={idx}
-                          href={contact.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-2 text-blue-400 hover:text-blue-500 transition-transform duration-300 hover:scale-105"
-                        >
-                          {contact.icon}
-                          <span className="text-sm md:text-base">
-                            {contact.type === "email"
-                              ? "pedrosousa2160@gmail.com"
-                              : contact.type === "twitter"
-                                ? "@pedro_reoli"
-                                : "@01_dev_em_desenvolvimento"}
-                          </span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+      <motion.div
+        className="text-center"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        <motion.h1
+          className="text-4xl md:text-6xl font-extrabold mb-4 md:mb-6"
+          initial={{ scale: 0.5 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          Olá{" "}
+          <motion.span
+            role="img"
+            aria-label="wave"
+            className="inline-block"
+            animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+            transition={{ duration: 2.5, repeat: Number.POSITIVE_INFINITY, repeatDelay: 1 }}
+          >
+            👋🏻
+          </motion.span>
+          , eu sou o <span className="text-primary">Pedro</span>
+        </motion.h1>
+        <motion.div
+          className="text-xl md:text-2xl text-muted-foreground mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.1 }}
+        >
+          <TypeAnimation
+            sequence={[
+              "Desenvolvedor Fullstack Júnior",
+              2000,
+              "Apaixonado por Tecnologia",
+              2000,
+              "Sempre Aprendendo",
+              2000,
+            ]}
+            wrapper="span"
+            speed={50}
+            repeat={Number.POSITIVE_INFINITY}
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
+          <Button variant="default" className="mr-4">
+            Entre em Contato
+          </Button>
+          <Button variant="secondary">Ver Projetos</Button>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
 
-export default FAQ
+interface SocialIconProps {
+  href: string
+  icon: React.ReactNode
+}
+
+const SocialIcon: React.FC<SocialIconProps> = ({ href, icon }) => (
+  <motion.a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-primary text-2xl md:text-3xl transition-colors"
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    {icon}
+  </motion.a>
+)
+
+export default Home
 
