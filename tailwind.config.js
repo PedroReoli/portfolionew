@@ -1,77 +1,88 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+const { fontFamily } = require("tailwindcss/defaultTheme")
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ['class'],
+  darkMode: ["class"],
   content: [
-    './src/_root/pages/**/*.{ts,tsx}',
-    './src/components/**/*.{ts,tsx}',
-    './public/index.html',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: "2rem",
       screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1400px',
+        "2xl": "1400px",
       },
     },
     extend: {
-      colors: {
-        'primary-500': '#8C429D',
-        'background-card-color': '#F1EEDD',
-        'primary-600': '#FF5A5A',
-        'secondary-500': '#FFB620',
-        'off-white': '#D0DFFF',
-        'red': '#FF5A5A',
-        'dark-1': '#000000',
-        'dark-2': '#FFFFFF',
-        'dark-3': '#101012',
-        'dark-4': '#ffff',
-        'light-1': '#FFFFFF',
-        'light-2': '#5C5C7B',
-        'light-3': '#7878A3',
-        'light-4': '#5C5C7B',
-        'purple-1': '#8C429D',
-         // Bordas
-         'red-500': '#ef4444',
-         'green-500': '#22c55e',
-         'purple-500': '#a855f7',
-         'yellow-500': '#eab308',
-         'pink-500': '#ec4899',
-      },
-      screens: {
-        xs: '480px',
-      },
-      width: {
-        420: '420px',
-        465: '465px',
-      },
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
+        sans: ["Poppins", ...fontFamily.sans],
+      },
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        'accordion-down': {
+        "accordion-down": {
           from: { height: 0 },
-          to: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
         },
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-      },
-      backgroundImage: {
-        'background-wallpaper': "url('/assets/wallpaper.svg')",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        float: "float 3s ease-in-out infinite",
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
-};
+  plugins: [require("tailwindcss-animate")],
+}
+

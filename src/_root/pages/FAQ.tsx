@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { FaEnvelope, FaTwitter, FaInstagram } from "react-icons/fa";
+import { motion } from "framer-motion"
+import { FaEnvelope, FaTwitter, FaInstagram } from "react-icons/fa"
 
 const FAQ = () => {
   const faqs = [
@@ -27,7 +27,7 @@ const FAQ = () => {
       answer:
         "Trabalho com uma ampla variedade de tecnologias, incluindo React, Node.js, TypeScript, C#, ASP.NET e bancos de dados como SQL e MongoDB. Sempre busco usar a melhor solução para cada projeto.",
     },
-  ];
+  ]
 
   return (
     <section className="bg-[#111111] text-white min-h-screen py-12 md:py-16 px-4 md:px-5 flex items-center">
@@ -49,13 +49,9 @@ const FAQ = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
             >
-              <h3 className="text-lg md:text-xl font-semibold text-white mb-3 md:mb-4">
-                {faq.question}
-              </h3>
+              <h3 className="text-lg md:text-xl font-semibold text-white mb-3 md:mb-4">{faq.question}</h3>
               <div className="flex-grow flex flex-col">
-                <p className="text-sm md:text-base text-gray-300 mb-4">
-                  {faq.answer}
-                </p>
+                <p className="text-sm md:text-base text-gray-300 mb-4">{faq.answer}</p>
                 {faq.contacts && (
                   <div className="mt-auto">
                     <div className="flex flex-col space-y-2">
@@ -72,8 +68,8 @@ const FAQ = () => {
                             {contact.type === "email"
                               ? "pedrosousa2160@gmail.com"
                               : contact.type === "twitter"
-                              ? "@pedro_reoli"
-                              : "@01_dev_em_desenvolvimento"}
+                                ? "@pedro_reoli"
+                                : "@01_dev_em_desenvolvimento"}
                           </span>
                         </a>
                       ))}
@@ -86,8 +82,8 @@ const FAQ = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default FAQ;
+export default FAQ
 

@@ -1,4 +1,8 @@
-import React from "react";
+import  React from "react"
+import { motion } from "framer-motion"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/Button"
+import { Link } from "react-router-dom"
 
 const blogs = [
   {
@@ -14,50 +18,52 @@ const blogs = [
     link: "https://devemdesenvolvimento.netlify.app/post/comandos-iniciais-sql",
   },
   {
-    title: "Programação Orientada a Objetos: Estruturando Sistemas Reais",
+    title: "POO: Estruturando Sistemas Reais",
     description:
       "Aprenda como a Programação Orientada a Objetos (POO) revoluciona o desenvolvimento de software. Com exemplos práticos do mundo real.",
     link: "https://devemdesenvolvimento.netlify.app/post/programao-orientada-a-objetos-estruturando-sistemas-reais",
   },
-];
+]
 
 const ResponsiveBlogSection: React.FC = () => {
   return (
-    <section className="py-10 px-4 bg-gradient-to-b from-[#111111] to-[#1a1a1a] text-white">
-      {/* Título */}
-      <h1 className="text-2xl font-bold text-center mb-6 tracking-wide">
-        Últimos Posts no Blog <span className="text-blue-500">;</span>
-      </h1>
+    <section className="py-8 px-4 bg-background">
+      <motion.h2
+        className="text-2xl font-bold text-center mb-6"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Últimos Posts no Blog <span className="text-primary">;</span>
+      </motion.h2>
 
-      {/* Posts */}
-      <div className="space-y-6 w-full max-w-md mx-auto">
+      <div className="space-y-4">
         {blogs.map((blog, index) => (
-          <article
+          <motion.div
             key={index}
-            className="bg-[#222222] rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            {/* Título do Blog */}
-            <h3 className="text-lg font-semibold text-blue-400 mb-3">
-              {blog.title}
-            </h3>
-
-            {/* Descrição */}
-            <p className="text-sm text-gray-300 mb-4">{blog.description}</p>
-
-            {/* Link */}
-            <a
-              href={blog.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-blue-400 underline hover:text-blue-500 transition-all"
-            >
-              Ler mais →
-            </a>
-          </article>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg text-primary">{blog.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">{blog.description}</p>
+                <Button variant="outline" size="sm">
+                  <Link to={blog.link} target="_blank" rel="noopener noreferrer">
+                    Ler mais →
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ResponsiveBlogSection;
+export default ResponsiveBlogSection
+

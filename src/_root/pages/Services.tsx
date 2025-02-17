@@ -1,132 +1,62 @@
-'use client'
+import { motion } from "framer-motion"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-import { motion } from "framer-motion";
-import Button from "@/components/Button"
+const services = [
+  {
+    title: "Desenvolvimento Web",
+    description: "Criação de sites e aplicações web responsivas e modernas.",
+    icon: "🌐",
+  },
+  {
+    title: "Desenvolvimento Mobile",
+    description: "Desenvolvimento de aplicativos móveis para iOS e Android.",
+    icon: "📱",
+  },
+  {
+    title: "Consultoria em TI",
+    description: "Assessoria e consultoria em soluções tecnológicas para empresas.",
+    icon: "💼",
+  },
+]
 
 const Services = () => {
   return (
-    <motion.section 
-      id="services" 
-      className="bg-[#111111] text-white min-h-screen py-20 px-5"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      <div className="container mx-auto">
-        {/* Título */}
-        <motion.h2 
-          className="text-4xl font-bold text-center mb-16"
-          initial={{ opacity: 0, y: -50 }}
+    <section className="bg-background text-foreground py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <motion.h2
+          className="text-3xl sm:text-4xl font-bold mb-8 text-center"
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5 }}
         >
-          Serviços <span className="text-blue-400">;</span>
+          Serviços <span className="text-primary">;</span>
         </motion.h2>
-
-        {/* Serviços */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Serviço 1 */}
-          <ServiceCard
-            icon="/assets/uxui.svg"
-            title="UX / UI Design"
-            description="Desenho interfaces claras, objetivas e intuitivas, priorizando a experiência do usuário."
-          />
-
-          {/* Serviço 2 */}
-          <ServiceCard
-            icon="/assets/prog.svg"
-            title="Desenvolvimento FullStack"
-            description="Construo soluções completas, desde interfaces até back-ends robustos e escaláveis."
-          />
-
-          {/* Serviço 3 */}
-          <ServiceCard
-            icon="/assets/hands.svg"
-            title="Mentoria e Aulas"
-            description="Orientação personalizada para estudos, carreiras e projetos na área de programação."
-          />
-        </motion.div>
-
-        {/* Botão "Entre em Contato" */}
-        <motion.div 
-          className="flex justify-center mt-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <Button href="mailto:pedrosousa2160@gmail.com">
-            Entre em Contato
-          </Button>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center">
+                    <span className="text-2xl mr-2">{service.icon}</span>
+                    {service.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{service.description}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </motion.section>
-  );
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
-
-interface ServiceCardProps {
-  icon: string;
-  title: string;
-  description: string;
+    </section>
+  )
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) => (
-  <motion.article 
-    className="relative p-8 rounded-xl flex flex-col items-center transition-all duration-300 bg-gray-800 hover:bg-gray-700 shadow-lg"
-    variants={cardVariants}
-    whileHover={{ scale: 1.05, border: '2px solid #3B82F6', boxShadow: "0 10px 30px -15px rgba(59, 130, 246, 0.4)" }}
-  >
-    <motion.div 
-      className="absolute -top-10 w-20 h-20 rounded-full flex items-center justify-center shadow-md bg-[#1e293b] border-2 border-[#3B82F6]"
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 0.4, delay: 0.2 }}
-    >
-      <img src={icon} alt={`ícone ${title}`} className="w-12 h-12" />
-    </motion.div>
-    <motion.h3 
-      className="text-2xl font-bold mb-4 mt-12 text-center text-blue-400"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.4 }}
-    >
-      {title}
-    </motion.h3>
-    <motion.p 
-      className="text-lg text-center text-gray-300 leading-relaxed"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4, delay: 0.6 }}
-    >
-      {description}
-    </motion.p>
-  </motion.article>
-);
+export default Services
 
-export default Services;

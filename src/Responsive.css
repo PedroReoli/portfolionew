@@ -1,311 +1,192 @@
 /* Responsive.css */
-/* ////////////////////////////////////////// */
-/* TOPBAR - RESPONSIVIDADE  */
-/* //////////////////////////////////////////// */
-/* Centraliza o logotipo em dispositivos móveis pequenos (até 640px) */
-@media (max-width: 640px) {
-    .topbar-container {
-      justify-content: center;
-    }
-  
-    .topbar-logo {
-      text-align: center;
-      flex: 1; /* Garante que o logo ocupe todo o espaço disponível */
-    }
-  
-    /* Esconde o menu em telas pequenas */
-    nav {
-      display: none;
-    }
-  }
-  /* ////////////////////////////////////////// */
-/* BOTTOMBAR - RESPONSIVIDADE  */
-/* //////////////////////////////////////////// */
-/* Responsividade para max-width 640px */
-/* Responsividade para max-width 640px */
-@media (max-width: 640px) {
-    .bottombar-container {
-      justify-content: space-around;
-      padding: 0 10px;
-    }
-  
-    .bottombar-container a {
-      flex: 1;
-      text-align: center;
-      margin-right: 10px;
-      margin-left: 10px;
-      padding: 8px 0;
-    }
-  }
-  
-  /* Adicionando media query para dispositivos com 325px de largura */
-  @media (max-width: 325px) {
-    .bottombar-container a {
-      margin-right: 8px; /* Reduzindo o espaçamento lateral */
-      margin-left: -2px;
-      font-size: 16px; /* Ajustando o tamanho da fonte */
-    }
-    
-    .bottombar-container {
-      padding: 0 5px; /* Reduzindo o padding lateral */
-    }
-  }
-  /* ////////////////////////////////////////// */
-/* HOME - RESPONSIVIDADE  */
-/* ////////////////////////////////////////// */
 
-/* Para telas até 640px */
-@media (max-width: 640px) {
-    #home .container {
-      align-items: center;
-      text-align: center;
-    }
-  
-    #home h1 {
-      font-size: 2.5rem; /* Ajuste do tamanho da fonte para telas menores */
-      text-align: center; /* Centraliza o texto */
-      margin-bottom: 1rem;
-    }
-  
-    #home .text-2xl {
-      font-size: 1.25rem; /* Ajuste do tamanho da fonte do texto animado */
-      justify-content: center; /* Centraliza o texto animado */
-    }
-  
-    #home img {
-      margin-top: 2rem; /* Espaçamento superior da imagem */
-      width: 60%; /* Ajusta a largura da imagem para telas menores */
-    }
-    
-    #home .btn-enhanced {
-      display: inline-block;
-      margin-top: 1.5rem; /* Espaçamento entre o botão e a imagem */
-      padding: 0.75rem 1.5rem;
-      font-size: 0.875rem; /* Ajuste do tamanho da fonte do botão */
-    }
+/* General styles for small screens */
+@media (max-width: 720px) {
+  .container {
+    @apply px-4;
   }
-  
-  /* Para telas até 325px */
-  @media (max-width: 325px) {
-    #home h1 {
-      font-size: 1.4rem; /* Reduz ainda mais o tamanho da fonte para telas menores */
-      margin-bottom: 1rem;
-    }
-  
-    #home .text-2xl {
-      font-size: 1rem; /* Ajuste do tamanho da fonte do texto animado */
-    }
-  
-    #home img {
-      margin-top: 1rem;
-      width: 70%; /* Ajusta a imagem para ocupar mais espaço em telas muito pequenas */
-    }
-  
-    #home .btn-enhanced {
-      padding: 0.5rem 1rem;
-      font-size: 0.75rem; /* Reduz o tamanho da fonte do botão */
-    }
-  /* ////////////////////////////////////////// */
-/* ABOUT - RESPONSIVIDADE  */
-/* ////////////////////////////////////////// */
-/* Responsive.css */
-/* ////////////////////////////////////////////////// */
-/* Responsividade para 640px */
-/* ////////////////////////////////////////////////// */
-@media (max-width: 640px) {
-    #about {
-      padding: 15px 20px;
-    }
-  
-    #about h2 {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-  
-    #about p {
-      font-size: 1.1rem;
-      line-height: 1.6rem;
-      text-align: left; /* Alinhamento à esquerda para evitar espaçamentos irregulares */
-      margin-bottom: 15px;
-    }
-  
-    #about span {
-      display: inline-block;
-      margin-bottom: 10px;
-    }
+
+  h1 {
+    @apply text-2xl font-bold mb-4;
+  }
+
+  h2 {
+    @apply text-xl font-semibold mb-3;
+  }
+
+  p {
+    @apply text-sm mb-2;
+  }
 }
 
-/* ////////////////////////////////////////////////// */
-/* Responsividade para 325px */
-/* ////////////////////////////////////////////////// */
-@media (max-width: 325px) {
-    #about {
-      padding: 10px;
-    }
-  
-    #about h2 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-  
-    #about p {
-      font-size: 0.785rem;
-      line-height: 1rem;
-      margin-bottom: 5px;
-      text-align:justify; /* Alinhamento à esquerda para evitar espaçamentos irregulares */
-    }
+/* Specific component styles */
 
-    #about span {
-      font-size: 0.785rem;
-    }
-  
-    #about p + p {
-      margin-top: 5px;
-    }
-
-    #about p:first-child {
-      margin-top: 0;
-    }
-
-    #about p:last-child {
-      margin-bottom: 0;
-    }
+/* ResponsiveAbout */
+.responsive-about-image {
+  @apply w-24 h-24 rounded-full mx-auto mb-4 border-2 border-primary;
+  transition: opacity 0.3s ease-in-out;
 }
-  /* ////////////////////////////////////////// */
-/* Experience - RESPONSIVIDADE  */
-/* ////////////////////////////////////////// */
-@media (max-width: 325px) {
-    #experiences {
-      padding: 10px; /* Ajuste no padding geral */
-    }
-  
-    #experiences h2 {
-      font-size: 1.5rem; /* Reduzindo o tamanho do título */
-      margin-bottom: 15px;
-    }
-  
-    #experiences .flex-col {
-      flex-direction: column; /* Mantém a orientação da flexbox */
-    }
-  
-    #experiences .w-full {
-      width: 100%; /* Garante que os itens ocupem a largura total */
-    }
-  
-    #experiences ul {
-      margin-bottom: 10px; /* Adiciona um espaço inferior */
-    }
-  
-    #experiences .experience-item {
-      font-size: 0.875rem; /* Ajusta o tamanho do texto dos itens */
-      padding: 8px; /* Adiciona padding aos itens */
-    }
-  
-    #experiences .experience-title {
-      font-size: 1.25rem; /* Ajusta o tamanho do texto do título da experiência */
-    }
-  
-    #experiences .experience-period {
-      font-size: 0.875rem; /* Ajusta o tamanho do texto do período */
-      margin-bottom: 5px; /* Reduz o espaço abaixo do período */
-    }
-  
-    #experiences .p-5 {
-      padding: 10px; /* Ajuste no padding do contêiner de experiência */
-    }
+
+/* ResponsiveExperience */
+.experience-card {
+  @apply mb-4 p-4 bg-card text-card-foreground rounded-lg shadow-md;
+}
+
+.experience-title {
+  @apply text-lg font-semibold text-primary mb-2;
+}
+
+.experience-period {
+  @apply text-sm text-muted-foreground mb-1;
+}
+
+/* ResponsiveProjects */
+.project-card {
+  @apply mb-4 p-4 bg-card text-card-foreground rounded-lg shadow-md;
+}
+
+.project-title {
+  @apply text-lg font-semibold text-primary mb-2;
+}
+
+.project-description {
+  @apply text-sm text-muted-foreground mb-2;
+}
+
+.project-tech {
+  @apply inline-block px-2 py-1 text-xs bg-secondary text-secondary-foreground rounded mr-2 mb-2;
+}
+
+/* ResponsiveServices */
+.service-card {
+  @apply mb-4 p-4 bg-card text-card-foreground rounded-lg shadow-md;
+}
+
+.service-icon {
+  @apply w-12 h-12 mx-auto mb-2;
+}
+
+.service-title {
+  @apply text-lg font-semibold text-primary mb-2;
+}
+
+/* ResponsiveSkillsSection */
+.skill-card {
+  @apply mb-4 p-4 bg-card text-card-foreground rounded-lg shadow-md;
+}
+
+.skill-level {
+  @apply w-full h-2 bg-secondary rounded-full overflow-hidden;
+}
+
+.skill-level-fill {
+  @apply h-full bg-primary;
+  transition: width 0.5s ease-in-out;
+}
+
+/* ResponsiveBlogSection */
+.blog-card {
+  @apply mb-4 p-4 bg-card text-card-foreground rounded-lg shadow-md;
+}
+
+.blog-title {
+  @apply text-lg font-semibold text-primary mb-2;
+}
+
+.blog-description {
+  @apply text-sm text-muted-foreground mb-2;
+}
+
+/* ResponsiveFAQ */
+.faq-item {
+  @apply mb-4 p-4 bg-card text-card-foreground rounded-lg shadow-md;
+}
+
+.faq-question {
+  @apply text-lg font-semibold text-primary mb-2 cursor-pointer;
+}
+
+.faq-answer {
+  @apply text-sm text-muted-foreground;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.faq-answer.active {
+  max-height: 500px;
+  transition: max-height 0.5s ease-in;
+}
+
+/* ResponsiveEnd */
+.end-section {
+  @apply text-center py-8;
+}
+
+.end-image {
+  @apply w-24 h-24 rounded-full mx-auto mb-4;
+}
+
+.end-title {
+  @apply text-xl font-bold mb-2;
+}
+
+.end-message {
+  @apply text-sm text-muted-foreground mb-4;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-
-
-  /* ////////////////////////////////////////// */
-/* Projects - RESPONSIVIDADE  */
-/* ////////////////////////////////////////// */
-
-@media (max-width: 325px) {
-    #projects {
-        padding: 10px;
-    }
-  
-    #projects h2 {
-        font-size: 1.75rem; /* Tamanho do título ajustado */
-        margin-bottom: 15px;
-        text-align: center;
-    }
-
-    #projects .grid {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    #projects article {
-        padding: 15px;
-        font-size: 0.875rem; /* Ajusta o tamanho da fonte dentro dos projetos */
-        text-align: center;  /* Centraliza o texto para melhor apresentação */
-    }
-
-    #projects h3 {
-        font-size: 1.25rem;
-        margin-bottom: 10px;
-    }
-
-    #projects p {
-        font-size: 0.875rem;
-        margin-bottom: 10px;
-    }
-
-    #projects a {
-        font-size: 0.875rem;
-    }
-
-    #projects .btn-enhanced {
-        font-size: 0.875rem; /* Tamanho do botão ajustado */
-        padding: 8px 16px;   /* Padding reduzido para o botão */
-    }
-}
-
-  /* ////////////////////////////////////////// */
-/* Services - RESPONSIVIDADE  */
-/* ////////////////////////////////////////// */
-@media (max-width: 325px) {
-    #services {
-        padding: 10px;
-    }
-
-    #services h2 {
-        font-size: 1.75rem; /* Ajusta o tamanho do título */
-        margin-bottom: 15px;
-        text-align: center;
-    }
-
-    #services .grid {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    #services article {
-        padding: 15px;
-        font-size: 0.875rem; /* Tamanho da fonte ajustado */
-        text-align: center;  /* Centraliza o texto dentro dos artigos */
-    }
-
-    #services h3 {
-        font-size: 1.25rem;
-        margin-bottom: 10px;
-    }
-
-    #services p {
-        font-size: 0.875rem;
-        margin-bottom: 10px;
-    }
-
-    #services .btn-enhanced {
-        font-size: 0.875rem; /* Tamanho da fonte do botão ajustado */
-        padding: 8px 16px;   /* Padding do botão ajustado */
-        width: 100%; /* Botão ocupa a largura total */
-        max-width: 200px; /* Limite de largura para não ficar exagerado */
-    }
-}
+  to {
+    opacity: 1;
   }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.5s ease-out;
+}
+
+/* Utility classes */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+}
+
+.hover-scale {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Dark mode adjustments */
+.dark .text-gradient {
+  @apply bg-gradient-to-r from-blue-400 to-purple-400;
+}
+
+.dark .skill-level {
+  @apply bg-gray-700;
+}
+
+.dark .skill-level-fill {
+  @apply bg-blue-500;
+}
+
