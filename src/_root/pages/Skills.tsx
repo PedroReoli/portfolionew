@@ -1,115 +1,136 @@
-'use client'
+"use client"
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { skillsData, Skill } from "@/constants/skillsData";
-import SkillsDescription from "@/components/SkillsDescription";
+import { motion } from "framer-motion"
+import { skillsData } from "@/constants/skillsData"
 
-const Skills: React.FC = () => {
-  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
-
-  const handleClick = (skill: Skill) => {
-    setSelectedSkill((prevSkill) => (prevSkill?.title === skill.title ? null : skill));
-  };
-
+const Skills = () => {
   const categories = [
     { key: "frontend", title: "Front-End" },
     { key: "backend", title: "Back-End" },
     { key: "database", title: "Banco de Dados" },
     { key: "devops", title: "Ferramentas" },
-  ];
+  ]
 
-  const categorizedSkills = categories.map((category) => ({
-    ...category,
-    skills: skillsData.filter((skill) => skill.area.toLowerCase() === category.key),
-  }));
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  }
 
   return (
-    <motion.div 
-      className="bg-[#111111] text-white min-h-screen flex flex-col"
+    <motion.section
+      id="Skills"
+      className="bg-[#111111] text-white min-h-screen py-20 px-5"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8 }}
     >
-      <div className="container mx-auto flex-grow flex flex-col p-4 sm:p-6 lg:p-8">
+      <div className="container mx-auto">
         {/* Título */}
-        <motion.h1 
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 text-white"
-          initial={{ opacity: 0, y: -20 }}
+        <motion.h2
+          className="text-4xl font-bold text-center mb-16"
+          initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Habilidades <span className="text-blue-400">;</span>
-        </motion.h1>
+          Habilidades<span className="text-blue-400">;</span>
+        </motion.h2>
 
-        {/* Conteúdo */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-[500px]">
-          {/* Categorias */}
-          <div className="space-y-3 col-span-1 overflow-auto bg-gray-800 p-4 rounded-lg shadow-md h-full">
-            {categorizedSkills.map((category, idx) => (
-              <motion.div
-                key={idx}
-                className="p-3 bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-              >
-                <h2 className="text-base sm:text-lg font-bold text-blue-400 mb-2 border-b border-blue-400 pb-1">
+        <div className="space-y-12">
+          {categories.map((category, idx) => {
+            const categorySkills = skillsData.filter((skill) => skill.area.toLowerCase() === category.key)
+
+            return (
+              <div key={category.key} className="space-y-6">
+                <motion.h3
+                  className="text-2xl font-bold text-blue-400"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 + idx * 0.1 }}
+                >
                   {category.title}
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, index) => (
-                    <motion.button
-                      key={index}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`py-1 px-2 sm:py-1.5 sm:px-3 rounded-md text-xs sm:text-sm font-medium transition-all duration-300 border ${
-                        selectedSkill?.title === skill.title
-                          ? "bg-blue-400 text-white shadow-md"
-                          : "bg-transparent border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
-                      }`}
-                      onClick={() => handleClick(skill)}
-                    >
-                      {skill.title}
-                    </motion.button>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  <span className="text-blue-400">;</span>
+                </motion.h3>
 
-          {/* Descrição */}
-          <div className="col-span-2 flex flex-col bg-gray-800 p-4 rounded-lg shadow-md h-full">
-            <AnimatePresence mode="wait">
-              {selectedSkill ? (
                 <motion.div
-                  key={selectedSkill.title}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex-grow flex flex-col"
+                  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
                 >
-                  <SkillsDescription skill={selectedSkill} />
+                  {categorySkills.map((skill) => (
+                    <motion.div
+                      key={skill.title}
+                      variants={cardVariants}
+                      className="group relative bg-gray-800 rounded-xl p-4 hover:bg-gray-700 transition-all duration-300 flex flex-col items-center"
+                      whileHover={{ scale: 1.05, boxShadow: "0 8px 20px -8px rgba(59, 130, 246, 0.4)" }}
+                    >
+                      <div className="w-12 h-12 rounded-lg bg-[#1e293b] border border-blue-400/20 flex items-center justify-center mb-3 group-hover:border-blue-400 transition-colors duration-300">
+                        <img
+                          src={skill.icon || "/placeholder.svg"}
+                          alt={skill.title}
+                          className="w-7 h-7 object-contain"
+                        />
+                      </div>
+
+                      <h4 className="text-sm font-medium text-center mb-2 group-hover:text-blue-400 transition-colors duration-300">
+                        {skill.title}
+                      </h4>
+
+                      <div className="w-full h-0.5 bg-gray-700 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full bg-blue-400"
+                          initial={{ width: 0 }}
+                          animate={{ width: `${(skill.level / 3) * 100}%` }}
+                          transition={{ duration: 0.8, delay: 0.2 }}
+                        />
+                      </div>
+
+                      {skill.courses.length > 0 && (
+                        <div className="absolute inset-0 bg-gray-800/95 rounded-xl p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <div className="overflow-y-auto max-h-full scrollbar-thin scrollbar-thumb-blue-400">
+                            <div className="flex flex-col gap-1.5">
+                              {skill.courses.map((course, idx) => (
+                                <a
+                                  key={idx}
+                                  href={skill.coursesLinks[idx]}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-[10px] px-2 py-1 bg-[#1e293b] text-gray-300 rounded-md hover:bg-blue-400/10 hover:text-blue-400 transition-all duration-300 text-center"
+                                >
+                                  {course}
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
                 </motion.div>
-              ) : (
-                <motion.div
-                  key="placeholder"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex-grow flex items-center justify-center text-gray-400 text-sm sm:text-base text-center"
-                >
-                  Clique em uma habilidade para ver os detalhes.
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+              </div>
+            )
+          })}
         </div>
       </div>
-    </motion.div>
-  );
-};
+    </motion.section>
+  )
+}
 
-export default Skills;
+export default Skills
+
