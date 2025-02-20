@@ -1,136 +1,226 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { skillsData } from "@/constants/skillsData"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Database, Server, Globe, Workflow } from 'lucide-react'
+import { Tilt } from 'react-tilt'
+import { skillsData, type Skill } from "@/constants/skillsData"
+
+const defaultTiltOptions = {
+  reverse: false,
+  max: 15,
+  perspective: 1000,
+  scale: 1.02,
+  speed: 1000,
+  transition: true,
+  axis: null,
+  reset: true,
+  easing: "cubic-bezier(.03,.98,.52,.99)",
+}
 
 const Skills = () => {
-  const categories = [
-    { key: "frontend", title: "Front-End" },
-    { key: "backend", title: "Back-End" },
-    { key: "database", title: "Banco de Dados" },
-    { key: "devops", title: "Ferramentas" },
+  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
+
+  const technologies = [
+    {
+      category: "Front-End",
+      icon: <Globe className="w-6 h-6 text-[#60A5FA]" />,
+      skills: skillsData.filter((skill) => skill.area === "frontend"),
+    },
+    {
+      category: "Back-End",
+      icon: <Server className="w-6 h-6 text-[#60A5FA]" />,
+      skills: skillsData.filter((skill) => skill.area === "backend"),
+    },
+    {
+      category: "Banco de Dados",
+      icon: <Database className="w-6 h-6 text-[#60A5FA]" />,
+      skills: skillsData.filter((skill) => skill.area === "database"),
+    },
+    {
+      category: "Ferramentas",
+      icon: <Workflow className="w-6 h-6 text-[#60A5FA]" />,
+      skills: skillsData.filter((skill) => skill.area === "tools"),
+    },
   ]
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
+  const getLevelBars = (level: number) => {
+    return (
+      <div className="flex gap-1">
+        {[1, 2, 3].map((bar) => (
+          <div
+            key={bar}
+            className={`h-1.5 w-4 rounded-full ${
+              bar <= level
+                ? "bg-[#60A5FA]"
+                : bar - 0.5 <= level
+                  ? "bg-gradient-to-r from-[#60A5FA] to-transparent"
+                  : "bg-[#1E293B]"
+            }`}
+          />
+        ))}
+      </div>
+    )
   }
 
   return (
     <motion.section
       id="Skills"
-      className="bg-[#111111] text-white min-h-screen py-20 px-5"
+      className="bg-[#111111] text-white min-h-screen py-20 px-5 overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="container mx-auto">
-        {/* Título */}
+      <div className="container mx-auto max-w-7xl">
         <motion.h2
           className="text-4xl font-bold text-center mb-16"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6 }}
         >
-          Habilidades<span className="text-blue-400">;</span>
+          Habilidades<span className="text-[#60A5FA]">;</span>
         </motion.h2>
 
-        <div className="space-y-12">
-          {categories.map((category, idx) => {
-            const categorySkills = skillsData.filter((skill) => skill.area.toLowerCase() === category.key)
-
-            return (
-              <div key={category.key} className="space-y-6">
-                <motion.h3
-                  className="text-2xl font-bold text-blue-400"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 + idx * 0.1 }}
-                >
-                  {category.title}
-                  <span className="text-blue-400">;</span>
-                </motion.h3>
-
-                <motion.div
-                  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {categorySkills.map((skill) => (
-                    <motion.div
-                      key={skill.title}
-                      variants={cardVariants}
-                      className="group relative bg-gray-800 rounded-xl p-4 hover:bg-gray-700 transition-all duration-300 flex flex-col items-center"
-                      whileHover={{ scale: 1.05, boxShadow: "0 8px 20px -8px rgba(59, 130, 246, 0.4)" }}
-                    >
-                      <div className="w-12 h-12 rounded-lg bg-[#1e293b] border border-blue-400/20 flex items-center justify-center mb-3 group-hover:border-blue-400 transition-colors duration-300">
-                        <img
-                          src={skill.icon || "/placeholder.svg"}
-                          alt={skill.title}
-                          className="w-7 h-7 object-contain"
-                        />
-                      </div>
-
-                      <h4 className="text-sm font-medium text-center mb-2 group-hover:text-blue-400 transition-colors duration-300">
-                        {skill.title}
-                      </h4>
-
-                      <div className="w-full h-0.5 bg-gray-700 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full bg-blue-400"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${(skill.level / 3) * 100}%` }}
-                          transition={{ duration: 0.8, delay: 0.2 }}
-                        />
-                      </div>
-
-                      {skill.courses.length > 0 && (
-                        <div className="absolute inset-0 bg-gray-800/95 rounded-xl p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <div className="overflow-y-auto max-h-full scrollbar-thin scrollbar-thumb-blue-400">
-                            <div className="flex flex-col gap-1.5">
-                              {skill.courses.map((course, idx) => (
-                                <a
-                                  key={idx}
-                                  href={skill.coursesLinks[idx]}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-[10px] px-2 py-1 bg-[#1e293b] text-gray-300 rounded-md hover:bg-blue-400/10 hover:text-blue-400 transition-all duration-300 text-center"
-                                >
-                                  {course}
-                                </a>
-                              ))}
-                            </div>
-                          </div>
+        <motion.div
+          className="grid gap-8 md:grid-cols-2"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.1 },
+            },
+          }}
+          initial="hidden"
+          animate="visible"
+        >
+          {technologies.map((tech) => (
+            <motion.div
+              key={tech.category}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.5 },
+                },
+              }}
+            >
+              <Tilt options={defaultTiltOptions}>
+                <div className="relative group">
+                  {/* Card glow effect */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-[#60A5FA] to-[#60A5FA] rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200" />
+                  
+                  {/* Card content */}
+                  <div className="relative flex flex-col p-8 bg-[#0A1120] rounded-2xl border border-[#1E293B] backdrop-blur-xl min-h-[280px]">
+                    {/* Category header with icon */}
+                    <div className="relative flex items-center gap-3 mb-6">
+                      <div className="relative w-12 h-12">
+                        <div className="absolute inset-0 bg-[#60A5FA] rounded-xl blur-md opacity-20" />
+                        <div className="relative flex items-center justify-center w-full h-full bg-[#0A1120] rounded-xl border border-[#1E293B]">
+                          {tech.icon}
                         </div>
-                      )}
+                      </div>
+                      <h3 className="text-xl font-bold text-white">{tech.category}</h3>
+                    </div>
+
+                    {/* Skills grid */}
+                    <div className="grid grid-cols-2 gap-3">
+                      {tech.skills.map((skill) => {
+                        const SkillIcon = skill.icon
+                        return (
+                          <motion.button
+                            key={skill.title}
+                            onClick={() => setSelectedSkill(skill)}
+                            className="relative group/skill"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#60A5FA]/20 to-[#60A5FA]/20 rounded-xl opacity-0 group-hover/skill:opacity-100 transition duration-300" />
+                            <div className="relative p-3 bg-[#0F172A] rounded-xl border border-[#1E293B] group-hover/skill:border-[#60A5FA]/20 transition-all duration-300">
+                              <div className="flex items-center gap-2">
+                                <SkillIcon className="w-5 h-5" />
+                                <span className="text-sm font-medium text-[#94A3B8] group-hover/skill:text-[#60A5FA] transition-colors">
+                                  {skill.title}
+                                </span>
+                              </div>
+                            </div>
+                          </motion.button>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </Tilt>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <AnimatePresence>
+          {selectedSkill && (
+            <Dialog open={!!selectedSkill} onOpenChange={() => setSelectedSkill(null)}>
+              <DialogContent className="bg-[#0A1120] border-[#1E293B] text-white">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ type: "spring", duration: 0.5 }}
+                >
+                  <DialogHeader>
+                    <DialogTitle className="text-xl font-bold flex items-center gap-2">
+                      <selectedSkill.icon className="w-6 h-6 text-[#60A5FA]" />
+                      {selectedSkill.title}
+                    </DialogTitle>
+                  </DialogHeader>
+
+                  <div className="space-y-6 mt-6">
+                    <motion.div
+                      className="space-y-2"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 }}
+                    >
+                      <h4 className="text-sm font-medium text-[#94A3B8]">Nível</h4>
+                      {getLevelBars(selectedSkill.level)}
                     </motion.div>
-                  ))}
+
+                    <motion.div
+                      className="space-y-3"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      <h4 className="text-sm font-medium text-[#94A3B8]">Cursos</h4>
+                      <div className="grid gap-2">
+                        {selectedSkill.courses.map((course, idx) => (
+                          <motion.a
+                            key={idx}
+                            href={selectedSkill.coursesLinks[idx]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative group/link"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#60A5FA]/20 to-[#60A5FA]/20 rounded-xl opacity-0 group-hover/link:opacity-100 transition duration-300" />
+                            <div className="relative p-4 bg-[#0F172A] rounded-xl border border-[#1E293B] group-hover/link:border-[#60A5FA]/20 transition-all duration-300">
+                              <p className="text-sm text-[#94A3B8] group-hover/link:text-[#60A5FA] transition-colors">
+                                {course}
+                              </p>
+                            </div>
+                          </motion.a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </div>
                 </motion.div>
-              </div>
-            )
-          })}
-        </div>
+              </DialogContent>
+            </Dialog>
+          )}
+        </AnimatePresence>
       </div>
     </motion.section>
   )
 }
 
 export default Skills
-

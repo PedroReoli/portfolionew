@@ -1,76 +1,109 @@
-// src/constants/skillsData.ts
+import React from "react"
+import type { LucideIcon } from "lucide-react"
+
+// Função helper para criar componente de ícone
+const createDevIcon = (iconPath: string): React.FC<{ className?: string }> => {
+  return function DevIcon({ className = "w-4 h-4" }) {
+    return React.createElement("img", {
+      src: `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${iconPath}`,
+      alt: iconPath.split("/")[0],
+      className,
+    })
+  }
+}
 
 export interface Skill {
-  title: string;
-  icon: string;
-  description: string;
-  level: number;
-  details: string;
-  courses: string[];
-  coursesLinks: string[];
-  area: string;  // Adicionamos a área de especialização
+  title: string
+  level: number
+  area: "frontend" | "backend" | "database" | "tools"
+  courses: string[]
+  coursesLinks: string[]
+  icon: React.FC<{ className?: string }> | LucideIcon
 }
 
 export const skillsData: Skill[] = [
-  { 
-    title: 'HTML', 
-    icon: 'assets/html-icon.svg', 
-    description: 'Linguagem de marcação usada para criar páginas web.', 
-    level: 2.5, 
-    details: 'Fácil de aprender e usar. Essencial para a construção da estrutura de páginas web. Usado em conjunto com CSS e JavaScript para construir e estilizar páginas web.', 
-    courses: ['Curso de HTML Básico'], 
-    coursesLinks: ['https://www.udemy.com/course/curso-web-design-fundamentos-aprenda-html-css-e-javascript/?couponCode=ABCART0923'],
-    area: 'Frontend'  // Definimos a área como "Frontend"
+  {
+    title: "HTML",
+    level: 2.5,
+    area: "frontend",
+    icon: createDevIcon("html5/html5-original.svg"),
+    courses: ["Curso de HTML Básico", "HTML Avançado e Semântico"],
+    coursesLinks: [
+      "https://www.udemy.com/course/curso-web-design-fundamentos-aprenda-html-css-e-javascript",
+      "https://www.udemy.com/course/html-semantico",
+    ],
   },
-  { 
-    title: 'CSS', 
-    icon: 'assets/css-icon.svg', 
-    description: 'Estilos para páginas web, responsáveis pela aparência.', 
-    level: 2, 
-    details: 'Permite separar o conteúdo da apresentação visual. Facilita a manutenção e o design responsivo. Usado para estilizar páginas web, definindo layouts, cores, fontes, e outros aspectos visuais.', 
-    courses: ['Curso de CSS Avançado'], 
-    coursesLinks: ['https://www.udemy.com/course/curso-web-design-fundamentos-aprenda-html-css-e-javascript/?couponCode=ABCART0923'],
-    area: 'Frontend'
+  {
+    title: "CSS",
+    level: 2,
+    area: "frontend",
+    icon: createDevIcon("css3/css3-original.svg"),
+    courses: ["CSS Moderno", "CSS Flexbox e Grid"],
+    coursesLinks: ["https://www.udemy.com/course/css-moderno", "https://www.udemy.com/course/css-flexbox-grid"],
   },
-  { 
-    title: 'JavaScript', 
-    icon: 'assets/js-icon.svg', 
-    description: 'Linguagem de programação usada para adicionar interatividade.', 
-    level: 2.0, 
-    details: 'Versátil e amplamente suportado. Permite criar experiências de usuário dinâmicas. Usado para adicionar interatividade a páginas web, como validação de formulários, animações, e comunicação assíncrona.', 
-    courses: ['Conclusão do RoadmapSh de JS'], 
-    coursesLinks: ['https://roadmap.sh/javascript'],
-    area: 'Frontend'
+  {
+    title: "JavaScript",
+    level: 2.5,
+    area: "frontend",
+    icon: createDevIcon("javascript/javascript-original.svg"),
+    courses: ["JavaScript Completo", "JavaScript ES6+"],
+    coursesLinks: ["https://www.udemy.com/course/javascript-completo", "https://www.udemy.com/course/javascript-es6"],
   },
-  { 
-    title: 'C#', 
-    icon: 'assets/csharp-icon.svg', 
-    description: 'Linguagem de programação usada para desenvolvimento de aplicações desktop e web.', 
-    level: 1.5, 
-    details: 'Integrado com o ecossistema Microsoft. Forte tipagem e orientação a objetos. Usado para desenvolvimento de aplicações desktop, web, e jogos com Unity.', 
-    courses: ['Curso C# Completo e Profissional', 'Curso Introdução a Orientação a Objetos com C#', 'C# COMPLETO Programação Orientada a Objetos '], 
-    coursesLinks: ['https://www.udemy.com/course/csharp-completo-e-profissional/?couponCode=ABCART0923', 'https://www.udemy.com/course/introducaoaorientacaoaobjetoscomcsharp/', 'https://www.udemy.com/course/programacao-orientada-a-objetos-csharp/?couponCode=ABCART0923'],
-    area: 'Backend'
+  {
+    title: "React",
+    level: 2,
+    area: "frontend",
+    icon: createDevIcon("react/react-original.svg"),
+    courses: ["React do Zero", "React Avançado"],
+    coursesLinks: ["https://www.udemy.com/course/react-do-zero", "https://www.udemy.com/course/react-avancado"],
   },
-  { 
-    title: 'SQL', 
-    icon: 'assets/sql-icon.svg', 
-    description: 'Linguagem de consulta usada para gerenciar bancos de dados relacionais.', 
-    level: 1.2, 
-    details: 'Permite consultas complexas e manipulação de grandes volumes de dados. Suporte amplo. Usado para gerenciar e manipular bancos de dados relacionais, como MySQL, PostgreSQL e SQL Server.', 
-    courses: ['SQL Tutorial - Full Database Course for Beginners', 'SQL Tutorial for Beginners'], 
-    coursesLinks: ['https://www.youtube.com/watch?v=HXV3zeQKqGY', 'https://www.youtube.com/watch?v=7S_tz1z_5bA&pp=ygUSc3FsIGNvbXBsZXRlIGd1aWRl'],
-    area: 'Database'
+  {
+    title: "Next.js",
+    level: 2,
+    area: "frontend",
+    icon: createDevIcon("nextjs/nextjs-original.svg"),
+    courses: ["Next.js na Prática", "Next.js com TypeScript"],
+    coursesLinks: ["https://www.udemy.com/course/nextjs-na-pratica", "https://www.udemy.com/course/nextjs-typescript"],
   },
-  { 
-    title: 'Git', 
-    icon: 'assets/git-icon.svg', 
-    description: 'Sistema de controle de versão distribuído.', 
-    level: 3, 
-    details: 'Facilita o trabalho colaborativo. Histórico completo de mudanças no código. Usado para versionamento de código, permitindo colaboração em projetos de software.', 
-    courses: ['Git Tutorial for Beginners'], 
-    coursesLinks: ['https://www.youtube.com/watch?v=8JJ101D3knE&t=35s'],
-    area: 'DevOps'
+  {
+    title: "Node.js",
+    level: 1.5,
+    area: "backend",
+    icon: createDevIcon("nodejs/nodejs-original.svg"),
+    courses: ["Node.js Básico", "Node.js com Express"],
+    coursesLinks: ["https://www.udemy.com/course/nodejs-basico", "https://www.udemy.com/course/nodejs-express"],
   },
-  // Adicionar outras tecnologias e áreas conforme necessário
-];
+  {
+    title: "C-Sharp",
+    level: 2,
+    area: "backend",
+    icon: createDevIcon("csharp/csharp-original.svg"),
+    courses: ["C# Completo", "C# Avançado"],
+    coursesLinks: ["https://www.udemy.com/course/csharp-completo", "https://www.udemy.com/course/csharp-avancado"],
+  },
+  {
+    title: "SQL",
+    level: 1.5,
+    area: "database",
+    icon: createDevIcon("mysql/mysql-original.svg"),
+    courses: ["SQL Básico", "SQL Avançado"],
+    coursesLinks: ["https://www.udemy.com/course/sql-basico", "https://www.udemy.com/course/sql-avancado"],
+  },
+  {
+    title: "Git",
+    level: 2.5,
+    area: "tools",
+    icon: createDevIcon("git/git-original.svg"),
+    courses: ["Git Essencial", "Git Avançado"],
+    coursesLinks: ["https://www.udemy.com/course/git-essencial", "https://www.udemy.com/course/git-avancado"],
+  },
+  {
+    title: "Docker",
+    level: 1,
+    area: "tools",
+    icon: createDevIcon("docker/docker-original.svg"),
+    courses: ["Docker Básico", "Docker na Prática"],
+    coursesLinks: ["https://www.udemy.com/course/docker-basico", "https://www.udemy.com/course/docker-na-pratica"],
+  },
+]
+

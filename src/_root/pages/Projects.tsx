@@ -1,20 +1,35 @@
 "use client"
 
-import type React from "react"
-import { useState, useEffect, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, ExternalLink, Calendar, Code } from "lucide-react"
-
-// Assumindo que projectsData está definido em outro arquivo
+import { ChevronLeft, ChevronRight, ExternalLink, Calendar, Code } from 'lucide-react'
+import { Tilt } from 'react-tilt'
 import { projectsData, type Project } from "@/constants"
 
-const Projects: React.FC = () => {
+const defaultTiltOptions = {
+  reverse: false,
+  max: 15,
+  perspective: 1000,
+  scale: 1.02,
+  speed: 1000,
+  transition: true,
+  axis: null,
+  reset: true,
+  easing: "cubic-bezier(.03,.98,.52,.99)",
+}
+
+const Projects = () => {
   const [currentProject, setCurrentProject] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [visibleProjects, setVisibleProjects] = useState(6)
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768)
+      if (window.innerWidth >= 1280) setVisibleProjects(6)
+      else if (window.innerWidth >= 1024) setVisibleProjects(4)
+      else if (window.innerWidth >= 768) setVisibleProjects(3)
+      else setVisibleProjects(1)
     }
     handleResize()
     window.addEventListener("resize", handleResize)
@@ -31,59 +46,61 @@ const Projects: React.FC = () => {
 
   return (
     <motion.section
-      className="bg-[#111111] text-white h-screen flex flex-col justify-center items-center p-4 sm:p-6 lg:p-8"
+      className="bg-[#111111] text-white min-h-screen py-20 px-5 overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8 }}
     >
-      <div className="container mx-auto h-full flex flex-col">
-        <motion.h2
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8"
-          initial={{ opacity: 0, y: -20 }}
+      <div className="container mx-auto max-w-7xl">
+        <motion.div 
+          className="text-center mb-16 relative"
+          initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Meus Projetos <span className="text-blue-500">;</span>
-        </motion.h2>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#60A5FA] rounded-full blur-[120px] opacity-20" />
+          <h2 className="text-4xl font-bold relative">
+            Meus Projetos<span className="text-[#60A5FA]">;</span>
+          </h2>
+        </motion.div>
 
-        <div className="flex-grow relative">
+        <div className="relative">
           {isMobile ? (
-            <div className="h-full flex items-center justify-center">
+            <div className="flex items-center justify-center">
               <AnimatePresence mode="wait">
                 <ProjectCard key={currentProject} project={projectsData[currentProject]} />
               </AnimatePresence>
-              <button
-                onClick={prevProject}
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-500 bg-opacity-50 rounded-full p-2 hover:bg-blue-600 hover:bg-opacity-75 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
-                aria-label="Previous project"
-              >
-                <ChevronLeft className="w-6 h-6 text-white" />
-              </button>
-              <button
-                onClick={nextProject}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 bg-opacity-50 rounded-full p-2 hover:bg-blue-600 hover:bg-opacity-75 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
-                aria-label="Next project"
-              >
-                <ChevronRight className="w-6 h-6 text-white" />
-              </button>
+              <NavigationButton direction="prev" onClick={prevProject} />
+              <NavigationButton direction="next" onClick={nextProject} />
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-full">
-              {projectsData.slice(0, 3).map((project, index) => (
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.1 },
+                },
+              }}
+              initial="hidden"
+              animate="visible"
+            >
+              {projectsData.slice(0, visibleProjects).map((project, index) => (
                 <ProjectCard key={index} project={project} />
               ))}
-            </div>
+            </motion.div>
           )}
         </div>
 
         {isMobile && (
-          <div className="flex justify-center mt-4 space-x-2">
+          <div className="flex justify-center mt-8 gap-2">
             {projectsData.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentProject(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentProject ? "bg-blue-500" : "bg-gray-600"
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentProject ? "w-6 bg-[#60A5FA]" : "bg-[#1E293B] hover:bg-[#60A5FA]/50"
                 }`}
                 aria-label={`Go to project ${index + 1}`}
               />
@@ -95,94 +112,148 @@ const Projects: React.FC = () => {
   )
 }
 
-interface ProjectCardProps {
-  project: Project
-}
+const NavigationButton = ({ direction, onClick }: { direction: "prev" | "next"; onClick: () => void }) => (
+  <motion.button
+    onClick={onClick}
+    className="absolute top-1/2 -translate-y-1/2 z-10 group"
+    style={{ [direction === "prev" ? "left" : "right"]: "1rem" }}
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+  >
+    <div className="relative">
+      <div className="absolute -inset-0.5 bg-[#60A5FA] rounded-full blur opacity-0 group-hover:opacity-30 transition duration-300" />
+      <div className="relative p-2 bg-[#0A1120] rounded-full border border-[#1E293B] group-hover:border-[#60A5FA]/50 transition-colors duration-300">
+        {direction === "prev" ? (
+          <ChevronLeft className="w-6 h-6 text-[#60A5FA]" />
+        ) : (
+          <ChevronRight className="w-6 h-6 text-[#60A5FA]" />
+        )}
+      </div>
+    </div>
+  </motion.button>
+)
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard = ({ project }: { project: Project }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const nextImage = useCallback(() => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === project.thumbnails.length - 1 ? 0 : prevIndex + 1))
+    setCurrentImageIndex((prev) => (prev + 1) % project.thumbnails.length)
   }, [project.thumbnails.length])
 
   const prevImage = useCallback(() => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? project.thumbnails.length - 1 : prevIndex - 1))
+    setCurrentImageIndex((prev) => (prev - 1 + project.thumbnails.length) % project.thumbnails.length)
   }, [project.thumbnails.length])
 
   return (
     <motion.div
-      className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.3 }}
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+      }}
     >
-      <div className="relative h-48">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentImageIndex}
-            src={project.thumbnails[currentImageIndex]}
-            alt={`${project.title} thumbnail`}
-            className="w-full h-full object-cover"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          />
-        </AnimatePresence>
-        <button
-          onClick={prevImage}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 rounded-full p-1 hover:bg-opacity-75 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
-          aria-label="Previous image"
-        >
-          <ChevronLeft className="w-4 h-4 text-white" />
-        </button>
-        <button
-          onClick={nextImage}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 rounded-full p-1 hover:bg-opacity-75 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
-          aria-label="Next image"
-        >
-          <ChevronRight className="w-4 h-4 text-white" />
-        </button>
-      </div>
-      <div className="p-6 flex-grow flex flex-col justify-between">
-        <div>
-          <h3 className="text-xl font-bold mb-2 text-blue-400">{project.title}</h3>
-          <p className="text-sm text-gray-300 mb-4">{project.description}</p>
-          <div className="flex items-center text-sm text-gray-400 mb-2">
-            <Calendar className="w-4 h-4 mr-2" />
-            <span>{project.duration}</span>
-          </div>
-          <div className="flex items-center text-sm text-gray-400 mb-4">
-            <Code className="w-4 h-4 mr-2" />
-            <span>{project.techStack.join(", ")}</span>
+      <Tilt options={defaultTiltOptions}>
+        <div className="relative group">
+          {/* Card glow effect */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#60A5FA] to-[#60A5FA] rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200" />
+          
+          {/* Card content */}
+          <div className="relative flex flex-col bg-[#0A1120] rounded-2xl border border-[#1E293B] backdrop-blur-xl overflow-hidden">
+            {/* Image section */}
+            <div className="relative h-48">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentImageIndex}
+                  src={project.thumbnails[currentImageIndex]}
+                  alt={`${project.title} thumbnail`}
+                  className="w-full h-full object-cover"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </AnimatePresence>
+
+              {project.thumbnails.length > 1 && (
+                <>
+                  <ImageNavigationButton direction="prev" onClick={prevImage} />
+                  <ImageNavigationButton direction="next" onClick={nextImage} />
+                </>
+              )}
+
+              {/* Image overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1120] to-transparent opacity-50" />
+            </div>
+
+            {/* Content section */}
+            <div className="p-6 space-y-4">
+              <div>
+                <h3 className="text-xl font-bold text-white group-hover:text-[#60A5FA] transition-colors duration-300">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-[#94A3B8] mt-2">{project.description}</p>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center text-sm text-[#94A3B8]">
+                  <Calendar className="w-4 h-4 mr-2 text-[#60A5FA]" />
+                  <span>{project.duration}</span>
+                </div>
+                <div className="flex items-center text-sm text-[#94A3B8]">
+                  <Code className="w-4 h-4 mr-2 text-[#60A5FA]" />
+                  <span className="truncate">{project.techStack.join(", ")}</span>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pt-4">
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    project.status === "Finalizado"
+                      ? "bg-green-500/10 text-green-400 border border-green-500/20"
+                      : "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
+                  }`}
+                >
+                  {project.status}
+                </span>
+
+                <motion.a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative group/link"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="absolute -inset-1 bg-gradient-to-r from-[#60A5FA] to-[#60A5FA] rounded-full blur-md opacity-25 group-hover/link:opacity-50 transition duration-1000 group-hover/link:duration-200" />
+                  <div className="relative px-4 py-2 bg-[#0F172A] rounded-full border border-[#60A5FA]/50 hover:border-[#60A5FA] text-[#60A5FA] text-sm font-medium inline-flex items-center gap-2 transition-all duration-300">
+                    Ver Projeto
+                    <ExternalLink className="w-4 h-4" />
+                  </div>
+                </motion.a>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="flex justify-between items-center">
-          <span
-            className={`text-xs font-semibold px-2 py-1 rounded-full ${
-              project.status === "Finalizado" ? "bg-green-500 text-white" : "bg-yellow-500 text-black"
-            }`}
-          >
-            {project.status}
-          </span>
-          <motion.a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center py-2 px-4 rounded-full text-sm font-semibold bg-blue-500 text-white transition-all duration-300 transform hover:bg-blue-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ExternalLink className="w-4 h-4 mr-2" />
-            Ver Projeto
-          </motion.a>
-        </div>
-      </div>
+      </Tilt>
     </motion.div>
   )
 }
 
-export default Projects
+const ImageNavigationButton = ({ direction, onClick }: { direction: "prev" | "next"; onClick: () => void }) => (
+  <motion.button
+    onClick={onClick}
+    className={`absolute top-1/2 -translate-y-1/2 ${
+      direction === "prev" ? "left-2" : "right-2"
+    } p-1.5 rounded-full bg-[#0A1120]/80 opacity-0 group-hover:opacity-100
+    transition-all duration-300 hover:bg-[#0A1120] border border-[#1E293B] hover:border-[#60A5FA]/50`}
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+  >
+    {direction === "prev" ? (
+      <ChevronLeft className="w-4 h-4 text-[#60A5FA]" />
+    ) : (
+      <ChevronRight className="w-4 h-4 text-[#60A5FA]" />
+    )}
+  </motion.button>
+)
 
+export default Projects
