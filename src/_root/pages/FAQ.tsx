@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Tilt } from "react-tilt"
-import { Mail, Twitter, Instagram } from "lucide-react"
+import { Mail, Instagram } from "lucide-react"
 
 const faqs = [
   {
@@ -20,8 +20,7 @@ const faqs = [
     answer: "Você pode me encontrar pelos canais abaixo:",
     contacts: [
       { type: "email", link: "mailto:pedrosousa2160@gmail.com", icon: <Mail />, label: "pedrosousa2160@gmail.com" },
-      { type: "twitter", link: "https://x.com/opedroreoli", icon: <Twitter />, label: "@pedro_reoli" },
-      {
+   {
         type: "instagram",
         link: "https://www.instagram.com/01_dev_em_desenvolvimento",
         icon: <Instagram />,
@@ -52,17 +51,14 @@ const FAQ = () => {
   return (
     <section className="bg-[#111111] text-white py-20 px-5 overflow-hidden min-h-screen">
       <div className="container mx-auto max-w-7xl">
-        <motion.div
-          className="text-center mb-16 relative"
+        <motion.h2
+          className="text-4xl font-bold text-center mb-16"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#60A5FA] rounded-full blur-[120px] opacity-20" />
-          <h2 className="text-4xl font-bold relative">
-            Perguntas Frequentes<span className="text-[#60A5FA]">;</span>
-          </h2>
-        </motion.div>
+          Perguntas Frequentes<span className="text-[#60A5FA]">;</span>
+        </motion.h2>
 
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
@@ -85,15 +81,9 @@ const FAQ = () => {
               }}
             >
               <Tilt options={defaultTiltOptions}>
-                <div className="relative group h-full">
-                  {/* Card glow effect */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-[#60A5FA] to-[#60A5FA] rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200" />
-
-                  {/* Card content */}
-                  <div className="relative flex flex-col h-full p-8 bg-[#0A1120] rounded-2xl border border-[#1E293B] backdrop-blur-xl">
-                    <h3 className="text-xl font-bold mb-4 text-[#60A5FA] group-hover:text-white transition-colors duration-300">
-                      {faq.question}
-                    </h3>
+                <div className="h-full">
+                  <div className="flex flex-col h-full p-8 bg-[#0A1120] rounded-2xl border border-[#1E293B] hover:border-[#60A5FA]/50 transition-colors duration-300">
+                    <h3 className="text-xl font-bold mb-4 text-[#60A5FA]">{faq.question}</h3>
 
                     <p className="text-[#94A3B8] mb-6">{faq.answer}</p>
 
@@ -105,17 +95,14 @@ const FAQ = () => {
                             href={contact.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="relative group/link flex items-center gap-3"
+                            className="flex items-center gap-3 group"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                           >
-                            <div className="relative w-10 h-10">
-                              <div className="absolute inset-0 bg-[#60A5FA] rounded-xl blur-md opacity-20 group-hover/link:opacity-40 transition duration-300" />
-                              <div className="relative flex items-center justify-center w-full h-full bg-[#0F172A] rounded-xl border border-[#1E293B] group-hover/link:border-[#60A5FA]/50 transition-colors duration-300">
-                                {contact.icon}
-                              </div>
+                            <div className="flex items-center justify-center w-10 h-10 bg-[#0F172A] rounded-xl border border-[#1E293B] group-hover:border-[#60A5FA]/50 transition-colors duration-300">
+                              <div className="text-[#60A5FA]">{contact.icon}</div>
                             </div>
-                            <span className="text-[#94A3B8] group-hover/link:text-[#60A5FA] transition-colors duration-300">
+                            <span className="text-[#94A3B8] group-hover:text-[#60A5FA] transition-colors duration-300">
                               {contact.label}
                             </span>
                           </motion.a>
