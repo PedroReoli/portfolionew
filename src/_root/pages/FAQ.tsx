@@ -20,7 +20,7 @@ const faqs = [
     answer: "Você pode me encontrar pelos canais abaixo:",
     contacts: [
       { type: "email", link: "mailto:pedrosousa2160@gmail.com", icon: <Mail />, label: "pedrosousa2160@gmail.com" },
-   {
+      {
         type: "instagram",
         link: "https://www.instagram.com/01_dev_em_desenvolvimento",
         icon: <Instagram />,
@@ -49,10 +49,10 @@ const defaultTiltOptions = {
 
 const FAQ = () => {
   return (
-    <section className="bg-[#111111] text-white py-20 px-5 overflow-hidden min-h-screen">
+    <section className="bg-[#111111] text-white py-10 xxs:py-12 xs:py-16 sm:py-20 px-3 xxs:px-4 xs:px-5 sm:px-6 overflow-hidden min-h-screen">
       <div className="container mx-auto max-w-7xl">
         <motion.h2
-          className="text-4xl font-bold text-center mb-16"
+          className="text-2xl xxs:text-3xl sm:text-4xl font-bold text-center mb-6 xxs:mb-8 xs:mb-10 sm:mb-12"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -61,7 +61,7 @@ const FAQ = () => {
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 xxs:gap-5 xs:gap-6 sm:gap-8"
           variants={{
             hidden: { opacity: 0 },
             visible: {
@@ -81,32 +81,71 @@ const FAQ = () => {
               }}
             >
               <Tilt options={defaultTiltOptions}>
-                <div className="h-full">
-                  <div className="flex flex-col h-full p-8 bg-[#0A1120] rounded-2xl border border-[#1E293B] hover:border-[#60A5FA]/50 transition-colors duration-300">
-                    <h3 className="text-xl font-bold mb-4 text-[#60A5FA]">{faq.question}</h3>
+                <div className="relative group">
+                  {/* Card glow effect */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-[#60A5FA] to-[#60A5FA] rounded-xl xxs:rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200" />
 
-                    <p className="text-[#94A3B8] mb-6">{faq.answer}</p>
+                  {/* Card content */}
+                  <div className="relative flex flex-col p-4 xxs:p-5 xs:p-6 sm:p-8 bg-[#0A1120] rounded-xl xxs:rounded-2xl border border-[#1E293B] hover:border-[#60A5FA]/50 transition-colors duration-300">
+                    {/* Question */}
+                    <h3 className="text-base xxs:text-lg xs:text-xl font-bold mb-3 xxs:mb-4 text-[#60A5FA]">
+                      {faq.question}
+                    </h3>
 
+                    {/* Answer */}
+                    <p className="text-xs xxs:text-sm xs:text-base text-[#94A3B8] mb-4 xxs:mb-5">{faq.answer}</p>
+
+                    {/* Contacts Section */}
                     {faq.contacts && (
-                      <div className="space-y-3 mt-auto">
-                        {faq.contacts.map((contact, idx) => (
-                          <motion.a
-                            key={idx}
-                            href={contact.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 group"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                          >
-                            <div className="flex items-center justify-center w-10 h-10 bg-[#0F172A] rounded-xl border border-[#1E293B] group-hover:border-[#60A5FA]/50 transition-colors duration-300">
-                              <div className="text-[#60A5FA]">{contact.icon}</div>
-                            </div>
-                            <span className="text-[#94A3B8] group-hover:text-[#60A5FA] transition-colors duration-300">
-                              {contact.label}
-                            </span>
-                          </motion.a>
-                        ))}
+                      <div className="mt-auto">
+                        {/* Mobile Version (até 425px) */}
+                        <div className="flex justify-center gap-3 xs:hidden">
+                          {faq.contacts.map((contact, idx) => (
+                            <motion.a
+                              key={idx}
+                              href={contact.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="relative group/contact"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#60A5FA] to-[#60A5FA] rounded-xl blur opacity-0 group-hover/contact:opacity-20 transition duration-300" />
+                              <div className="relative flex items-center justify-center w-11 xxs:w-12 h-11 xxs:h-12 bg-[#0F172A] rounded-xl border border-[#1E293B] group-hover/contact:border-[#60A5FA]/50 transition-all duration-300">
+                                <div className="text-[#60A5FA] w-5 xxs:w-6 h-5 xxs:h-6 group-hover/contact:text-white transition-colors duration-300">
+                                  {contact.icon}
+                                </div>
+                              </div>
+                            </motion.a>
+                          ))}
+                        </div>
+
+                        {/* Tablet/Desktop Version (425px+) */}
+                        <div className="hidden xs:flex xs:flex-col xs:space-y-2.5">
+                          {faq.contacts.map((contact, idx) => (
+                            <motion.a
+                              key={idx}
+                              href={contact.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="relative group/contact"
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#60A5FA] to-[#60A5FA] rounded-xl blur opacity-0 group-hover/contact:opacity-20 transition duration-300" />
+                              <div className="relative flex items-center gap-3 p-2 xs:p-3 bg-[#0F172A] rounded-xl border border-[#1E293B] group-hover/contact:border-[#60A5FA]/50 transition-all duration-300">
+                                <div className="flex items-center justify-center w-8 xs:w-9 h-8 xs:h-9">
+                                  <div className="text-[#60A5FA] w-4 xs:w-5 h-4 xs:h-5 group-hover/contact:text-white transition-colors duration-300">
+                                    {contact.icon}
+                                  </div>
+                                </div>
+                                <span className="text-sm xs:text-base text-[#94A3B8] group-hover/contact:text-[#60A5FA] transition-colors duration-300 truncate">
+                                  {contact.label}
+                                </span>
+                              </div>
+                            </motion.a>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>

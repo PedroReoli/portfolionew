@@ -15,15 +15,18 @@ const About = () => {
   }, [isInView, mainControls])
 
   return (
-    <section ref={ref} className="bg-[#111111] text-white min-h-screen py-16 px-4 sm:px-6 md:px-8 lg:px-12">
+    <section
+      ref={ref}
+      className="bg-[#111111] text-white min-h-screen py-12 xxs:py-14 sm:py-16 px-3 xxs:px-4 sm:px-6 md:px-8 lg:px-12"
+    >
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
+        <h2 className="text-2xl xxs:text-3xl sm:text-4xl font-bold mb-8 xxs:mb-10 sm:mb-12 text-center">
           Sobre Mim <span className="text-blue-500">;</span>
         </h2>
-        <div className="flex flex-col lg:flex-row items-start gap-12">
+        <div className="flex flex-col lg:flex-row items-start gap-8 xxs:gap-10 sm:gap-12">
           {/* Imagem */}
           <motion.div
-            className="w-full lg:w-1/3 max-w-sm mx-auto lg:mx-0"
+            className="w-full lg:w-1/3 max-w-[280px] xxs:max-w-[320px] sm:max-w-sm mx-auto lg:mx-0"
             initial={{ opacity: 0, y: 50 }}
             animate={mainControls}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -43,7 +46,7 @@ const About = () => {
                 className="w-full h-full object-cover absolute inset-0 opacity-0 transition-all duration-500 ease-in-out group-hover:opacity-100"
               />
             </div>
-            <p className="text-sm text-gray-400 mt-2 text-center">(passe o mouse na foto)</p>
+            <p className="text-xs xxs:text-sm text-gray-400 mt-2 text-center">(passe o mouse na foto)</p>
           </motion.div>
 
           {/* Texto "Sobre Mim" */}
@@ -56,8 +59,8 @@ const About = () => {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <div className="space-y-6">
-              <p className="text-base sm:text-lg leading-relaxed text-gray-300">
+            <div className="space-y-4 xxs:space-y-5 sm:space-y-6">
+              <p className="text-sm xxs:text-base sm:text-lg leading-relaxed text-gray-300">
                 Sou <span className="text-blue-500">Pedro Lucas</span>,{" "}
                 <span className="text-blue-500">programador júnior</span> movido pela{" "}
                 <span className="text-blue-500">gana por aprender</span> e pela busca contínua por{" "}
@@ -73,7 +76,7 @@ const About = () => {
                 com sensibilidade.
               </p>
 
-              <p className="text-base sm:text-lg leading-relaxed text-gray-300">
+              <p className="text-sm xxs:text-base sm:text-lg leading-relaxed text-gray-300">
                 Atualmente, atuo na <span className="text-blue-500">Autocom3</span>, com foco em{" "}
                 <span className="text-blue-500">.NET</span>, <span className="text-blue-500">C#</span> e{" "}
                 <span className="text-blue-500">Python</span> para{" "}
@@ -87,7 +90,7 @@ const About = () => {
                 <span className="text-blue-500">compartilhar experiências</span>.
               </p>
 
-              <p className="text-base sm:text-lg leading-relaxed text-gray-300">
+              <p className="text-sm xxs:text-base sm:text-lg leading-relaxed text-gray-300">
                 Meu diferencial é unir <span className="text-blue-500">arte</span>,{" "}
                 <span className="text-blue-500">tecnologia</span> e <span className="text-blue-500">criatividade</span>{" "}
                 para criar <span className="text-blue-500">projetos modernos</span> e{" "}

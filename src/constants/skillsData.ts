@@ -42,7 +42,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/css-moderno", "https://www.udemy.com/course/css-flexbox-grid"],
   },
   {
-    title: "JavaScript",
+    title: "JS",
     level: 2.5,
     area: "frontend",
     icon: createDevIcon("javascript/javascript-original.svg"),
@@ -58,7 +58,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/react-do-zero", "https://www.udemy.com/course/react-avancado"],
   },
   {
-    title: "Next.js",
+    title: "Next",
     level: 2,
     area: "frontend",
     icon: createDevIcon("nextjs/nextjs-original.svg"),
@@ -66,7 +66,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/nextjs-na-pratica", "https://www.udemy.com/course/nextjs-typescript"],
   },
   {
-    title: "Node.js",
+    title: "Node",
     level: 1.5,
     area: "backend",
     icon: createDevIcon("nodejs/nodejs-original.svg"),
@@ -74,7 +74,7 @@ export const skillsData: Skill[] = [
     coursesLinks: ["https://www.udemy.com/course/nodejs-basico", "https://www.udemy.com/course/nodejs-express"],
   },
   {
-    title: "C-Sharp",
+    title: "C#",
     level: 2,
     area: "backend",
     icon: createDevIcon("csharp/csharp-original.svg"),
